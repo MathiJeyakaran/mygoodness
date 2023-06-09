@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+:root {
+    /* fonts */
+    --medium-text-xl: Barlow;
+    --title-3xl: "Barlow Condensed";
+    --font-roboto: Roboto;
+
+    /* font sizes */
+    --medium-text-xl-size: 18px;
+    --title-3xl-size: 24px;
+    --medium-text-2xl-size: 20px;
+
+    /* Colors */
+    --black-white-white: #fff;
+    --contra-red2: #ff9692;
+    --gray-800: #424242;
+    --ffbd12: #ffbd12;
+    --gray-900: #212121;
+    --colors-black: #18191f;
+    --indigo-50: #e8eaf6;
+    --color-black: #000;
+    --mg-mg-purple: #c840e9;
+    --gray-300: #e0e0e0;
+
+    /* Paddings */
+    --padding-10xs-6: 2.6px;
+
+    /* border radiuses */
+    --br-7xs-2: 5.2px;
+
+    /* Effects */
+    --shadow-600: 0px 6px 0px #18191f;
+}

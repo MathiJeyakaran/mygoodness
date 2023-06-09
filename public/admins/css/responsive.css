@@ -1,0 +1,108 @@
+
+@media(min-width:200px) and (max-width:760px){
+.growhead {font-size: 32px; line-height: 32px; }
+.smallgrowtext {font-size: 16px; line-height: 24px; }
+.growimage .images img {position: relative; }
+.threeboxs {margin: 20px 0 0; }
+.iconnumber {font-size: 48px; line-height: 70px; }
+.iconhead {font-size: 24px; line-height: 32px; max-height: initial; }
+.iconsmalltext {font-size: 18px; line-height: 26px; max-height: initial;  margin-bottom: 20px;}
+.col-sm-4.boxesone {padding: 0; margin-bottom: 30px; }
+.startbtn {font-size: 24px; line-height: 32px; padding: 10px 50px; }
+.fulwidth .col-sm-8 label, .fulwidth .col-sm-12 label {font-size: 18px; line-height: normal; }
+.blagbg ul.links li {width: 100%; text-align: left !important; padding: 10px 0; }
+.dektopimages{display: none;}
+.col-sm-12.givebox .containers:nth-child(2) {width: 100%; margin: 0; }
+.col-sm-12.givebox .containers:nth-child(1) {width: 100%; margin: 0; }
+.circleoxes .form-group {width: 100%; float: left; margin: 0 0 20px; }
+.mobileviews, #next {display: block; }
+.deskviews, #friebnds{display: none;}
+.mobileviews .col-sm-4.lefticons {float: left; width: 33%; position: absolute; padding: 0; } 
+.mobileviews .col-sm-8.textformat {width: 70%; float: right; padding: 0; }
+.mobileviews .col-sm-8.textformat span.donatetext {font-weight: 400; font-size: 18px; line-height: 26px; }
+.pinkbox {background: #fff; max-width: 100%; padding: 10px;    height: auto; }
+.cirlehead {background: #FF9692; padding: 0; border-radius: 100%; width: 330px; height: 330px; margin: auto auto 50px; float: none; }
+.dektopimages.mobile {display: inline-block; position: relative; width: 60%; bottom: 20px; left: 0; right: 0; }
+.cirlehead p {margin: 40px 0; font-size: 30px; }
+.col-sm-12.givebox .containers input.form-control {position: relative; width: 100%; right: 0; }
+.col-sm-12.givebox .containers {padding-bottom: 20px; }
+.desktopview {display: none; }
+.homeicons {right: 0; }
+.donate{    font-size: 32px; line-height: 32px;}
+.mobileview {display: block; }
+.mobileview .col-sm-6 {float: left; margin: auto; }
+.bottomimages {left: 14px; bottom: -12%; }
+.bottomimagesshowmobile{display: block;}
+.bottomimagesshow{display: none;}
+.formwhite .paddingss {padding: 10px; }
+.formwhite .paddingss .col-sm-12.form-group {width: 100%; float: left; margin: 0 0 30px; }
+.formwhite {margin: auto; width: 100%; float: left; max-width: 100%; }
+.col-sm-9.growinghead {display: none; }
+.mobileviewgrowiing {display: block; }
+.col-sm-9.growinghead {display: none; }
+.grrencolorbox {position: relative; width: 100%; margin: 0 0 30px; float: left; }
+.grrencolorbox:before {background: #61E4C5; content: ""; position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: -1; border-radius: 100%; width: 310px; margin: auto; height: 310px; }
+.grrencolorbox .showdesk {position: relative; right: 0; bottom: -10px; }
+.friendstext {font-size: 24px; line-height: 32px; }
+.counts {font-weight: 700; font-size: 128px; line-height: 70px; }
+.donatetext {font-weight: 600; font-size: 24px; line-height: 32px; }
+button.black {padding: 7px 18px; margin-right: 5px; float: left; margin-bottom: 10px; }
+.listitems ul.listmids li {width: 25%; }
+div#hidemobile {display: none; }
+#myModal .modal-dialog{    max-width: 100%; width: 92%;}
+h4.modal-title {font-size: 24px; line-height: 32px; }
+.modal-body {padding: 20px 10px; }
+.simply {font-size: 14px; line-height: 20px; }
+.fulwidth.margiboxed {margin:30px 0; }
+.belowitems .frequency{width: 100%;}
+.col-sm-12.givebox.widths .col-sm-4.paddingbox {width: 100%; padding: 0 0; }
+.col-sm-12.givebox.widths {width: 100%; float: left; margin-top: 10px; padding: 0 7px; }
+.belowitems .middletable tbody tr td, .belowitems .middletable thead th {font-size: 12px; line-height: normal; }
+.bellowtexss {font-size: 14px; line-height: 21px; }
+.fullwidths .col-sm-6 {float: left; padding: 0 0; }
+
+}
+@media(min-width:767px) and (max-width:999px){
+
+.iconnumber {font-size: 48px; line-height: 70px; }
+.iconhead {font-size: 15px; line-height: normal; max-height: initial; }
+.iconsmalltext {font-size: 15px; line-height: 24px; max-height: initial; margin-bottom: 20px; }
+.blagbg ul.links li a{font-size: 18px;}
+.startbtn{font-size: 23px;}
+.pinkbox {max-width: 100%; height: 100%; }
+.dektopimages {width: 23%; }
+.homeicons {right: 30px; }
+.col-sm-12.givebox .containers label {font-size: 20px; }
+.mobileview {display: block; }
+.mobileview .col-sm-6 {float: left; margin: auto; }
+.bottomimages {left: 14px; bottom: -12%; }
+.desktopview {display: none; }
+.formwhite .paddingss{padding: 30px;}
+.mobileviewgrowiing {display: block; }
+.col-sm-9.growinghead {display: none; }
+.grrencolorbox {position: relative; width: 100%; margin: 0 0 30px; float: left; }
+.grrencolorbox:before {background: #61E4C5; content: ""; position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: -1; border-radius: 100%; width: 600px; margin: auto; height: 600px; }
+.grrencolorbox .showdesk {position: relative; right: 0; bottom: -10px; }
+.friendstext {font-size: 24px; line-height: 32px; }
+.counts {font-weight: 700; font-size: 128px; line-height: 70px; }
+.donatetext {font-weight: 600; font-size: 24px; line-height: 32px; }
+button.black {padding: 7px 18px; margin-right: 5px; float: left; margin-bottom: 10px; }
+.listitems ul.listmids li {width: 11%; }
+div#hidemobile {display: none; }
+#myModal .modal-dialog {width: 79%; }
+.bellowtexss {font-size: 16px; line-height: 28px; }
+.belowitems .frequency, .col-sm-12.givebox.widths .col-sm-4.paddingbox {font-size: 14px; }
+}
+
+
+
+@media(min-width:1000px) and (max-width:1199px){
+.growhead{font-size: 40px;line-height: 40px;}
+.smallgrowtext {font-size: 20px; line-height: 29px; }
+.iconhead{font-size: 20px; line-height: 20px;}
+.iconsmalltext {font-size: 17px; line-height: 22px; min-height: 130px; }
+.threeboxs {padding: 0; margin: 30px 0 0; float: left; }
+.bottomimages {bottom: -9%; left: -37px; }
+#myModal .modal-dialog {width: 60%; }
+.belowitems .frequency, .col-sm-12.givebox.widths .col-sm-4.paddingbox {font-size: 14px; }
+}

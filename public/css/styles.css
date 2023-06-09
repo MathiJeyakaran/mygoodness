@@ -1,0 +1,1276 @@
+/*Font family
+font-family: 'Barlow', sans-serif;
+font-family: 'Barlow Condensed', sans-serif;
+font-family: 'Roboto Slab', serif;
+*/
+body {
+    width: 100%;
+    float: center;
+    margin: auto;
+    padding: 0;
+    font-family: "Barlow", sans-serif;
+    color: #000;
+    font-size: 14px;
+    height: 100%;
+}
+html {
+    height: 100%;
+}
+.yellowbg {
+    background: #ffd465;
+    width: 100%;
+    float: left;
+    margin: auto;
+    padding: 0;
+}
+.logohead {
+    padding: 0;
+    clear: both;
+    margin-bottom: 30px;
+    float: left;
+}
+.logo {
+    width: 100%;
+    float: left;
+    margin: auto;
+    text-decoration: none;
+    padding-left: 3px;
+    padding-right: 21px;
+    padding-top: 12px;
+}
+.circle-container {
+    text-align: center;
+    padding-top: 30px;
+    margin-left: 75px;
+    padding-right: 75px;
+
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    border: 5px solid #000000;
+    margin-bottom: 20px;
+    background-color: #61e4c5;
+    margin-top: 13%;
+}
+.modal-header .close {
+    position: absolute;
+    opacity: 1;
+    left: -68px;
+    top: -10px;
+    z-index: 999999;
+    opacity: 1 !important;
+}
+.modal-header .close img {
+    max-width: 30%;
+}
+.modal-header {
+    padding: 0;
+    margin: 0 0 10px;
+    border: none;
+}
+.logohead {
+    padding: 0;
+    clear: both;
+    margin-bottom: 30px;
+    float: left;
+}
+.logo {
+    width: 100%;
+    float: left;
+    margin: auto;
+    text-decoration: none;
+}
+h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.circle {
+    text-align: center;
+    font-family: "Roboto Slab";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 94px;
+    line-height: 70px;
+    margin-left: 60px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+.circle-list {
+    list-style-type: none;
+    padding: 0;
+}
+.circle-list li {
+    clear: left;
+}
+
+.circle-list-container {
+    text-align: left;
+}
+
+.circle-number {
+    margin-left: 15px;
+    display: inline-block;
+    float: left; /* Add this property to make the points float left */
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #ffc107; /* Set the desired background color */
+    color: #000;
+    text-align: center;
+    line-height: 24px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+    border: 1px solid #000000;
+    font-family: "Roboto Slab";
+}
+
+.circle-text {
+    color: #000000;
+    font-size: 24px;
+    font-weight: 600;
+
+    margin-top: -10px;
+
+    font-family: "Barlow";
+    font-style: normal;
+
+    text-align: center;
+
+    color: #000000;
+}
+
+h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+ol {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.footer {
+    max-width: 100%;
+    float: left;
+    margin: auto;
+}
+.grow {
+    width: 100%;
+    float: left;
+    margin: 30px 0 0;
+    padding: 0;
+    margin-top: -10%;
+}
+.growhead {
+    width: 320px;
+    height: 48px;
+
+    padding-top: 5px;
+
+    font-family: "Roboto Slab";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 48px;
+    /* identical to box height, or 133% */
+
+    /* Gray / 900 */
+
+    color: #212121;
+}
+.smallgrowtext {
+    width: 323px;
+    height: 115px;
+    left: calc(50% - 323px / 2 - 1.5px);
+
+    /* Regular/text-xl */
+
+    font-family: "Barlow";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    /* or 144% */
+
+    color: #000000;
+}
+.middlebox {
+    width: 100%;
+    float: left;
+    margin: auto;
+    position: relative;
+}
+.growtext {
+    float: left;
+}
+.growimage {
+    position: relative;
+}
+.growimage .images img {
+    position: absolute;
+    top: 30px;
+}
+.images {
+    width: 70%;
+    float: right;
+    margin: auto;
+    position: relative;
+}
+.images-left {
+    width: 30%;
+    float: left;
+    margin: auto;
+    position: relative;
+    margin-top: -10px;
+}
+.padding {
+    background: #ffffff;
+    border: 3px solid #000000;
+    box-shadow: 0px 4px 0px #000000;
+    border-radius: 20px;
+    width: 100%;
+    float: left;
+    margin: auto;
+    padding: 0px;
+    text-align: center;
+    margin-top: -15px;
+    box-sizing: border-box;
+    left: 5.56%;
+    right: 5.56%;
+    top: 35.85%;
+    bottom: 39.03%;
+}
+.boxesone {
+    display: inline-block;
+    float: left;
+}
+.threeboxs {
+    padding: 0;
+    margin: 50px 0 0;
+    float: left;
+}
+
+.growstar {
+    position: relative;
+}
+.growstar .images-star img {
+    position: relative;
+}
+.images-star {
+    width: 100%;
+    position: relative;
+    margin: auto;
+    display: block;
+}
+.iconnumber {
+    font-family: "Roboto Slab";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 72px;
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+    color: #212121;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.iconhead {
+    font-family: "Barlow Condensed";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 26px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #18191f;
+    float: left;
+    margin: 0 0 20px;
+    width: 100%;
+    max-height: 40px;
+    margin-top: 15px;
+}
+
+.iconsmalltext {
+    font-family: "Barlow";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #212121;
+    min-height: 110px;
+    display: inline-block;
+    float: left;
+    width: 100%;
+}
+.col-sm-12.buttoncenter {
+    padding: 0;
+    text-align: center;
+    margin: 50px 0;
+    display: inline-block;
+    float: left;
+}
+.startbtn {
+    background: #212121;
+    border: 1px solid #000000;
+    box-shadow: 0px 2px 0px #000000;
+    border-radius: 8px;
+    display: inline-block;
+    font-family: "Barlow Condensed";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 29px;
+    line-height: 29px;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    /*padding: 10px 40px;*/
+    text-decoration: none;
+    color: #fff;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+.startbtn:hover,
+.startbtn:focus,
+.startbtn:active {
+    color: #ffd465;
+    text-decoration: none;
+}
+.social {
+    float: left;
+    margin: 20px 0;
+    text-align: center;
+    width: 100%;
+    padding: 0;
+}
+.footer {
+    width: 100%;
+    float: left;
+    margin: auto;
+}
+.social li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+}
+.social li a {
+    width: auto;
+    display: inline-block;
+    margin: auto;
+}
+.social li a i {
+    color: #212121;
+    font-size: 25px;
+    text-decoration: none;
+    width: auto;
+    display: inline-block;
+}
+.blagbg {
+    width: 100%;
+    float: left;
+    margin: auto;
+    background: #212121;
+    padding: 30px 0 7px;
+}
+.blagbg ul.links {
+    margin: 0;
+    padding: 0;
+}
+.blagbg ul.links li {
+    width: 20%;
+    text-align: center;
+    float: left;
+    list-style: none;
+}
+.blagbg ul.links li a {
+    font-family: "Barlow Condensed";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #ffffff;
+    text-decoration: none;
+    width: auto;
+    display: inline-block;
+    transition: all 0.2s ease-in-out;
+}
+.blagbg ul.links li:first-child {
+    text-align: left;
+}
+.blagbg ul.links li:last-child {
+    text-align: right;
+}
+.copyright {
+    width: 100%;
+    float: left;
+    font-family: "Barlow";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #ffffff;
+    padding: 30px 0px 0;
+}
+.blagbg ul.links li a:hover,
+.blagbg ul.links li a:focus,
+.blagbg ul.links li a:active {
+    color: #ffd465;
+}
+.yellowbg.white {
+    background: #fff;
+}
+.centerboxesform {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+.pinkbox {
+    margin: auto;
+    border-radius: 100%;
+    background: #ff9692;
+    padding: 11%;
+    display: inline-block;
+    box-sizing: border-box;
+    width: auto;
+    max-width: 850px;
+    height: 850px;
+}
+
+.cirlehead p {
+    font-family: "Barlow Condensed";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: 0.02em;
+    color: #212121;
+    width: 100%;
+    float: left;
+    margin: 0 0 40px;
+}
+.cirlehead {
+    width: 100%;
+    float: left;
+    margin: auto;
+    position: relative;
+}
+.circleoxes {
+    width: 100%;
+    float: left;
+    margin: auto;
+}
+.homeicons {
+    position: absolute;
+    right: -21px;
+    top: -20px;
+}
+.homeicons img {
+    max-width: 40%;
+}
+.fulwidth {
+    width: 100%;
+    float: left;
+    margin: auto;
+    text-align: center;
+}
+.fulwidth .col-sm-8 {
+    margin: auto;
+}
+.fulwidth .col-sm-8 label,
+.fulwidth .col-sm-12 label {
+    font-family: "Barlow";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #000000;
+    width: 100%;
+    float: left;
+    text-align: left;
+}
+.col-sm-12.givebox {
+    width: 100%;
+    float: left;
+    margin: auto;
+}
+.col-sm-12.givebox .containers {
+    display: block;
+    position: relative;
+    padding-left: 0;
+    cursor: pointer;
+    user-select: none;
+    float: left;
+}
+.col-sm-12.givebox .containers input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.col-sm-12.givebox .checkmark {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid #000;
+}
+.col-sm-12.givebox .containers:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+.col-sm-12.givebox .containers input:checked ~ .checkmark {
+    background-color: #fff;
+}
+.col-sm-12.givebox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.col-sm-12.givebox .containers input:checked ~ .checkmark:after {
+    display: block;
+}
+.fulwidth .col-sm-12 {
+    float: left;
+    width: 100%;
+}
+.col-sm-12.givebox .containers .checkmark:after {
+    top: 4px;
+    left: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ffbd12;
+    border: 2px solid #000;
+}
+.col-sm-12.givebox .containers input.form-control {
+    position: absolute;
+    width: 130px;
+    height: auto;
+    opacity: 1;
+    display: inline-block;
+    right: -30px;
+}
+.col-sm-12.givebox .containers:nth-child(1) {
+    width: 25%;
+    margin: 0;
+}
+.col-sm-12.givebox .containers:nth-child(2) {
+    width: 70%;
+    margin: 0;
+}
+.circleoxes .form-group {
+    width: 100%;
+    float: left;
+    margin: 0 0 37px;
+}
+.form-control {
+    background: #ffffff;
+    border: 2px solid #616161;
+    border-radius: 12px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    color: #616161;
+    box-shadow: none;
+    outline: none;
+}
+.col-sm-12.givebox .containers label {
+    font-weight: 600;
+    width: auto;
+    font-weight: 600;
+    position: relative;
+    top: 0px;
+}
+.fulwidth .col-sm-12.likebox {
+    margin: 20px 0 0 0;
+    text-align: center;
+}
+.fulwidth .col-sm-12.likebox .form-group {
+    text-align: center;
+    margin: 0 0 10px;
+}
+.fulwidth .col-sm-12.likebox .form-group .checkboxx {
+    width: 100%;
+    float: left;
+    margin: auto;
+    text-align: center;
+}
+.fulwidth .col-sm-12.likebox .form-group .checkboxx label {
+    float: none;
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #424242;
+    width: auto;
+    position: relative;
+}
+.dektopimages {
+    position: absolute;
+    left: 0%;
+    z-index: 1;
+    width: 29%;
+    bottom: 60px;
+}
+.dektopimages img {
+    max-width: 100%;
+}
+.dektopimages.mobile {
+    display: none;
+}
+.tickicon {
+    background: #ff9692;
+    border: 4px solid #18191f;
+    width: 161px;
+    height: 161px;
+    border-radius: 100%;
+    line-height: 161px;
+    font-size: 90px;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+.donatebox {
+    width: 100%;
+    float: left;
+    padding: 70px 0 30%;
+    text-align: center;
+    position: relative;
+}
+.donate {
+    font-family: "Barlow Condensed";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: 0.02em;
+    color: #212121;
+    width: 100%;
+    display: inline-block;
+    margin: 30px 0;
+    text-align: center;
+}
+.donatetext {
+    font-family: "Barlow";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    color: #000000;
+    width: 100%;
+    display: inline-block;
+    margin: 0 0 30px;
+}
+.bottomimages {
+    position: absolute;
+    right: 0;
+    width: 100%;
+    margin: 6px 0 0 0;
+    bottom: -8.5%;
+    left: -40px;
+    z-index: -1;
+}
+.desktopview {
+    float: left;
+    width: 100%;
+    margin: auto;
+}
+.desktopview .col-sm-6 {
+    float: left;
+    margin: auto;
+}
+.mobileview {
+    display: none;
+}
+.desktopview .col-sm-6 img.img-fluid {
+    max-width: 100%;
+}
+.bottomimages img.img-fluid {
+    max-width: 94%;
+    float: left;
+}
+.img-fluids {
+    width: 100%;
+}
+.desktopview .col-sm-6 img.img-fluids {
+    max-width: 100%;
+}
+.bottomimages img.img-fluids {
+    max-width: 94%;
+    float: left;
+}
+.yellowbg.greenbg {
+    background: #61e4c5;
+}
+.col-sm-10.mainheading {
+    margin: auto;
+}
+.formwhite {
+    margin: auto;
+}
+.formwhite .paddingss {
+    background: #ffffff;
+    border: 3px solid #18191f;
+    box-shadow: 0px 6px 0px #18191f;
+    border-radius: 16px;
+    width: 100%;
+    display: inline-block;
+    padding: 60px;
+    text-align: left;
+    position: relative;
+}
+.linktext {
+    font-family: "Barlow Condensed";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0.01em;
+    color: #000000;
+    width: 100%;
+    float: left;
+    margin: 0 0 20px;
+}
+.formwhite .paddingss textarea.form-control {
+    height: 270px;
+}
+.addbtn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+    font-size: 32px;
+    color: #212121;
+}
+.addbtn a {
+    color: #212121;
+}
+.col-sm-12.likebox .containers input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.col-sm-12.likebox .checkmark {
+    position: absolute;
+    top: 2px;
+    left: -25px;
+    height: 17px;
+    width: 17px;
+    background-color: #ccc;
+    border: 2px solid #000;
+    border-radius: 3px;
+}
+.col-sm-12.likebox .containers:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+.col-sm-12.likebox .containers input:checked ~ .checkmark {
+    background-color: #ffd465;
+}
+.col-sm-12.likebox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.col-sm-12.likebox .containers input:checked ~ .checkmark:after {
+    display: block;
+}
+.col-sm-12.likebox .containers .checkmark:after {
+    left: 4px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.col-sm-12.likebox.margin {
+    width: 100%;
+    float: left;
+    margin: 40px 0;
+    text-align: center;
+}
+.col-sm-12.likebox.margin label.containers {
+    position: relative;
+    color: #424242;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+.col-sm-12.send {
+    width: 100%;
+    float: left;
+    text-align: center;
+}
+.col-sm-6.leftside {
+    position: absolute;
+    left: -43%;
+    bottom: -24%;
+    z-index: -1;
+}
+.col-sm-6.rightside {
+    position: absolute;
+    right: -43%;
+    bottom: -23%;
+    padding: 0;
+    z-index: -1;
+}
+.bottomimagesshowmobile {
+    display: none;
+}
+.growingcircle {
+    width: 100%;
+    float: left;
+    text-align: center;
+    margin: auto;
+}
+.growingcircle .growinghead {
+    margin: auto;
+    position: relative;
+}
+.counts {
+    font-family: "Roboto Slab";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 200px;
+    line-height: 200px;
+    text-align: center;
+    color: #000000;
+    width: 100%;
+    float: left;
+}
+.friendstext {
+    font-family: "Barlow Condensed";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #212121;
+    width: 100%;
+    float: left;
+    margin: 20px 0 40px;
+}
+.buttonstext {
+    float: left;
+    margin: auto;
+    width: 100%;
+}
+button.black {
+    background: #212121;
+    border: 2px solid #18191f;
+    border-radius: 44px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #ffffff;
+    display: inline-block;
+    padding: 7px 19px;
+    margin-right: 14px;
+}
+.growinghead:before {
+    position: absolute;
+    content: "";
+    width: 832px;
+    height: 832px;
+    left: 0;
+    top: 0;
+    background: #61e4c5;
+    border-radius: 100%;
+    z-index: -1;
+}
+.showdesk {
+    position: absolute;
+    right: -43%;
+    bottom: -11%;
+}
+.showdesk img {
+    z-index: -1;
+    max-width: 60%;
+}
+.listitems {
+    width: 100%;
+    float: left;
+    margin: 50px 0;
+}
+.starbox img {
+    max-width: 50%;
+}
+.listitems ul.listmids {
+    margin: 0;
+    padding: 0;
+}
+.listitems ul.listmids li {
+    list-style: none;
+    display: inline-block;
+    float: left;
+    width: 6.5%;
+    padding: 0;
+    margin-bottom: 10px;
+}
+.starbox {
+    background: #ffe8e8;
+    border: 1.44872px solid #18191f;
+    box-shadow: 0px 2px 0px #18191f;
+    border-radius: 17.3846px;
+    display: inline-block;
+    width: 57px;
+    height: 57px;
+    line-height: 53px;
+}
+.starbox i {
+    color: #ffbd12;
+    text-shadow: 0px 1px BLACK;
+    font-size: 25px;
+}
+.ratetext {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: #18191f;
+    width: 100%;
+    float: left;
+    margin: 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.mobileviewgrowiing {
+    display: none;
+}
+.starbox.green {
+    background: #d6fcf7;
+}
+.starbox.yellow {
+    background: #fff4cc;
+}
+.mobileviews {
+    display: none;
+}
+#next {
+    display: none;
+}
+.modal-backdrop.fade.show {
+    opacity: 0.8;
+}
+#myModal .modal-dialog {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 100%;
+    width: 45%;
+}
+#myModal .modal-dialog .modal-content {
+    border: 3px solid #18191f;
+    box-shadow: 0px 6px 0px #18191f;
+    border-radius: 16px;
+}
+#myModal1 .modal-dialog {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 100%;
+    width: 40%;
+}
+#myModal1 .modal-dialog .modal-content {
+    border: 3px solid #18191f;
+    box-shadow: 0px 6px 0px #18191f;
+    border-radius: 16px;
+}
+.modal-header .close {
+    position: absolute;
+    opacity: 1;
+    left: -68px;
+    top: -10px;
+    z-index: 999999;
+    opacity: 1 !important;
+}
+.modal-header .close img {
+    max-width: 30%;
+}
+.modal-header {
+    padding: 0;
+    margin: 0 0 10px;
+    border: none;
+}
+h4.modal-title {
+    font-family: "Barlow Condensed";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 48px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #18191f;
+    width: 100%;
+    padding: 20px 0;
+}
+.modal-body {
+    padding: 20px 84px;
+    text-align: center;
+}
+.simply {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    color: #474a57;
+    width: 100%;
+    float: left;
+    margin: 0 0 10px;
+}
+.forminput {
+    width: 80%;
+    margin: 10px 0;
+    display: inline-block;
+    position: relative;
+}
+.ustext {
+    font-family: "Barlow";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #212121;
+    position: absolute;
+    right: 3px;
+    bottom: -20px;
+}
+.fulwidth.margiboxed {
+    margin: 70px 0;
+}
+.textnumber {
+    width: 100%;
+    margin: 10px 0 0;
+    float: left;
+}
+.textnumber .form-control {
+    width: 22%;
+    float: left;
+    margin-right: 13px;
+    padding: 20px 0;
+    height: auto;
+    text-align: center;
+    height: 80px;
+}
+.textnumber .form-control:last-child {
+    margin: 0;
+}
+.modal-body.loginbody {
+    padding: 20px 50px;
+}
+.orgFix {
+    margin-top: -60px !important;
+}
+.linkactive {
+    color: #ffd465 !important;
+}
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12,
+.col,
+.col-auto,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm,
+.col-sm-auto,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md,
+.col-md-auto,
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg,
+.col-lg-auto,
+.col-xl-1,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12,
+.col-xl,
+.col-xl-auto {
+    position: relative;
+    width: 100%;
+    padding-right: 3px;
+    padding-left: 3px;
+}
+
+.images-right {
+    width: 10%;
+    float: right;
+    margin: auto;
+    position: relative;
+    margin-top: -70px;
+    margin-right: 10%;
+}
+
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
+    width: 100%;
+
+    padding-left: 17px;
+}
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12,
+.col,
+.col-auto,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm,
+.col-sm-auto,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md,
+.col-md-auto,
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg,
+.col-lg-auto,
+.col-xl-1,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12,
+.col-xl,
+.col-xl-auto {
+    position: relative;
+    width: 100%;
+
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.teext1 {
+    border: 1px solid white;
+    padding-left: 35px;
+    margin-left: 15px;
+    margin-right: 10px;
+}
