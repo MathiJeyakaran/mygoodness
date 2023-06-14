@@ -19,30 +19,31 @@ class PaymentController extends Controller
         $this->gateway->setClientId('AYHDPlnd7L8IMMmzml4lpV6HTmEDycMzwGzCQ6c99PD303RaDdJuQOKfHmtF_UYmzsx-qxD5Fbs-L4RD');
         $this->gateway->setSecret('EBWL3v5tAUx2OMisZB8x6dSBqVHnp0bKAMdKblmGUBfcdxphkQfw0aQ0ipenlSDDXF7fh3vh242l15yd');
         $this->gateway->setTestMode(true);
-    }    
+    }
 
-    // public function pay(Request $request)
-    // {
-    //     try {
+    public function pay(Request $request)
+    {
+        // dd($request->all());
+        try {
 
-    //         $response = $this->gateway->purchase(array(
-    //             'amount' => $request->amount,
-    //             'currency' => 'USD',
-    //             'returnUrl' => url('success'),
-    //             'cancelUrl' => url('error')
-    //         ))->send();
+            $response = $this->gateway->purchase(array(
+                'amount' => $request->amount,
+                'currency' => 'USD',
+                'returnUrl' => url('success'),
+                'cancelUrl' => url('error')
+            ))->send();
 
-    //         if ($response->isRedirect()) {
-    //             $response->redirect();
-    //         }
-    //         else{
-    //             return $response->getMessage();
-    //         }
+            if ($response->isRedirect()) {
+                $response->redirect();
+            }
+            else{
+                return $response->getMessage();
+            }
 
-    //     } catch (\Throwable $th) {
-    //         return $th->getMessage();
-    //     }
-    // }
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
 
     // public function success(Request $request)
     // {
@@ -83,12 +84,12 @@ class PaymentController extends Controller
 
     // public function error()
     // {
-    //     return 'User declined the payment!';   
+    //     return 'User declined the payment!';
     // }
 
-    
+
     public function success(Request $request)
-    {  
+    {
         $tx = $_GET['tx'];
         // $token = 't81CNai4vCM443VL5bCDftAzPuKEqIq55aIPOF7EBs2KzVHwFdoNYYUY0MW';
         $token = 'LjfpML5OQNTWxPeczPczYfGKsUtBw_LSVNdFxAXiG-VVtDODEyzPafnDxO4';
@@ -118,7 +119,7 @@ class PaymentController extends Controller
         $name = explode("=", $lines[8]);
         $name = $name[1];
         $email = str_replace("%40","@",$email[1]);
-        
+
         $id = Auth::user()->id;
         $username = Auth::user()->name;
         if($username == 'User'){

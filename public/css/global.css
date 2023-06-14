@@ -3,6 +3,7 @@
     left: 0;
     font-weight: 500;
 }
+
 .travel-website-wrapper {
     position: absolute;
     top: 300.38px;
@@ -12,6 +13,7 @@
     font-size: 34px;
     color: var(--black-white-white);
 }
+
 .pick-your-payment-child,
 .pick-your-payment-item {
     position: absolute;
@@ -25,6 +27,7 @@
     overflow: hidden;
     max-height: 100%;
 }
+
 .pick-your-payment-item {
     height: 3.81%;
     width: 7.67%;
@@ -33,6 +36,7 @@
     bottom: 34.38%;
     left: 12.22%;
 }
+
 .complete-payment {
     position: absolute;
     font-size: var(--title-3xl-size);
@@ -43,25 +47,28 @@
     color: var(--gray-900);
     display: inline-block;
 }
-.my-account {
-    position: absolute;
-    font-weight: 600;
 
+.my-account {
+    /* position: absolute; */
+    font-weight: 600;
     color: var(--gray-900);
     line-height: 32px;
     display: inline-block;
 }
+
 .my-account {
-    top: 32px;
+    /* top: 32px;
     left: 240px;
     width: 50px;
-    height: 35px;
+    height: 35px; */
 }
+
 .complete-payment {
     top: 91px;
     left: calc(50% - 160px);
     width: 334px;
 }
+
 .pick-your-payment-inner,
 .rectangle-div {
     position: absolute;
@@ -70,6 +77,7 @@
     width: 320px;
     height: 36px;
 }
+
 .rectangle-div {
     height: 23.9%;
     width: 88.61%;
@@ -83,9 +91,11 @@
     border: 3px solid var(--colors-black);
     box-sizing: border-box;
 }
+
 .nonprofit-name {
     margin: 0;
 }
+
 .nonprofit-name-ein-container {
     position: absolute;
     top: 249px;
@@ -97,6 +107,7 @@
     display: inline-block;
     width: 280px;
 }
+
 .pick-your-payment-child1 {
     position: absolute;
     top: 252px;
@@ -105,6 +116,7 @@
     width: 58px;
     height: 55px;
 }
+
 .nonprofit-logo-pull {
     position: absolute;
     top: 252px;
@@ -117,9 +129,11 @@
     width: 54px;
     height: 59px;
 }
+
 .go-back {
     color: var(--mg-mg-purple);
 }
+
 .not-the-right-container {
     position: absolute;
     top: 0;
@@ -128,6 +142,7 @@
     display: inline-block;
     width: 286px;
 }
+
 .group-child {
     position: absolute;
     top: 23.5px;
@@ -137,18 +152,21 @@
     width: 53px;
     height: 1px;
 }
+
 .not-the-right-place-go-back-parent,
 .your-donation-will {
     position: absolute;
     left: calc(50% - 142px);
     color: var(--gray-900);
 }
+
 .not-the-right-place-go-back-parent {
     top: 320px;
     width: 286px;
     height: 26px;
     font-size: 16px;
 }
+
 .your-donation-will {
     top: 208px;
     font-size: var(--title-3xl-size);
@@ -159,57 +177,68 @@
     display: inline-block;
     width: 280px;
 }
+
 .donation {
     top: 424px;
     left: 44px;
 }
+
 .div,
 .donation,
 .summary {
     position: absolute;
     line-height: 26px;
 }
+
 .summary {
     top: 390px;
     left: 44px;
     font-weight: 600;
 }
+
 .div {
     top: 424px;
     left: 264px;
     text-align: right;
 }
+
 .contribution {
     position: absolute;
     top: 450px;
     left: 75px;
 }
+
 .contribution,
 .div1,
 .total {
     line-height: 20px;
 }
+
 .div1 {
     position: absolute;
     top: 450px;
     left: 277px;
     text-align: right;
 }
+
 .total {
     top: 488px;
     left: 44px;
 }
+
 .div2,
 .line-div,
 .total {
     position: absolute;
 }
+
 .div2 {
     top: 488px;
     left: 267px;
     line-height: 26px;
     text-align: right;
 }
+
 .line-div {
     top: 483.5px;
     left: 42.5px;
@@ -218,6 +247,7 @@
     width: 274px;
     height: 1px;
 }
+
 .outlineplus-circle-icon {
     position: relative;
     width: 20px;
@@ -226,12 +256,14 @@
     flex-shrink: 0;
     display: none;
 }
+
 .button {
     position: relative;
     letter-spacing: 0.01em;
     line-height: 32px;
     font-weight: 600;
 }
+
 .contained {
     position: absolute;
     top: 626px;
@@ -250,11 +282,13 @@
     color: var(--black-white-white);
     font-family: var(--title-3xl);
 }
+
 .checkbox {
     border-radius: 5.24px;
     background-color: var(--indigo-50);
     border: 1.3px solid var(--gray-900);
 }
+
 .frame {
     position: absolute;
     top: 538px;
@@ -265,6 +299,7 @@
     align-items: flex-start;
     justify-content: flex-start;
 }
+
 .apple-pay {
     position: absolute;
     top: 0;
@@ -272,6 +307,7 @@
     line-height: 20px;
     font-weight: 300;
 }
+
 .label {
     position: absolute;
     height: 3.57%;
@@ -281,6 +317,7 @@
     width: 77px;
     color: var(--gray-800);
 }
+
 .outlinecheck-icon {
     position: relative;
     width: 18.34px;
@@ -288,12 +325,14 @@
     overflow: hidden;
     flex-shrink: 0;
 }
+
 .checkbox2,
 .frame1 {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
 }
+
 .checkbox2 {
     border-radius: 5.24px;
     background-color: var(--ffbd12);
@@ -301,6 +340,7 @@
     flex-direction: column;
     padding: 1.3103448152542114px;
 }
+
 .frame1 {
     position: absolute;
     height: 100%;
@@ -313,6 +353,7 @@
     padding: 2.620689630508423px 0;
     box-sizing: border-box;
 }
+
 .checkbox1 {
     position: absolute;
     top: 575.79px;
@@ -320,6 +361,7 @@
     width: 20.97px;
     height: 26.21px;
 }
+
 .label1 {
     position: absolute;
     height: 3.57%;
@@ -329,11 +371,13 @@
     width: 52px;
     color: var(--gray-800);
 }
+
 .group-icon,
 .pick-your-payment {
     position: absolute;
     overflow: hidden;
 }
+
 .group-icon {
     height: 2.47%;
     width: 5%;
@@ -344,6 +388,7 @@
     max-width: 100%;
     max-height: 100%;
 }
+
 .pick-your-payment {
     top: 116px;
     left: 620px;
@@ -354,6 +399,7 @@
     color: var(--color-black);
     font-family: var(--medium-text-xl);
 }
+
 .cover-frame {
     position: relative;
     background-color: var(--black-white-white);
@@ -365,12 +411,13 @@
     color: #99d2f5;
     font-family: var(--font-roboto);
 }
-input[type="checkbox"]:checked + label {
+
+input[type="checkbox"]:checked+label {
     color: black;
 }
 
-input[type="checkbox"]:checked + label:before {
-    content: "\2713";
+input[type="checkbox"]:checked+label:before {
+    /* content: "\2713"; */
     display: inline-block;
     margin-right: 5px;
 }
@@ -397,13 +444,17 @@ input[type="checkbox"]:checked {
     color: #424242;
 }
 
+
 /* Hide the default checkbox */
+
 input[type="checkbox"] {
     visibility: hidden;
 }
 
+
 /* Creating a custom checkbox
         based on demand */
+
 .geekmark {
     position: absolute;
     top: 0;
@@ -414,41 +465,57 @@ input[type="checkbox"] {
     border-radius: 5px;
 }
 
+
 /* Specify the background color to be
         shown when hovering over checkbox */
-.main:hover input ~ .geekmark {
+
+.main:hover input~.geekmark {
     background-color: #ffd465;
 }
+
 
 /* Specify the background color to be
         shown when checkbox is active */
-.main input:active ~ .geekmark {
+
+.main input:active~.geekmark {
     background-color: #ffd465;
 }
+
 
 /* Specify the background color to be
         shown when checkbox is checked */
-.main input:checked ~ .geekmark {
+
+.main input:checked~.geekmark {
     background-color: #ffd465;
 }
 
+
 /* Checkmark to be shown in checkbox */
+
+
 /* It is not be shown when not checked */
+
 .geekmark:after {
     content: "";
     position: absolute;
     display: none;
 }
 
+
 /* Display checkmark when checked */
-.main input:checked ~ .geekmark:after {
+
+.main input:checked~.geekmark:after {
     display: block;
 }
 
+
 /* Styling the checkmark using webkit */
-/* Rotated the rectangle by 45 degree and 
+
+
+/* Rotated the rectangle by 45 degree and
         showing only two border to make it look
         like a tickmark */
+
 .main .geekmark:after {
     left: 8px;
     bottom: 5px;

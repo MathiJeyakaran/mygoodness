@@ -27,7 +27,7 @@
         <div class="container">
             <div class="col-sm-4 logohead">
                 <a class="logo">
-                    
+
                     <img src="images/logo.png" class="img-fluid" />
                 </a>
             </div>
@@ -61,14 +61,14 @@
                         It’s easy to invest in your community, you just need a little help from your friends. Start today by inspiring a chain reaction of donations to trusted organizations that you and your people care about most.
                     </span>
                 </div>
-                
+
             </div>
             <div class="col-sm-12 grow">
                 <div class="col-sm-8 growtext">
                     <break>
                 <div class="circle-container">
                         <div class="circle">{{ $totalUsers }}</div>
-                        
+
                     </div>
                     <p class="circle-text">other donors already gave.</p>
                 </div>
@@ -76,10 +76,10 @@
                 <div class="col-sm-4 growimage">
                 <span class="images-left">
                         <img src="images/vector_48.png" class="img-fluid" />
-                        
-                    </span>    
+
+                    </span>
                 <span class="images">
-                        
+
                         <img src="images/Homeside.png" class="img-fluid" />
                     </span>
                 </div>
@@ -88,40 +88,40 @@
                 <div class="col-sm-12 boxesone">
                     <div class="padding">
                         <p class="iconhead">How it works!</p>
-                        
+
                         <span class="iconsmalltext">
-                        <div class="circle-list-container">   
+                        <div class="circle-list-container">
                             <ol class="circle-list">
                                 <li style="margin-bottom :10px;"><span class="circle-number">1</span><div class="teext1"><b>Donate</b> to a cause you care about.</div></li>
-                                
+
                                 <li style="margin-bottom :10px;"><span class="circle-number">2</span><div class="teext1"><b>Tell three friends</b> to donate somewhere too. Think of it like a pyramid scheme for good.</div></li>
-                                
+
                                 <li style="margin-bottom :10px;"><span class="circle-number">3</span><div class="teext1"><b>Follow along </b>as your investment influences others to give too.</div></li>
                             </ol>
-                            
+
                         </div>
-                    
+
                         </span>
                         <div class="growstar">
                     <span class="images-star">
                         <img src="images/stars.png" class="img-fluids" />
                     </span>
                 </div>
-                        
+
                     </div>
                 </div>
-                
-            </div>    
-                
+
+            </div>
+
                 <div class="col-sm-12 buttoncenter">
                     <button class="startbtn" id="start" data-toggle="modal" data-target="">Start Giving</button>
                     <a data-toggle="modal" id="login_required" data-target="#myModal"></a>
                     <a href="/create" class="user_found" id="user_found"></a>
-                     
+
                 </div>
                 <span class="images-right">
                         <img src="images/vector_46.png" class="img-fluid" />
-                        
+
                     </span>
                 <div class="col-sm-12 grow">
                 <div class="col-sm-8 growtext">
@@ -131,16 +131,16 @@
                     <br><br>
                     </span>
                 </div>
-                
-                
+
+
             </div>
             </div>
         </div>
-        
+
     </section>
 
-   
-    
+
+
     @include('footer')
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -169,7 +169,7 @@
     </div>
     <script>
         $(document).ready(function() {
-            
+
             $('#start').on('click', function() {
                 $.ajax({
                     type: "get",

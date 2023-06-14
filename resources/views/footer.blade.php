@@ -12,30 +12,33 @@
         </div>
     </div>
     <div class="blagbg">
-        <div class="container">
-            <ul class="links">
-                <li>
-                    <a class="" href="/my_account" title="My Account">My Account</a>
-                </li>
-                <li>
-                    <a class="" href="/blog" title="Blog">Blog</a>
-                </li>
-                <li>
-                    <a class="" href="/privacy"  title="Privacy">Privacy</a>
-                </li>
-                <li>
-                    <a class="" href="/terms_of_service"  title="Terms of Service">Terms of Service</a>
-                </li>
-                <li>
-                    <a class="" href="/about" title="About">About</a>
-                </li>
-            </ul>
-            <span class="copyright">© mygoodness, Inc. 2022. Start giving!</span>
+        <div style="padding: 20px;">
+            <div class="container">
+                <ul class="links">
+                    <li>
+                        <a class="" href="/my_account" title="My Account">My Account</a>
+                    </li>
+                    <li>
+                        <a class="" href="/blog" title="Blog">Blog</a>
+                    </li>
+                    <li>
+                        <a class="" href="/privacy"  title="Privacy">Privacy</a>
+                    </li>
+                    <li>
+                        <a class="" href="/terms_of_service"  title="Terms of Service">Terms of Service</a>
+                    </li>
+                    <li>
+                        <a class="" href="/about" title="About">About</a>
+                    </li>
+                </ul>
+                <span class="copyright">© mygoodness, Inc. 2022. Start giving!</span>
+            </div>
         </div>
+
     </div>
 </footer>
 <script>
-    var url = window.location.pathname; 
+    var url = window.location.pathname;
     if(url=='/'){
         // console.log('empty');
     } else {
@@ -48,5 +51,5 @@
         });
         // console.log(url);
     }
-        
+
 </script>

@@ -28,14 +28,14 @@ class DonationController extends Controller
         // curl_close ($ch);
 
         // $result = [];
-        // $result[] = json_decode($response); 
+        // $result[] = json_decode($response);
         // $organisation = $result[0]->nonprofits;
         return view('users.donate');
         // return view('users.donateNew');
     }
     public function showDonationCounter(){
         $totalUsers = User::whereNotNull('phone')->distinct('phone')->count();
-        
+
         return view('donation-counter', ['totalUsers' => $totalUsers]);
     }
 
@@ -44,9 +44,9 @@ class DonationController extends Controller
         $uid = $request->chain;
         $ein = $request->ein;
         $friend = $request->friend;
-        $chains = Chain::select('chain_name')->where('chain_name', $uid)->get();        
+        $chains = Chain::select('chain_name')->where('chain_name', $uid)->get();
         $chainCount = count($chains);
-        $einCheck = Payment::select('charity_ein')->where('charity_ein', $ein)->get();        
+        $einCheck = Payment::select('charity_ein')->where('charity_ein', $ein)->get();
         $einCount = count($einCheck);
         if($chainCount>0 && $einCount>0){
             $user = Chain::select('started_by')->where('chain_name', $uid)->get()->toArray();
@@ -66,7 +66,7 @@ class DonationController extends Controller
             curl_close ($ch);
 
             $result = [];
-            $result[] = json_decode($response);  
+            $result[] = json_decode($response);
             $organisation = $result[0]->nonprofits;
             $org = $organisation[0]->name;
             // // return view('users.chainDonate', compact('organisation', 'ein'));
@@ -74,21 +74,22 @@ class DonationController extends Controller
             return view('users.chainDonateTicked', compact('org', 'ein', 'userName', 'friend'));
         }else{
             return "Tempered URL please go back";
-        }        
+        }
     }
-    
+
 
     public function donate(Request $request)
     {
+        // dd($request->all());
         $data = $request->validate([
             'org' => ['required', 'string'],
         ]);
-        
-        $org = $request->org; 
+
+        $org = $request->org;
         $charity_name = $request->charity_name;
         // dd($org.'-'.$charity_name);
         $tip = $request->tip;
-        $amount = $request->amount; 
+        $amount = $request->amount;
         Session::put('amount', $amount);
         if($tip){
             $donation = $amount + 2/100*$amount;
@@ -99,10 +100,10 @@ class DonationController extends Controller
         }
         Session::put('charity_ein', $org);
         Session::put('charity_name', $charity_name);
-        $chain = Session::get('chain');        
+        $chain = Session::get('chain');
         $uid = Auth::user()->uuid;
         if($chain){
-        // if (str_contains($chain, $org)) {                 
+        // if (str_contains($chain, $org)) {
             $chain_id = $chain;
         }else{
             // $chain_id = $org.'B'.substr($uid, -6);
@@ -115,8 +116,9 @@ class DonationController extends Controller
                 $data->started_by = $uid;
                 $data->chain_name = $chain_id;
                 $data->save();
-            }            
-        }    
+            }
+        }
+        // dd($donation);
         if($donation == '5'){
             return redirect('https://www.paypal.com/donate/?hosted_button_id=VE6639QJV5488');
         }
@@ -136,9 +138,9 @@ class DonationController extends Controller
             return redirect('https://www.paypal.com/donate/?hosted_button_id=HMU3UZXSR3DBC');
         }
 
-        // return redirect('/success'); 
+        // return redirect('/success');
         // return redirect('https://www.sandbox.paypal.com/donate/?hosted_button_id=EUUPHBLUW3G2A');
-        
+
     }
 
     public function thankyou(Request $request)
@@ -151,13 +153,14 @@ class DonationController extends Controller
     {
         // function to get information of searched nonprofit organisation
         $org = $request->org;
+        // dd($request->org);
         $org = urlencode($org);
         // if(!$org){
         //     $url = 'https://partners.every.org/v0.2/search/'.'-'.'?apiKey=ec7dc2865e3503f0b81a62a7a9642e75';
         // }else{
             $url = 'https://partners.every.org/v0.2/search/'.$org.'?apiKey=ec7dc2865e3503f0b81a62a7a9642e75&&take=20';
         // }
-        
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, 0);
@@ -168,25 +171,80 @@ class DonationController extends Controller
         curl_close ($ch);
 
         $result = [];
-        $result[] = json_decode($response); 
-        $organisation = $result[0]->nonprofits; 
-        
+        $result[] = json_decode($response);
+        $organisation = $result[0]->nonprofits;
+        // dd($organisation);
+        // $html['organisations'] = $organisation;
+
         $html = "";
         $html .= '<select class="form-control ct" id="org" name="org" placeholder="Start typing to find your NonProfit..." required >';
-            foreach($organisation as $org){ 
+            foreach($organisation as $org){
                 try {
 
                     // $html .= '<option class="orgoption" data-id="'.$org->ein.'">'.$org->name.'</option>';
                     $html .= '<option value="'.$org->ein.'">'.$org->name.'</option>';
-                  
+
                   } catch (\Exception) {
-                  
+
                     continue;
-                  } 
-                         
+                  }
+
                 }
         $html .= '</select>';
 
         return ($html);
+    }
+
+    public function continue(Request $request)
+    {
+        // dd($request->all());
+        // $value = json_decode ( json_encode ( $request->org ) );
+        // dd($value);
+        if ($request->amount >= 100) {
+            $contribution = 10;
+        } else {
+            $contribution = $request->amount/100*11;
+        }
+        $data = [
+            'charity_name' => $request->charity_name,
+            'ein' => $request->org,
+            'amount' => $request->amount,
+            'tip' => $request->tip,
+            'charity_logo' => $request->charity_logo,
+            'contribution' => $contribution,
+            'total' => $request->amount + $contribution,
+        ];
+        // dd($data);
+        return view('users.continue-page', compact('data'));
+        // return redirect('/continue-page');
+
+    }
+
+    public function orgdata(Request $request)
+    {
+        // function to get information of searched nonprofit organisation
+        $org = $request->org;
+        // dd($request->org);
+        $org = urlencode($org);
+        // if(!$org){
+        //     $url = 'https://partners.every.org/v0.2/search/'.'-'.'?apiKey=ec7dc2865e3503f0b81a62a7a9642e75';
+        // }else{
+            $url = 'https://partners.every.org/v0.2/search/'.$org.'?apiKey=ec7dc2865e3503f0b81a62a7a9642e75&&take=20';
+        // }
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $response = curl_exec ($ch);
+        $err = curl_error($ch);  //if you need
+        curl_close ($ch);
+
+        $result = [];
+        $result[] = json_decode($response);
+        $organisation = $result[0]->nonprofits;
+        // dd($organisation);
+        return ($organisation);
     }
 }

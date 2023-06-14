@@ -10,7 +10,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
 
 /*
-|--------------------------------------------------------------------------
+|------------------------------------f--------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
@@ -68,6 +68,7 @@ Route::group(['middleware' => ['disable_back']], function () {
             Route::get('/create',[DonationController::class, 'index']);
             Route::get('/invites', [DonationController::class, 'invited']);
             Route::post('/getsearch ',[DonationController::class, 'getsearch']);
+            Route::post('/orgdata ',[DonationController::class, 'orgdata']);
             Route::post('/donate',[DonationController::class, 'donate']);
             Route::get('/thankyou ',[DonationController::class, 'thankyou']);
 
@@ -85,9 +86,8 @@ Route::group(['middleware' => ['disable_back']], function () {
             Route::post('/updateUser',[AccountController::class, 'updateUser']);
             Route::post('/updateNotify',[AccountController::class, 'updateNotify']);
             Route::post('/removeAccount',[AccountController::class, 'removeAccount']);
-            Route::get('/continue-page', function () {
-                return view('users.continue-page');})->name('continue-page');
-            });
+            Route::post('/continue', [DonationController::class, 'continue']);
+        });
     });
 
     Route::group(['middleware' => ['admin']], function () {
