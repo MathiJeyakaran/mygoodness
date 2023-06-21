@@ -83,9 +83,10 @@
         padding: 0;
     }
     .mobileviews .col-sm-8.textformat span.donatetext {
-        font-weight: 400;
+        font-weight: 500;
         font-size: 18px;
         line-height: 26px;
+        text-align: left;
     }
     .pinkbox {
         /*background: #fff;*/
@@ -133,6 +134,7 @@
     .donate {
         font-size: 32px;
         line-height: 32px;
+        text-align: left;
     }
     .mobileview {
         display: block;
@@ -152,7 +154,7 @@
         display: none;
     }
     .formwhite .paddingss {
-        padding: 10px;
+        /* padding: 10px; */
     }
     .formwhite .paddingss .col-sm-12.form-group {
         width: 100%;
@@ -225,20 +227,23 @@
     div#hidemobile {
         display: none;
     }
-    #myModal .modal-dialog {
+    #myModal .modal-dialog,
+    #login-modal .modal-dialog {
         max-width: 100%;
         width: 92%;
     }
     h4.modal-title {
         font-size: 24px;
         line-height: 32px;
+        padding-bottom: 0px;
     }
     .modal-body {
         padding: 20px 10px;
     }
     .simply {
-        font-size: 14px;
-        line-height: 20px;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 0px;
     }
     .fulwidth.margiboxed {
         /* margin: 30px 0; */

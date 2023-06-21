@@ -17,10 +17,9 @@ class AccountController extends Controller
 {
     public function index()
     {
-        $id = Auth::user()->id;
-        $user = User::find($id);
-        $donations = Payment::where('donor', $id)->whereNot('charity_ein', 'mygoodness')->get()->toArray();
-        $notify = Auth::user()->notify;
+        $user = Auth::user();
+        $donations = Payment::where('donor', $user->id)->whereNot('charity_ein', 'mygoodness')->get()->toArray();
+        $notify = 'weekly';
         return view('users.account', compact('user', 'donations', 'notify'));
     }
 
@@ -42,7 +41,7 @@ class AccountController extends Controller
         $user->save();
         return redirect()->back()->with('success', 'Profile Updated Successfully');
     }
-    
+
     public function updateNotify(Request $request)
     {
         $date = date('Y-m-d');
@@ -81,7 +80,7 @@ class AccountController extends Controller
                 $notify = $user->notify;
                 $message = 'Hi '.$name.', thanks for donating to Mygoodness and being the part of '.$chain.' chains, click the link below to see how the goodness is growing: '.url("my_account");
                 $client = new Client($twilio_sid, $twilio_token);
-                $sms = $client->messages->create($phone, 
+                $sms = $client->messages->create($phone,
                     [
                         'from' => "+12134747974", // From a valid Twilio number, for US numbers
                         // 'from' => "+17087667868", // From a valid Twilio number, for Indian numbers
@@ -117,18 +116,18 @@ class AccountController extends Controller
         $data->phone = $phone;
         $data->save();
 
-        \Mail::send('email-template', array( 
+        \Mail::send('email-template', array(
             'name' => $name,
             'email' => $email,
             'subject' => 'Remove Account From MyGoodness',
 
-        ), function($message) use ($request){ 
+        ), function($message) use ($request){
 
             $message->from($request->email);
-            $message->to('my.goodness.dev@gmail.com', 'Admin')->subject($request->get('subject')); 
+            $message->to('my.goodness.dev@gmail.com', 'Admin')->subject($request->get('subject'));
 
-        }); 
+        });
         return back()->with("success", "Thanks! Your request will be processed shortly.");
     }
-    
+
 }

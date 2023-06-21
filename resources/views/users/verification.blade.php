@@ -84,9 +84,9 @@
                 </div>
             </div>
         </section>
-        
+
         @include('footer')
-        
+
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
@@ -96,19 +96,24 @@
                         <h4 class="modal-title">Login</h4>
                     </div>
                     <div class="modal-body">
-                        
+
                             <p class="simply">Please enter the one time password to verify your account </p>
                             <center>
                                 <div class="col-sm-6">
+                                    <form action="">
+
+                                    @csrf
                                     <input type="hidden" id="phone" name="phone" value="{{$mobile}}" class="form-control" required />
-                                    <input style="color:black" type="text" id="code" minlength="6" maxlength="6" name="code" class="form-control text-center" required /></br>     
-                                    <h6 class="error" style="color:red; display:none">Please Enter Valid OTP</h6> 
-                                    <h6 class="blank" style="color:red; display:none">Please Enter OTP</h6>                      
+                                    <input style="color:black" type="text" id="code" minlength="6" maxlength="6" name="code" class="form-control text-center" required /></br>
+                                    <h6 class="error" style="color:red; display:none">Please Enter Valid OTP</h6>
+                                    <h6 class="blank" style="color:red; display:none">Please Enter OTP</h6>
+                                    <div class="col-sm-12 buttoncenter">
+                                        <button type="button" id="login" class="startbtn">Submit</button>
+                                    </div>
+                                </form>
                                 </div>
                             </center>
-                            <div class="col-sm-12 buttoncenter">
-                                <button type="button" id="login" class="startbtn">Submit</button>
-                            </div>
+
                         <form id="login-form" style="display:none" method="POST" action="{{ route('login') }}">
                         @csrf
                             <input type="text" id="email" name="email" value="" required/>
@@ -122,7 +127,7 @@
             $( document ).ready(function() {
                 $('#verify').click();
 
-                $('#login').on('click', function() {                    
+                $('#login').on('click', function() {
                     var phone = $('#phone').val();
                     var code = $('#code').val();
                     if(code==""){

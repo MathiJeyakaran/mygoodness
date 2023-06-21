@@ -16,7 +16,8 @@ class FriendController extends Controller
 {
     public function index()
     {
-        $friend = Auth::user()->name;
+        // $friend = Auth::user()->name;
+        $friend = 'Test Test1 Test2';
         $friend = explode(' ', trim($friend ))[0];
         // $charity = Session::get('charity_name');
         // $org = Session::get('charity_ein');
@@ -26,7 +27,7 @@ class FriendController extends Controller
         $org = '123456';
         $chain_id = '77788896';
 
-        $uid = Auth::user()->uuid;
+        $uid = '12345678';
         // Session::forget('chain');
         return view('users.share', compact('org', 'uid', 'chain_id', 'charity', 'friend'));
     }
@@ -99,8 +100,8 @@ class FriendController extends Controller
     public function growing(Request $request)
     {
         $chain_id = $request->chain;
-        $id = Auth::user()->id;
-        $uid = Auth::user()->uuid;
+        $id = 1;
+        $uid = '17cbf616-1606-4edd-b30f-d5538a65ce2e';
         // $chains  = Payment::select('donor')->whereIn('chain', Payment::select('chain')->where('donor', $id)->whereNot('nonprofit', 'mygoodness'))->get()->toArray();
         $chains  = Payment::select('donor')->distinct('donor')->whereIn('chain', Payment::select('chain')->where('chain', $chain_id)->whereNot('nonprofit', 'mygoodness'))->get()->toArray();
         $org = [];

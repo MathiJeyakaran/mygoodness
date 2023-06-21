@@ -3,6 +3,7 @@ font-family: 'Barlow', sans-serif;
 font-family: 'Barlow Condensed', sans-serif;
 font-family: 'Roboto Slab', serif;
 */
+
 body {
     width: 100%;
     float: center;
@@ -13,9 +14,11 @@ body {
     font-size: 14px;
     height: 100%;
 }
+
 html {
     height: 100%;
 }
+
 .yellowbg {
     background: #ffd465;
     width: 100%;
@@ -23,12 +26,14 @@ html {
     margin: auto;
     padding: 0;
 }
+
 .logohead {
     padding: 0;
     clear: both;
     margin-bottom: 30px;
     float: left;
 }
+
 .logo {
     width: 100%;
     float: left;
@@ -38,12 +43,12 @@ html {
     padding-right: 21px;
     padding-top: 12px;
 }
+
 .circle-container {
     text-align: center;
     padding-top: 30px;
     margin-left: 75px;
     padding-right: 75px;
-
     width: 190px;
     height: 190px;
     border-radius: 50%;
@@ -52,6 +57,7 @@ html {
     background-color: #61e4c5;
     margin-top: 13%;
 }
+
 .modal-header .close {
     position: absolute;
     opacity: 1;
@@ -60,26 +66,31 @@ html {
     z-index: 999999;
     opacity: 1 !important;
 }
+
 .modal-header .close img {
     max-width: 30%;
 }
+
 .modal-header {
     padding: 0;
     margin: 0 0 10px;
     border: none;
 }
+
 .logohead {
     padding: 0;
     clear: both;
     margin-bottom: 30px;
     float: left;
 }
+
 .logo {
     width: 100%;
     float: left;
     margin: auto;
     text-decoration: none;
 }
+
 h3 {
     font-size: 24px;
     margin-bottom: 10px;
@@ -101,10 +112,12 @@ p {
     margin-right: 20px;
     margin-top: 20px;
 }
+
 .circle-list {
     list-style-type: none;
     padding: 0;
 }
+
 .circle-list li {
     clear: left;
 }
@@ -116,11 +129,13 @@ p {
 .circle-number {
     margin-left: 15px;
     display: inline-block;
-    float: left; /* Add this property to make the points float left */
+    float: left;
+    /* Add this property to make the points float left */
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background-color: #ffc107; /* Set the desired background color */
+    background-color: #ffc107;
+    /* Set the desired background color */
     color: #000;
     text-align: center;
     line-height: 24px;
@@ -135,14 +150,10 @@ p {
     color: #000000;
     font-size: 24px;
     font-weight: 600;
-
     margin-top: -10px;
-
     font-family: "Barlow";
     font-style: normal;
-
     text-align: center;
-
     color: #000000;
 }
 
@@ -161,6 +172,7 @@ ol {
     float: left;
     margin: auto;
 }
+
 .grow {
     width: 100%;
     float: left;
@@ -168,61 +180,62 @@ ol {
     padding: 0;
     margin-top: -10%;
 }
+
 .growhead {
     width: 320px;
     height: 48px;
-
     padding-top: 5px;
-
     font-family: "Roboto Slab";
     font-style: normal;
     font-weight: 700;
     font-size: 36px;
     line-height: 48px;
     /* identical to box height, or 133% */
-
     /* Gray / 900 */
-
     color: #212121;
 }
+
 .smallgrowtext {
     width: 323px;
     height: 115px;
     left: calc(50% - 323px / 2 - 1.5px);
-
     /* Regular/text-xl */
-
     font-family: "Barlow";
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 26px;
     /* or 144% */
-
     color: #000000;
 }
+
 .middlebox {
     width: 100%;
     float: left;
     margin: auto;
     position: relative;
 }
+
 .growtext {
     float: left;
 }
+
 .growimage {
     position: relative;
 }
+
 .growimage .images img {
     position: absolute;
     top: 30px;
 }
+
 .images {
     width: 70%;
     float: right;
     margin: auto;
     position: relative;
 }
+
 .images-left {
     width: 30%;
     float: left;
@@ -230,6 +243,7 @@ ol {
     position: relative;
     margin-top: -10px;
 }
+
 .padding {
     background: #ffffff;
     border: 3px solid #000000;
@@ -247,10 +261,12 @@ ol {
     top: 35.85%;
     bottom: 39.03%;
 }
+
 .boxesone {
     display: inline-block;
     float: left;
 }
+
 .threeboxs {
     padding: 0;
     margin: 50px 0 0;
@@ -260,15 +276,18 @@ ol {
 .growstar {
     position: relative;
 }
+
 .growstar .images-star img {
     position: relative;
 }
+
 .images-star {
     width: 100%;
     position: relative;
     margin: auto;
     display: block;
 }
+
 .iconnumber {
     font-family: "Roboto Slab";
     font-style: normal;
@@ -312,6 +331,7 @@ ol {
     float: left;
     width: 100%;
 }
+
 .col-sm-12.buttoncenter {
     padding: 0;
     text-align: center;
@@ -319,6 +339,7 @@ ol {
     display: inline-block;
     float: left;
 }
+
 .startbtn {
     background: #212121;
     border: 1px solid #000000;
@@ -338,12 +359,14 @@ ol {
     padding-left: 80px;
     padding-right: 80px;
 }
+
 .startbtn:hover,
 .startbtn:focus,
 .startbtn:active {
     color: #ffd465;
     text-decoration: none;
 }
+
 .social {
     float: left;
     margin: 20px 0;
@@ -351,21 +374,25 @@ ol {
     width: 100%;
     padding: 0;
 }
+
 .footer {
     width: 100%;
     float: left;
     margin: auto;
 }
+
 .social li {
     list-style: none;
     display: inline-block;
     margin: 0 20px;
 }
+
 .social li a {
     width: auto;
     display: inline-block;
     margin: auto;
 }
+
 .social li a i {
     color: #212121;
     font-size: 25px;
@@ -373,6 +400,7 @@ ol {
     width: auto;
     display: inline-block;
 }
+
 .blagbg {
     width: 100%;
     float: left;
@@ -380,16 +408,19 @@ ol {
     background: #212121;
     padding: 30px 0 7px;
 }
+
 .blagbg ul.links {
     margin: 0;
     padding: 0;
 }
+
 .blagbg ul.links li {
     width: 20%;
     text-align: center;
     float: left;
     list-style: none;
 }
+
 .blagbg ul.links li a {
     font-family: "Barlow Condensed";
     font-style: normal;
@@ -404,12 +435,15 @@ ol {
     display: inline-block;
     transition: all 0.2s ease-in-out;
 }
+
 .blagbg ul.links li:first-child {
     text-align: left;
 }
+
 .blagbg ul.links li:last-child {
     text-align: right;
 }
+
 .copyright {
     width: 100%;
     float: left;
@@ -422,19 +456,23 @@ ol {
     color: #ffffff;
     padding: 30px 0px 0;
 }
+
 .blagbg ul.links li a:hover,
 .blagbg ul.links li a:focus,
 .blagbg ul.links li a:active {
     color: #ffd465;
 }
+
 .yellowbg.white {
     background: #fff;
 }
+
 .centerboxesform {
     width: 100%;
     margin: auto;
     text-align: center;
 }
+
 .pinkbox {
     margin: auto;
     border-radius: 100%;
@@ -459,34 +497,41 @@ ol {
     float: left;
     margin: 0 0 40px;
 }
+
 .cirlehead {
     width: 100%;
     float: left;
     margin: auto;
     position: relative;
 }
+
 .circleoxes {
     width: 100%;
     float: left;
     margin: auto;
 }
+
 .homeicons {
     position: absolute;
     right: -21px;
     top: -20px;
 }
+
 .homeicons img {
     max-width: 40%;
 }
+
 .fulwidth {
     width: 100%;
     float: left;
     margin: auto;
     text-align: center;
 }
+
 .fulwidth .col-sm-8 {
     margin: auto;
 }
+
 .fulwidth .col-sm-8 label,
 .fulwidth .col-sm-12 label {
     font-family: "Barlow";
@@ -499,11 +544,13 @@ ol {
     float: left;
     text-align: left;
 }
+
 .col-sm-12.givebox {
     width: 100%;
     float: left;
     margin: auto;
 }
+
 .col-sm-12.givebox .containers {
     display: block;
     position: relative;
@@ -512,6 +559,7 @@ ol {
     user-select: none;
     float: left;
 }
+
 .col-sm-12.givebox .containers input {
     position: absolute;
     opacity: 0;
@@ -519,6 +567,7 @@ ol {
     height: 0;
     width: 0;
 }
+
 .col-sm-12.givebox .checkmark {
     position: absolute;
     top: 4px;
@@ -529,24 +578,30 @@ ol {
     border-radius: 50%;
     border: 2px solid #000;
 }
-.col-sm-12.givebox .containers:hover input ~ .checkmark {
+
+.col-sm-12.givebox .containers:hover input~.checkmark {
     background-color: #ccc;
 }
-.col-sm-12.givebox .containers input:checked ~ .checkmark {
+
+.col-sm-12.givebox .containers input:checked~.checkmark {
     background-color: #fff;
 }
+
 .col-sm-12.givebox .checkmark:after {
     content: "";
     position: absolute;
     display: none;
 }
-.col-sm-12.givebox .containers input:checked ~ .checkmark:after {
+
+.col-sm-12.givebox .containers input:checked~.checkmark:after {
     display: block;
 }
+
 .fulwidth .col-sm-12 {
     float: left;
     width: 100%;
 }
+
 .col-sm-12.givebox .containers .checkmark:after {
     top: 4px;
     left: 4px;
@@ -556,6 +611,7 @@ ol {
     background: #ffbd12;
     border: 2px solid #000;
 }
+
 .col-sm-12.givebox .containers input.form-control {
     position: absolute;
     width: 130px;
@@ -564,19 +620,23 @@ ol {
     display: inline-block;
     right: -30px;
 }
+
 .col-sm-12.givebox .containers:nth-child(1) {
     width: 25%;
     margin: 0;
 }
+
 .col-sm-12.givebox .containers:nth-child(2) {
     width: 70%;
     margin: 0;
 }
+
 .circleoxes .form-group {
     width: 100%;
     float: left;
     margin: 0 0 37px;
 }
+
 .form-control {
     background: #ffffff;
     border: 2px solid #616161;
@@ -588,6 +648,7 @@ ol {
     box-shadow: none;
     outline: none;
 }
+
 .col-sm-12.givebox .containers label {
     font-weight: 600;
     width: auto;
@@ -595,20 +656,24 @@ ol {
     position: relative;
     top: 0px;
 }
+
 .fulwidth .col-sm-12.likebox {
     margin: 20px 0 0 0;
     text-align: center;
 }
+
 .fulwidth .col-sm-12.likebox .form-group {
     text-align: center;
     margin: 0 0 10px;
 }
+
 .fulwidth .col-sm-12.likebox .form-group .checkboxx {
     width: 100%;
     float: left;
     margin: auto;
     text-align: center;
 }
+
 .fulwidth .col-sm-12.likebox .form-group .checkboxx label {
     float: none;
     text-align: center;
@@ -619,6 +684,7 @@ ol {
     width: auto;
     position: relative;
 }
+
 .dektopimages {
     position: absolute;
     left: 0%;
@@ -626,12 +692,15 @@ ol {
     width: 29%;
     bottom: 60px;
 }
+
 .dektopimages img {
     max-width: 100%;
 }
+
 .dektopimages.mobile {
     display: none;
 }
+
 .tickicon {
     background: #ff9692;
     border: 4px solid #18191f;
@@ -643,6 +712,7 @@ ol {
     display: inline-block;
     margin-bottom: 30px;
 }
+
 .donatebox {
     width: 100%;
     float: left;
@@ -650,6 +720,7 @@ ol {
     text-align: center;
     position: relative;
 }
+
 .donate {
     font-family: "Barlow Condensed";
     font-style: normal;
@@ -663,6 +734,7 @@ ol {
     margin: 30px 0;
     text-align: center;
 }
+
 .donatetext {
     font-family: "Barlow";
     font-style: normal;
@@ -675,6 +747,7 @@ ol {
     display: inline-block;
     margin: 0 0 30px;
 }
+
 .bottomimages {
     position: absolute;
     right: 0;
@@ -684,44 +757,56 @@ ol {
     left: -40px;
     z-index: -1;
 }
+
 .desktopview {
     float: left;
     width: 100%;
     margin: auto;
 }
+
 .desktopview .col-sm-6 {
     float: left;
     margin: auto;
 }
+
 .mobileview {
     display: none;
 }
+
 .desktopview .col-sm-6 img.img-fluid {
     max-width: 100%;
 }
+
 .bottomimages img.img-fluid {
     max-width: 94%;
     float: left;
 }
+
 .img-fluids {
     width: 100%;
 }
+
 .desktopview .col-sm-6 img.img-fluids {
     max-width: 100%;
 }
+
 .bottomimages img.img-fluids {
     max-width: 94%;
     float: left;
 }
+
 .yellowbg.greenbg {
     background: #61e4c5;
 }
+
 .col-sm-10.mainheading {
     margin: auto;
 }
+
 .formwhite {
     margin: auto;
 }
+
 .formwhite .paddingss {
     background: #ffffff;
     border: 3px solid #18191f;
@@ -733,6 +818,7 @@ ol {
     text-align: left;
     position: relative;
 }
+
 .linktext {
     font-family: "Barlow Condensed";
     font-style: normal;
@@ -745,9 +831,11 @@ ol {
     float: left;
     margin: 0 0 20px;
 }
+
 .formwhite .paddingss textarea.form-control {
     height: 270px;
 }
+
 .addbtn {
     position: absolute;
     bottom: 0;
@@ -758,9 +846,11 @@ ol {
     font-size: 32px;
     color: #212121;
 }
+
 .addbtn a {
     color: #212121;
 }
+
 .col-sm-12.likebox .containers input {
     position: absolute;
     opacity: 0;
@@ -768,6 +858,7 @@ ol {
     height: 0;
     width: 0;
 }
+
 .col-sm-12.likebox .checkmark {
     position: absolute;
     top: 2px;
@@ -778,20 +869,25 @@ ol {
     border: 2px solid #000;
     border-radius: 3px;
 }
-.col-sm-12.likebox .containers:hover input ~ .checkmark {
+
+.col-sm-12.likebox .containers:hover input~.checkmark {
     background-color: #ccc;
 }
-.col-sm-12.likebox .containers input:checked ~ .checkmark {
+
+.col-sm-12.likebox .containers input:checked~.checkmark {
     background-color: #ffd465;
 }
+
 .col-sm-12.likebox .checkmark:after {
     content: "";
     position: absolute;
     display: none;
 }
-.col-sm-12.likebox .containers input:checked ~ .checkmark:after {
+
+.col-sm-12.likebox .containers input:checked~.checkmark:after {
     display: block;
 }
+
 .col-sm-12.likebox .containers .checkmark:after {
     left: 4px;
     top: 1px;
@@ -803,12 +899,14 @@ ol {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
 .col-sm-12.likebox.margin {
     width: 100%;
     float: left;
     margin: 40px 0;
     text-align: center;
 }
+
 .col-sm-12.likebox.margin label.containers {
     position: relative;
     color: #424242;
@@ -817,17 +915,20 @@ ol {
     font-size: 14px;
     line-height: 20px;
 }
+
 .col-sm-12.send {
     width: 100%;
     float: left;
     text-align: center;
 }
+
 .col-sm-6.leftside {
     position: absolute;
     left: -43%;
     bottom: -24%;
     z-index: -1;
 }
+
 .col-sm-6.rightside {
     position: absolute;
     right: -43%;
@@ -835,19 +936,23 @@ ol {
     padding: 0;
     z-index: -1;
 }
+
 .bottomimagesshowmobile {
     display: none;
 }
+
 .growingcircle {
     width: 100%;
     float: left;
     text-align: center;
     margin: auto;
 }
+
 .growingcircle .growinghead {
     margin: auto;
     position: relative;
 }
+
 .counts {
     font-family: "Roboto Slab";
     font-style: normal;
@@ -859,6 +964,7 @@ ol {
     width: 100%;
     float: left;
 }
+
 .friendstext {
     font-family: "Barlow Condensed";
     font-style: normal;
@@ -872,11 +978,13 @@ ol {
     float: left;
     margin: 20px 0 40px;
 }
+
 .buttonstext {
     float: left;
     margin: auto;
     width: 100%;
 }
+
 button.black {
     background: #212121;
     border: 2px solid #18191f;
@@ -891,6 +999,7 @@ button.black {
     padding: 7px 19px;
     margin-right: 14px;
 }
+
 .growinghead:before {
     position: absolute;
     content: "";
@@ -902,27 +1011,33 @@ button.black {
     border-radius: 100%;
     z-index: -1;
 }
+
 .showdesk {
     position: absolute;
     right: -43%;
     bottom: -11%;
 }
+
 .showdesk img {
     z-index: -1;
     max-width: 60%;
 }
+
 .listitems {
     width: 100%;
     float: left;
     margin: 50px 0;
 }
+
 .starbox img {
     max-width: 50%;
 }
+
 .listitems ul.listmids {
     margin: 0;
     padding: 0;
 }
+
 .listitems ul.listmids li {
     list-style: none;
     display: inline-block;
@@ -931,6 +1046,7 @@ button.black {
     padding: 0;
     margin-bottom: 10px;
 }
+
 .starbox {
     background: #ffe8e8;
     border: 1.44872px solid #18191f;
@@ -941,11 +1057,13 @@ button.black {
     height: 57px;
     line-height: 53px;
 }
+
 .starbox i {
     color: #ffbd12;
     text-shadow: 0px 1px BLACK;
     font-size: 25px;
 }
+
 .ratetext {
     font-style: normal;
     font-weight: 400;
@@ -960,25 +1078,33 @@ button.black {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .mobileviewgrowiing {
     display: none;
 }
+
 .starbox.green {
     background: #d6fcf7;
 }
+
 .starbox.yellow {
     background: #fff4cc;
 }
+
 .mobileviews {
     display: none;
 }
+
 #next {
     display: none;
 }
+
 .modal-backdrop.fade.show {
     opacity: 0.8;
 }
-#myModal .modal-dialog {
+
+#myModal .modal-dialog,
+#login-modal .modal-dialog {
     position: absolute;
     left: 0;
     right: 0;
@@ -988,11 +1114,14 @@ button.black {
     max-width: 100%;
     width: 45%;
 }
-#myModal .modal-dialog .modal-content {
+
+#myModal .modal-dialog .modal-content,
+#login-modal .modal-dialog .modal-content {
     border: 3px solid #18191f;
     box-shadow: 0px 6px 0px #18191f;
     border-radius: 16px;
 }
+
 #myModal1 .modal-dialog {
     position: absolute;
     left: 0;
@@ -1003,11 +1132,13 @@ button.black {
     max-width: 100%;
     width: 40%;
 }
+
 #myModal1 .modal-dialog .modal-content {
     border: 3px solid #18191f;
     box-shadow: 0px 6px 0px #18191f;
     border-radius: 16px;
 }
+
 .modal-header .close {
     position: absolute;
     opacity: 1;
@@ -1016,14 +1147,17 @@ button.black {
     z-index: 999999;
     opacity: 1 !important;
 }
+
 .modal-header .close img {
     max-width: 30%;
 }
+
 .modal-header {
     padding: 0;
     margin: 0 0 10px;
     border: none;
 }
+
 h4.modal-title {
     font-family: "Barlow Condensed";
     font-style: normal;
@@ -1036,10 +1170,12 @@ h4.modal-title {
     width: 100%;
     padding: 20px 0;
 }
+
 .modal-body {
     padding: 20px 84px;
     text-align: center;
 }
+
 .simply {
     font-style: normal;
     font-weight: 600;
@@ -1050,12 +1186,14 @@ h4.modal-title {
     float: left;
     margin: 0 0 10px;
 }
+
 .forminput {
     width: 80%;
-    margin: 10px 0;
+    margin: 0px 0;
     display: inline-block;
     position: relative;
 }
+
 .ustext {
     font-family: "Barlow";
     font-style: normal;
@@ -1067,14 +1205,17 @@ h4.modal-title {
     right: 3px;
     bottom: -20px;
 }
+
 .fulwidth.margiboxed {
     margin: 70px 0;
 }
+
 .textnumber {
     width: 100%;
     margin: 10px 0 0;
     float: left;
 }
+
 .textnumber .form-control {
     width: 22%;
     float: left;
@@ -1084,18 +1225,23 @@ h4.modal-title {
     text-align: center;
     height: 80px;
 }
+
 .textnumber .form-control:last-child {
     margin: 0;
 }
+
 .modal-body.loginbody {
     padding: 20px 50px;
 }
+
 .orgFix {
     margin-top: -60px !important;
 }
+
 .linkactive {
     color: #ffd465 !important;
 }
+
 .col-1,
 .col-2,
 .col-3,
@@ -1188,9 +1334,9 @@ h4.modal-title {
 .container-lg,
 .container-xl {
     width: 100%;
-
     padding-left: 17px;
 }
+
 .col-1,
 .col-2,
 .col-3,
@@ -1263,7 +1409,6 @@ h4.modal-title {
 .col-xl-auto {
     position: relative;
     width: 100%;
-
     padding-left: 5px;
     padding-right: 5px;
 }

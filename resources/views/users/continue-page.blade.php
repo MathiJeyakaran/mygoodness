@@ -40,18 +40,19 @@
         }
 
         .my-account {
-        text-align: right;
-        float: right;
-        position: relative;
-        margin-top: 32px;
-        font-family: var(--medium-text-xl);
-        z-index: 1;
-        padding-right: 20px;
-        width: 150px;
-        height: 35px;
-        font-size: 24px;
+            text-align: right;
+            float: right;
+            position: relative;
+            margin-top: 32px;
+            font-family: var(--medium-text-xl);
+            z-index: 1;
+            padding-right: 20px;
+            width: 150px;
+            height: 35px;
+            font-size: 24px;
         }
-        header.container{
+
+        header.container {
             padding: 0px;
             margin: 0px;
         }
@@ -68,9 +69,9 @@
             padding: 20px;
             text-align: left;
             width: 100%;
-              padding-top: 0px;
+            padding-top: 0px;
             padding-bottom: 0px;
-              letter-spacing: 0.01em;
+            letter-spacing: 0.01em;
         }
 
         .payment-inner {
@@ -88,7 +89,8 @@
             background: #FF9692;
             /* height: 100%; */
         }
-        .body-bg{
+
+        .body-bg {
             background: #FF9692;
         }
 
@@ -105,40 +107,47 @@
             letter-spacing: 0.01em;
             color: #212121;
         }
+
         .summary12 {
             font-weight: 600;
-font-size: 18px;
-margin-bottom: 20px;
-line-height: 26px;
-font-family: Barlow;
-font-style: normal;
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 26px;
+            font-family: Barlow;
+            font-style: normal;
         }
-        .rounded-start123{
+
+        .rounded-start123 {
             height: 32px !important;
             border-radius: 50%;
         }
+
         .nonprofit-name {
-        margin: 0;
-        font-family: Barlow;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 28px;
-        color: #212121;
+            margin: 0;
+            font-family: Barlow;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 28px;
+            color: #212121;
         }
-        .summary-section .donation,.summary-section .contribution,.summary-section  .total {
+
+        .summary-section .donation,
+        .summary-section .contribution,
+        .summary-section .total {
             position: relative;
             top: 0;
             left: 0;
         }
+
         .summary-section .total-text,
         .summary-section .total-amount,
         .summary-section .donation-text,
         .summary-section .amount-text,
         .summary-section .contribution-text,
-        .summary-section .contribution-amount{
-            width:50%;
-            float:left;
+        .summary-section .contribution-amount {
+            width: 50%;
+            float: left;
             font-family: Barlow;
             font-style: normal;
             font-weight: 400;
@@ -146,16 +155,18 @@ font-style: normal;
             line-height: 26px;
             color: #000;
         }
+
         .summary-section .contribution-amount,
         .summary-section .amount-text,
-        .summary-section .total-amount{
+        .summary-section .total-amount {
             text-align: right;
         }
+
         .hr-line {
             border: 1px solid #000;
             width: 100%;
-float: left;
-margin: 10px 0px;
+            float: left;
+            margin: 10px 0px;
         }
     </style>
 
@@ -188,11 +199,11 @@ margin: 10px 0px;
             <div class="centerboxesform">
 
                 <div class="col-sm-9" style="padding-bottom: 20px;">
-                    <div class="card mb-3" style="max-width: 540px;border: 3px solid;padding: 10px;box-shadow: 0px 6px 0px #18191F;border-radius: 16px;">
+                    <div class="card mb-3"
+                        style="max-width: 540px;border: 3px solid;padding: 10px;box-shadow: 0px 6px 0px #18191F;border-radius: 16px;">
                         <div class="your-donation text-center">Your Donation will be sent to:</div>
                         <div class="row g-0">
                             <div class="col-sm-4">
-                                {{-- <img src="{{ $data['charity_logo'] }}" class="img-fluid rounded-start" alt="{{ $data['charity_name'] }}"> --}}
                             </div>
                             <div class="col-sm-8">
                                 <div class="card-body">
@@ -211,7 +222,9 @@ margin: 10px 0px;
                                 </div>
                             </div>
                             <div class="col-sm-12 pb-2">
-                            <p class="card-text" style="font-style: italic;text-align: left;font-weight: 400;font-size: 16px;line-height: 26px;">...not the right place? <a href="/">go back</a> </p>
+                                <p class="card-text"
+                                    style="font-style: italic;text-align: left;font-weight: 400;font-size: 16px;line-height: 26px;">
+                                    ...not the right place? <a href="/">go back</a> </p>
                             </div>
                         </div>
                     </div>
@@ -227,9 +240,14 @@ margin: 10px 0px;
     <section class="pt-2 summary-section">
         <div class="container" style="padding: 30px;">
             <div class="col-md-9">
-                <div class="summary12">Summary <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
-                  </svg>
+                <div class="summary12">Summary
+                    <span data-toggle="modal" data-target=".bs-example-modal-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                        </svg>
+                    </span>
                 </div>
             </div>
             <div class="col-md-9">
@@ -239,35 +257,83 @@ margin: 10px 0px;
                 </div>
                 <div class="contribution">
                     <div class="contribution-text"><img style="height: 100px;" src="images/favicon.png"
-                        class="img-fluid rounded-start123" alt="{{ $data['charity_name'] }}"> Contribution</div>
+                            class="img-fluid rounded-start123" alt="{{ $data['charity_name'] }}"> Contribution</div>
                     <div class="contribution-amount">${{ $data['contribution'] }}</div>
                 </div>
-                {{-- <div class="col-md-9"> --}}
-                    <div class="hr-line"></div>
-                {{-- </div> --}}
+                <div class="hr-line"></div>
 
                 <div class="total">
                     <div class="total-text">Total</div>
                     <div class="total-amount">${{ $data['total'] }}</div>
                 </div>
 
-                <form action="{{ route('payment') }}" method="post">
+                <form id="payment-form" action="{{route('payment-form')}}" method="post">
                     @csrf
-                    <input type="hidden" value="{{ $data['total'] }}" name="amount">
+                    <input type="hidden" name="total" value="{{ $data['total'] }}">
+                    <input type="hidden" name="donationAmount" value="{{ $data['amount'] }}">
+                    <input type="hidden" name="charityEin" value="{{ $data['ein'] }}">
+                    <input type="hidden" name="charityName" value="{{ $data['charity_name'] }}">
                     <div>
-                    <button type="submit"
-                        style="background-color:black;border : black;color:white;width:100%;padding : 12px 12px 12px 12px;border-radius:10px;font: 600 24px/32px
+                        <button id="submit-button"
+                            style="background-color:black;border : black;color:white;width:100%;padding : 12px 12px 12px 12px;border-radius:10px;font: 600 24px/32px
     Barlow Condensed;margin-top: 30px;letter-spacing: 0.01em;">Confirm
-                        Payment</button>
-                </div>
-                </form>
+                            Payment</button>
+                    </div>
+                  </form>
             </div>
-
-
-
         </div>
     </section>
 
 </body>
+
+<style>
+    #info .modal-dialog {
+        position:fixed;
+        top:auto;
+        right:auto;
+        left:auto;
+        bottom:-20px;
+        border: 2px solid #18191F;
+        margin: 0px;
+
+    }
+
+    #info .modal-content {
+        border-radius: 16px 16px 0 0;
+        padding: 0px 0px 20px 0;
+    }
+
+    #info .modal-header {
+        border-bottom: 2px solid #18191F;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: 0px;
+    }
+    #info .modal-body {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    #info .modal-body p {
+        text-align: left;
+    }
+    </style>
+
+    <div id="info" class="modal fade bs-example-modal-lg" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" style="font-size: 34px;" class="btn " data-dismiss="modal"><i class="fas fa-exclamation-circle"></i></button>
+                    <button type="button" style="font-size: 34px;" class="btn" data-dismiss="modal"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Donation:</strong> 100% of your donation is tax-deductible to the extent allowed by US law. Your donation is first made to mygoodness, a tax-exempt US 501(c)(3) charity, and we immediately issue a receipt for your charitable contribution. We then disperse your donation as unrestricted funds to the nonprofit of your choice on your behalf on a monthly basis.
+                        <strong>The selected nonprofit may not have provided advanced consent or permission and has not reviewed or approved the content of this solicitation. See Terms for more information.</strong><br><br>
+
+                        <strong>MG (mygoodness) Contribution: </strong>An additional 11% (maximum $10)  fee is added to cover payment processing fees and to support the development of donor tools like this one. mygoodness is a nonprofit too, so this fee is tax-deductible. </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </html>

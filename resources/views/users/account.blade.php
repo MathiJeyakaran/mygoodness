@@ -24,11 +24,11 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
 </head>
-<body class="yellowbg">
+<body class="">
     <header>
         <div class="container">
             <div class="col-sm-4 logohead">
-                <a href="/" class="logo">
+                <a href="/" class="logo" style="padding-top: 20px;">
                     <img src="images/logo.png" class="img-fluid" />
                 </a>
             </div>
@@ -36,7 +36,7 @@
     </header>
     <section class="middlebox">
         <div class="container">
-            <div style="height:30px">
+            <div style="//height:30px">
                 <div id="alert" class="">
                     @if(Session::has('success'))
                     <div class="prohead" role="alert">
@@ -49,7 +49,7 @@
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
-                            @endforeach 
+                            @endforeach
                         </ul>
                     </div>
                     @endif
@@ -59,9 +59,10 @@
                 <form method="POST" action="{{ route('logout') }}" onsubmit="return confirm('You may logout !');">
                     <p class="accounthead">
                         @csrf
+                        <span>Account</span>
                         <a style="cursor:pointer" class="editlink"
                         onclick="event.preventDefault();
-                        this.closest('form').submit();">Log out <i class="far fa-sign-out"></i></a>                    
+                        this.closest('form').submit();">Log out <i class="far fa-sign-out"></i></a>
                     </p>
                 </form>
                 <div class="profiletext">
@@ -103,74 +104,88 @@
                         </div>
                     </div>
                 </div>
-                <div class="whitebg">
-                    <p class="notifications">Notifications Frequency:</p>
-                    <div class="belowitems">
-                        <!-- <label class="frequency">Frequency:</label> -->
-                        <center>
-                            <form method="POST" action="{{url('/updateNotify')}}" enctype="multipart/form-data">
-                                @csrf
-                                <div class="col-sm-12 givebox widths">
-                                    <div class="col-sm-4 paddingbox">
-                                        <div class="checkboxx">
-                                            <label class="containers">Weekly
-                                            <input type="radio" id="notify_1" checked name="notify" value="weekly">
-                                            <span class="checkmark"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 paddingbox">
-                                        <div class="checkboxx">
-                                            <label class="containers">Monthly
-                                            <input type="radio" id="notify_2" name="notify" value="monthly">
-                                            <span class="checkmark"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 paddingbox">
-                                        <div class="checkboxx">
-                                            <label style="width:237px" class="containers">Unsubscribe from updates
-                                            <input type="radio" id="notify_3" name="notify" value="unsubscribe">
-                                            <span class="checkmark"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="col-sm-12 centertext mt-5">
-                                    <button type="submit" class="startbtn">Save</button>
-                                </div> 
-                            </form>
-                        </center>
-                    </div>
-                </div>
+
         <!-- <div class="col-sm-12 centertext">
             <button type="submit" class="startbtn">Save</button>
         </div> -->
     <div class="middleboxesfull">
-        <p class="col-sm-12 notifications">Transactions</p>
-        <div class="whitebg">
+        <p class="col-sm-12 notifications">Transactions*</p>
+        <div class="whitebg" style="margin-bottom: 20px;">
             <div class="belowitems tablemidddd">
                 <table class="middletable">
                     <thead>
                         <tr>
-                            <th style="width: 216px !important;"><b>Date</b></th>
-                            <th><b>Nonprofit</b></th>
-                            <th style="width: 216px !important;"><b>Amount</b></th>
+                            <th style="width: 20% !important;"><b style="font-size: 14px;">Date</b></th>
+                            <th style="width: 60%;"><b style="font-size: 14px;">Nonprofit Chain</b></th>
+                            <th style="width: 216px !important;"><b style="font-size: 14px;">Amount</b></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($donations as $donation)
                         <tr>
-                            <td style="width: 216px !important; padding: 10px 5px !important;">{{date('d-m-y', strtotime($donation['created_at']))}}</td>
-                            <td><a target=_blank href="/growing?chain={{$donation['chain']}}">{{$donation['nonprofit']}}</a></td>
+                            <td style="width: 216px !important; padding: 10px 5px !important;font-weight: 400;font-size: 14px;line-height: 20px;color: #000;">{{date('m/d/y', strtotime($donation['created_at']))}}</td>
+                            <td><a style="font-weight: 600;font-size: 14px;line-height: 20px;color: #000;" target=_blank href="/growing?chain={{$donation['chain']}}">{{$donation['nonprofit']}}</a></td>
                             <!-- <td>{{$donation['nonprofit']}}</td> -->
-                            <td style="width: 216px !important;">${{$donation['donation_amount']}}</td>
+                            <td style="width: 216px !important;font-weight: 400;font-size: 14px;line-height: 20px;color: #000;">${{$donation['donation_amount']}}</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
+        <p style="font-size: 18px;line-height: 26px;font-weight: 400;font-style: normal !important;">*Track all your giving in one place. Donate through mygoodness for a single tax receipt at the end of the year!</p>
+    </div>
+
+    <div class="whitebg" style="background: #FF9692;">
+        <p class="notifications">Notifications</p>
+        <div class="belowitems">
+            <!-- <label class="frequency">Frequency:</label> -->
+            <center>
+                <form id="update-notify" method="POST" action="{{url('/updateNotify')}}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="col-sm-12 givebox widths">
+
+                        <p style="text-align: left;font-size: 16px;line-height: 24px;font-weight: 500;">Frequency:</p>
+                        <div class="row">
+                        <div class="col-sm-4 paddingbox">
+                            <div class="checkboxx">
+                                <label class="containers">Weekly
+                                <input type="radio" id="notify_1" checked name="notify" value="weekly">
+                                <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 paddingbox">
+                            <div class="checkboxx">
+                                <label class="containers">Monthly
+                                <input type="radio" id="notify_2" name="notify" value="monthly">
+                                <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 paddingbox">
+                            <div class="checkboxx">
+                                <label style="width:237px" class="containers">Unsubscribe from updates
+                                <input type="radio" id="notify_3" name="notify" value="unsubscribe">
+                                <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    {{-- <div class="col-sm-12 centertext mt-5">
+                        <button type="submit" class="startbtn">Save</button>
+                    </div> --}}
+                </form>
+            </center>
+        </div>
+    </div>
+    <div class="col-sm-12 centertext mt-2 mb-5">
+        <button style="background: #000;color: #fff;" id="update-notify-submit"  class="startbtn">Save</button>
     </div>
     <div class="whitebg">
         <p class="notifications">Right to be forgotten</p>
@@ -229,6 +244,10 @@
                 $('#Cemail').show();
             }
         }
+
+        $('#update-notify-submit').click(function(){
+            $('#update-notify').submit();
+        })
 </script>
 </body>
 </html>

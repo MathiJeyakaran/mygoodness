@@ -1,149 +1,357 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <link rel="icon" href="images/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet">
     <title>{{ config('app.name', 'mygoodness') }}</title>
     <!--fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Slab:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Slab:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://site-assets.fontawesome.com/releases/v5.15.4/css/all.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/global.css" />
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
-</head>
-    <body class="yellowbg greenbg">
-        <header>
-            <div class="container">
-                 <div class="col-sm-4 logohead">
-                    <a href="/" class="logo">
-                        <img src="images/logo.png" class="img-fluid">
-                    </a>
-                </div>
-            </div>
-        </header>
-        <section class="middlebox">
-            <div class="container">
-                <div style="height:30px">
-                    <div id="alert" class="">
-                        <!-- @if(Session::has('success'))
-                        <div class="prohead" role="alert">
-                            <u><h6>{{Session::get('success')}}</h6></u>
-                        </div>
-                        @endif -->
 
-                        @if ($errors->any())
-                        <div class="prohead">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach 
-                            </ul>
-                        </div>
-                        @endif
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow Condensed:wght@600&display=swap" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
+
+    <style>
+
+    .white-bg {
+    background: #fff;
+    width: 100%;
+    float: left;
+    margin: auto;
+    /* padding: 20px 0; */
+    }
+        .white-bg .logohead {
+            padding: 0;
+            clear: both;
+            float: left;
+            background: #61e4c5;
+        }
+
+        .white-bg .middlebox {
+            width: 100%;
+            float: left;
+            margin: auto;
+            position: relative;
+            background: #61e4c5;
+            border-bottom-left-radius: 450% 130%;
+            border-bottom-right-radius: 450% 130%;
+            height: 600px;
+        }
+
+        #textarea {
+            margin: 0px 0px;
+            padding: 5px;
+            height: 160px;
+            line-height: 16px;
+            display: block;
+            margin: 0px auto;
+        }
+
+        .my-account {
+            text-align: right;
+            float: right;
+            position: relative;
+            margin-top: 32px;
+            font-family: var(--medium-text-xl);
+            z-index: 1;
+            padding-right: 20px;
+            width: 150px;
+            height: 35px;
+            font-size: 24px;
+        }
+
+        header.container {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .pick-a {
+            /* position: absolute; */
+            font-size: 24px;
+            letter-spacing: 0.01em;
+            line-height: 32px;
+            font-weight: 600;
+            font-family: var(--title-3xl);
+            color: var(--gray-900);
+            display: inline-block;
+            padding: 20px;
+            text-align: left;
+            width: 100%;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            letter-spacing: 0.01em;
+        }
+
+        .payment-inner {
+            padding: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+
+        .mainheading .mobileviews .donate,
+        .mainheading .mobileviews .donatetext,
+            {
+            text-align: left;
+        }
+
+        .mainheading .mobileviews .donatetext {
+            font-size: 18px;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        .search-drop {
+            font-size: 18px !important;
+            line-height: 26px !important;
+            font-weight: 500;
+            font-style: normal;
+            color: #212121 !important;
+        }
+
+        .aftersend {
+            font-size: 18px;
+            font-weight: 500;
+            font-style: normal;
+            text-align: center;
+        }
+
+        .bottomimagesshowmobile .images {
+        width: 60%;
+        float: right;
+        margin: auto;
+        position: relative;
+        }
+    </style>
+</head>
+
+<body class="white-bg">
+    <header>
+        <div class="container" style="margin: 0px;padding: 0px;">
+            <div class="col-sm-4 logohead ">
+                <a href="/" class="logo">
+                    <img src="images/favicon.png" class="img-fluid" style="height: 60px;" />
+                </a>
+
+                <a href="/my_account" class="my-account">
+                    My Account
+                </a>
+            </div>
+        </div>
+    </header>
+    <section class="middlebox">
+        <div class="container">
+            <div class="pick-a">Invite Friends</div>
+            <img class="payment-inner" alt="" src="images/share-page2.png">
+
+            <div class="col-sm-10 mainheading">
+                <div class="mobileviews">
+                    <div class="col-sm-4 lefticons">
+                        <span class="images">
+                            <img src="images/friendsleft.png" class="img-fluid">
+                        </span>
+                    </div>
+                    <div class="col-sm-8 textformat">
+                        <p class="donate">Ask three friends to give too. </p>
+                        <span class="donatetext">We know, we know. You already gave! But this last step is where the
+                            magic happens. Nudge your friends and watch your impact multiply.</span>
+                    </div>
+                    <div class="col-sm-12">
+                        <label class="text-left search-drop" style="padding-left: 3px;">Write a custom text below. Or,
+                            go with what we've got here.
+                            <span data-toggle="modal" data-target=".bs-example-modal-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                                </svg>
+                            </span>
+                        </label>
                     </div>
                 </div>
-                <div class="col-sm-10 mainheading">
-                    <div class="mobileviews">
-                        <div class="col-sm-4 lefticons">
+                <div class="deskviews">
+                    <p class="donate">Ask three friends to give too.</p>
+                    <span class="donatetext">We know, we know. You already gave! But this last step is where the magic
+                        happens. Nudge your friends and watch your impact multiply.</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section style="position: relative;top: -100px;">
+        <form method="POST" action="{{ url('invite') }}" enctype="multipart/form-data">
+            @csrf
+            <div class="col-sm-8 formwhite">
+                <div class="">
+                    <div class="col-sm-12 form-group">
+                        {{-- <input type="hidden" name="org" value="{{ $data->nonprofit }}"> --}}
+                        <input type="hidden" name="org" value="">
+                        <textarea id="txtarea" class="form-control paddingss" name="message" readonly>Hi, It’s {{ Auth::user()->name == 'User' ? 'I' : Auth::user()->name }}. I donated to something I care about today and think you should, too. Visit the link below to join my giving chain. {{ url('invites') }}?chain={{ $chain_id ?? '12345678' }}</textarea>
+                    </div>
+
+                    <div class="bottomimagesshow">
+                        <div class="col-sm-6 leftside">
                             <span class="images">
                                 <img src="images/friendsleft.png" class="img-fluid">
                             </span>
                         </div>
-                        <div class="col-sm-8 textformat">
-                           <p class="donate">Let’s keep the goodness going.</p>
-                            <span class="donatetext">You gave ${{Session::get('amount')}} to {{$charity}}. Start a chain reaction by asking 3 friends to give too. </span>
-                        </div>
-                    </div>
-                    <div class="deskviews">
-                        <p class="donate">Let’s keep the goodness going.</p>
-                    <span class="donatetext">You gave ${{Session::get('amount')}} to {{$charity}}. Start a chain reaction by asking 3 friends to give too. </span>
-                    </div>
-                    <form method="POST" action="{{ url('invite') }}" enctype="multipart/form-data">
-                    @csrf
-                    <div class="col-sm-8 formwhite">
-                        <div class="paddingss">                            
-                            <p class="linktext">Your friends will receive a message with a link:</p>
-                            <div class="col-sm-12 form-group">
-                                <input type="hidden" name="org" value="{{$org}}">
-                                <!-- <input type="hidden" name="message" value="Let's do something good. {{Auth::user()->name}} donated to '{{$charity}}' with givemygoodness.org and thinks you should too. Give $5 and help spark a chain of generosity. Join us here: {{url('invites')}}?friend={{Auth::user()->name}}&&ein={{$org}}&&chain={{$chain_id}}" /> -->
-                                <textarea class="form-control" name="message">Let's do something good. {{Auth::user()->name}} donated to "{{$charity}}" with givemygoodness.org and thinks you should too. Give $5 and help spark a chain of generosity. Join us here: {{url('invites')}}?friend={{$friend}}&&ein={{$org}}&&chain={{$chain_id}}                                    
-                                </textarea>
-                            </div>
-                            <div class="col-sm-12 form-group">
-                                <input style="color:black" class="form-control" type="tel" minlength="10" title="Please Enter Valid 10 digits Phone Number" placeholder="phone number" name="invitee_1" required />                                
-                            </div>
-                            <div class="col-sm-12 form-group">
-                                <input style="color:black" class="form-control" type="tel" minlength="10" title="Please Enter Valid 10 digits Phone Number" placeholder="phone number" name="invitee_2" />
-                            </div>
-                            <div class="col-sm-12 form-group">
-                                <input style="color:black" class="form-control" type="tel" minlength="10" title="Please Enter Valid 10 digits Phone Number" placeholder="phone number" name="invitee_3" />
-                                <!-- <em class="ustext">US only</em> -->
-                            </div>
-                            <h6 class="error mt-2 text-center" style="color:red;">{{Session::get('success')}}</h6>
-                            
-                            <!-- <div class="addbtn">
-                                <a href=""><i class="fas fa-plus-circle"></i></a>
-                            </div> -->
-                            <div class="bottomimagesshow">
-                                <div class="col-sm-6 leftside">
-                                    <span class="images">
-                                        <img src="images/friendsleft.png" class="img-fluid">
-                                    </span>
-                                </div>
-                                <div class="col-sm-6 rightside">
-                                    <span class="images">
-                                        <img src="images/friendsshare.png" class="img-fluid">
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 likebox margin">
-                            <div class="form-group">
-                                <div class="checkboxx">
-                                    <!-- <label class="containers">Send me weekly updates on my chain reaction via text
-                                      <input type="checkbox" />
-                                      <span class="checkmark"></span>
-                                    </label> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 pt-2 pb-4 send">
-                            <button type="submit" class="startbtn">Send</button>
-                        </div>
-                        <div class="col-sm-12 bottomimagesshowmobile">
+                        <div class="col-sm-6 rightside">
                             <span class="images">
                                 <img src="images/friendsshare.png" class="img-fluid">
                             </span>
                         </div>
                     </div>
-                    </form>
+                </div>
+                <div class="col-sm-12 pt-2 pb-4 send">
+                    <button type="submit" class="startbtn">Share</button>
+                </div>
+                <div class="col-sm-12 pt-2 pb-4 aftersend">
+                    <p>Fun Fact: Frie nds are more likely to donate if you ask them to.</p>
+                </div>
+                <br><br>
+                <div class="col-sm-12 bottomimagesshowmobile">
+                    <span >
+                        {{-- <img src="images/friends.png" class="img-fluid"> --}}
+                    </span>
+                    <span class="images">
+                        <img src="images/friends.png" class="img-fluid">
+                    </span>
                 </div>
             </div>
-        </section>
-        
-        @include('footer')
+        </form>
+    </section>
 
-        <script>
-            setTimeout(function() {
-                $('#alert').hide();
+    @include('footer')
+    <style>
+        #myModal .modal-header .close {
+            position: absolute;
+            opacity: 1;
+            /* left: -68px; */
+            top: -20px;
+            z-index: 999999;
+            opacity: 1 !important;
+            right: -15px !important;
+            }
+            #myModal h4.modal-title{
+                padding-bottom: 0px;
+            }
 
-                }, 3000);
-            $( document ).ready(function() {
-                if('{{$org}}' == ""){
-                    alert('Please make a donation before sharing');
-                    window.location.href = "/create";
-                }
-            });
-        </script>
-        
-    </body>
+            #myModal .modal-body {
+            padding-top: 0px;
+            }
+        #info .modal-dialog {
+            position:fixed;
+            top:auto;
+            right:auto;
+            left:auto;
+            bottom:-20px;
+            border: 2px solid #18191F;
+            margin: 0px;
+
+        }
+
+        #info .modal-content {
+            border-radius: 16px 16px 0 0;
+            padding: 0px 0px 20px 0;
+        }
+
+        #info .modal-header {
+            border-bottom: 2px solid #18191F;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: 0px;
+        }
+        #info .modal-body {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        #info .modal-body p {
+            text-align: left;
+        }
+        </style>
+
+<div id="info" class="modal fade bs-example-modal-lg" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" style="font-size: 34px;" class="btn " data-dismiss="modal"><i class="fas fa-exclamation-circle"></i></button>
+                <button type="button" style="font-size: 34px;" class="btn" data-dismiss="modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Sharing the link of your giving chain, you provide consent that you endorse the selected nonprofit and consent to have your name be visible by anyone with access to the link.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="myModal" class="modal fade hide" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><img src="images/close-btn.png" style="width: 100px;height: auto;"></button>
+                    <h4 class="modal-title">Donation Confirmed!</h4>
+                    <div></div>
+                    {{-- <p><i>Check your texts for a link to your receipt.</i></p> --}}
+                </div>
+                <div class="modal-body">
+                    <p><i>Check your texts for a link to your receipt.</i></p>
+                    <img src="images/share-page-modal-image.png" style="width: 100%;height: auto;padding: 20px 0px;">
+
+                    <p>We don’t care what everyone says about you, you’re all right in our book. </p>
+                    <p><i>Now keep the goodness going... </i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            $('#alert').hide();
+
+        }, 3000);
+        $(document).ready(function() {
+            if ('test' == "") {
+                alert('Please make a donation before sharing');
+                window.location.href = "/create";
+            }
+
+            $('#myModal').modal('show');
+        });
+
+        function expandTextarea(id) {
+            document.getElementById(id).addEventListener('keyup', function() {
+                this.style.overflow = 'hidden';
+                this.style.height = 0;
+                this.style.height = this.scrollHeight + 'px';
+            }, false);
+        }
+
+        expandTextarea('txtarea');
+    </script>
+
+</body>
+
 </html>

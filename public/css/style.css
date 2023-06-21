@@ -645,9 +645,10 @@ html {
     border-radius: 16px;
     width: 100%;
     display: inline-block;
-    padding: 60px;
+    padding: 10px;
     text-align: left;
     position: relative;
+    height: 180px;
 }
 
 .linktext {

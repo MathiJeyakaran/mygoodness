@@ -7,25 +7,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Payment;
 use App\Models\Transaction;
 use App\Models\User;
-use Omnipay\Omnipay;
 use Session;
-
 class PaymentController extends Controller
 {
-    private $gateway;
-
-    public function __construct() {
-        $this->gateway = Omnipay::create('PayPal_Rest');
-        $this->gateway->setClientId('AYHDPlnd7L8IMMmzml4lpV6HTmEDycMzwGzCQ6c99PD303RaDdJuQOKfHmtF_UYmzsx-qxD5Fbs-L4RD');
-        $this->gateway->setSecret('EBWL3v5tAUx2OMisZB8x6dSBqVHnp0bKAMdKblmGUBfcdxphkQfw0aQ0ipenlSDDXF7fh3vh242l15yd');
-        $this->gateway->setTestMode(true);
-    }
-
     public function pay(Request $request)
     {
-        // dd($request->all());
         try {
-
             $response = $this->gateway->purchase(array(
                 'amount' => $request->amount,
                 'currency' => 'USD',
@@ -35,77 +22,29 @@ class PaymentController extends Controller
 
             if ($response->isRedirect()) {
                 $response->redirect();
-            }
-            else{
+            } else {
                 return $response->getMessage();
             }
-
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
     }
 
-    // public function success(Request $request)
-    // {
-    //     if ($request->input('paymentId') && $request->input('PayerID')) {
-    //         $transaction = $this->gateway->completePurchase(array(
-    //             'payer_id' => $request->input('PayerID'),
-    //             'transactionReference' => $request->input('paymentId')
-    //         ));
-
-    //         $response = $transaction->send();
-
-    //         if ($response->isSuccessful()) {
-
-    //             $arr = $response->getData();
-    //             dd($arr);
-
-    //             $payment = new Payment();
-    //             $payment->payment_id = $arr['id'];
-    //             $payment->payer_id = $arr['payer']['payer_info']['payer_id'];
-    //             $payment->payer_email = $arr['payer']['payer_info']['email'];
-    //             $payment->amount = $arr['transactions'][0]['amount']['total'];
-    //             $payment->currency = env('PAYPAL_CURRENCY');
-    //             $payment->payment_status = $arr['state'];
-
-    //             $payment->save();
-
-    //             return "Payment is Successfull. Your Transaction Id is : " . $arr['id'];
-
-    //         }
-    //         else{
-    //             return $response->getMessage();
-    //         }
-    //     }
-    //     else{
-    //         return 'Payment declined!!';
-    //     }
-    // }
-
-    // public function error()
-    // {
-    //     return 'User declined the payment!';
-    // }
-
-
     public function success(Request $request)
     {
         $tx = $_GET['tx'];
-        // $token = 't81CNai4vCM443VL5bCDftAzPuKEqIq55aIPOF7EBs2KzVHwFdoNYYUY0MW';
         $token = 'LjfpML5OQNTWxPeczPczYfGKsUtBw_LSVNdFxAXiG-VVtDODEyzPafnDxO4';
         $ch = curl_init();
-        // $url = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
         $url = 'https://www.paypal.com/cgi-bin/webscr';
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array
-            (
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
             'cmd' => '_notify-synch',
             'tx' => $tx,
             'at' => $token,
-            )));
+        )));
 
         // Execute request and get response and status code
         $response = curl_exec($ch);
@@ -118,14 +57,13 @@ class PaymentController extends Controller
         $txn = explode("=", $lines[15]);
         $name = explode("=", $lines[8]);
         $name = $name[1];
-        $email = str_replace("%40","@",$email[1]);
+        $email = str_replace("%40", "@", $email[1]);
 
         $id = Auth::user()->id;
         $username = Auth::user()->name;
-        if($username == 'User'){
-            User::where('id','=',$id)->update(['name' => $name]);
+        if ($username == 'User') {
+            User::where('id', '=', $id)->update(['name' => $name]);
         }
-        // User::where('id','=',$id)->update(['email' => $email]);
         $data = new Payment;
         $data->donor = Auth::user()->id;
         $data->transaction_id = $txn[1];
@@ -137,13 +75,13 @@ class PaymentController extends Controller
         $data->save();
 
 
-        if(Session::get('donation')){
+        if (Session::get('donation')) {
             $data = new Payment;
             $data->donor = Auth::user()->id;
             $data->transaction_id = $txn[1];
             $data->transaction_amount = $amount[1];
             $data->donation_amount = Session::get('donation') - Session::get('amount');
-            $data->chain = Session::get('chain').'_'.'mygoodness';
+            $data->chain = Session::get('chain') . '_' . 'mygoodness';
             $data->charity_ein = 'mygoodness';
             $data->nonprofit = 'mygoodness';
             $data->save();
@@ -153,16 +91,83 @@ class PaymentController extends Controller
 
     public function error()
     {
-        // return view('users.declined');
         return redirect('create');
     }
 
     public function notify(Request $request)
     {
         $transaction_id = $_POST;
-        // dd($transaction_id);
         $data = new Transaction;
         $data->transaction_id = $transaction_id;
         $data->save();
+    }
+
+    public function checkout(Request $request)
+    {
+        $gateway = new \Braintree\Gateway([
+            'environment' => 'sandbox',
+            'merchantId' => '3jg8y93yryhx285y',
+            'publicKey' => 'jbnntk4tvgzqcyd2',
+            'privateKey' => 'd01e7060f4b9f583e7ba6ebdb0ef76d4'
+        ]);
+
+        $data = [
+            'total' => $request->total,
+            "donationAmount" => $request->donationAmount,
+            "charityEin" => $request->charityEin,
+            "charityName" => $request->charityName,
+            "clientToken" => $gateway->clientToken()->generate(),
+            "chain" => isset($request->chain) ? $request->chain : '' ,
+        ];
+
+        return view('braintree', compact('data'));
+    }
+
+    public function token(Request $request)
+    {
+        $gateway = new \Braintree\Gateway([
+            'environment' => 'sandbox',
+            'merchantId' => '3jg8y93yryhx285y',
+            'publicKey' => 'jbnntk4tvgzqcyd2',
+            'privateKey' => 'd01e7060f4b9f583e7ba6ebdb0ef76d4'
+        ]);
+
+        if ($request->input('payment_method_nonce') != null) {
+            $customer = Auth::user();
+            // dd($customer);
+
+            $result = $gateway->customer()->create(
+                [
+                    'firstName' => $customer['name'],
+                    'company' => $customer['company'] ?? "My Goodness",
+                    'email' => $customer['email'],
+                    'paymentMethodNonce' => $request->input('payment_method_nonce')
+                ]
+            );
+
+            $cusid = $result->customer->id;
+            $params = [
+                "amount" => $request->totalAmount,
+                "customerId" => $cusid,
+                "merchantAccountId" => "MyGoodness",
+                "options" => ["submitForSettlement" => true]
+            ];
+            $resultPay = $gateway->transaction()->sale($params);
+
+            $data = new Payment;
+            $data->donor = Auth::user()->id;
+            $data->transaction_id = $resultPay->transaction->id;
+            $data->transaction_amount = $request->totalAmount;
+            $data->donation_amount = $request->donationAmount;
+            $data->chain = $request->chain;
+            $data->charity_ein = $request->charityEin;
+            $data->nonprofit = $request->charityName;
+            $data->save();
+
+            return view('users.share', compact('data'));
+        } else {
+            $clientToken = $gateway->clientToken()->generate();
+            return view('braintree', ['token' => $clientToken]);
+        }
     }
 }
