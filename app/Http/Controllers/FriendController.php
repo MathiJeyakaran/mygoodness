@@ -34,8 +34,11 @@ class FriendController extends Controller
 
     public function invite(Request $request)
     {
+
+        // dd($request->all());
         $id = Auth::user()->phone;
-        $chain = Session::get('chain');
+        $chain = $request->chain;
+        // $request->invitee_1 = '';
         $data = $request->validate([
             'invitee_1' => ['required', 'string', 'min:10'],
             // 'invitee_2' => ['string', 'min:10'],
@@ -65,28 +68,32 @@ class FriendController extends Controller
                     $phone_number = $client->lookups->v1->phoneNumbers($user)->fetch(["countryCode" => "US"]);
                     $countryCode = $phone_number->countryCode;
                     if($countryCode != 'US'){
-                        return redirect()->back()->with('success', 'Kindly enter valid phone number without any symbols.');
+                        return 'Kindly enter valid phone number without any symbols.';
+                        // return redirect()->back()->with('success', 'Kindly enter valid phone number without any symbols.');
                     }
                   } catch (\Exception) {
+                    // return '1111111.';
                     return redirect()->back()->with('success', 'Kindly enter valid phone number without any symbols.');
                   }
 
             }
-            foreach ($invitees as $invitee) {
-                $user = $invitee;
+            // foreach ($invitees as $invitee) {
+            //     $user = $invitee;
 
-                try {
-                    $sms = $client->messages->create($user,
-                    [
-                        'from' => "+12134747974", // From a valid Twilio number, for US numbers
-                        // 'from' => "+17087667868", // From a valid Twilio number, for indian numbers
-                        'body' => $message
-                    ]
-                );
-                  } catch (\Exception) {
-                    return redirect()->back()->with('success', 'Kindly enter valid phone number without any symbols.');
-                  }
-            }
+            //     try {
+            //         // return 'test22222';
+            //         $sms = $client->messages->create($user,
+            //         [
+            //             'from' => "+12524196165", // From a valid Twilio number, for US numbers
+            //             // 'from' => "+17087667868", // From a valid Twilio number, for indian numbers
+            //             'body' => $message
+            //         ]
+            //     );
+            //       } catch (\Exception) {
+            //         // return 'test11111';
+            //         return redirect()->back()->with('success', 'Kindly enter valid phone number without any symbols.');
+            //       }
+            // }
 
             $invitees = json_encode($invitees);
             $data = new Invitation;
@@ -100,8 +107,8 @@ class FriendController extends Controller
     public function growing(Request $request)
     {
         $chain_id = $request->chain;
-        $id = 1;
-        $uid = '17cbf616-1606-4edd-b30f-d5538a65ce2e';
+        $id = Auth::user()->id;
+        $uid = Auth::user()->uuid;
         // $chains  = Payment::select('donor')->whereIn('chain', Payment::select('chain')->where('donor', $id)->whereNot('nonprofit', 'mygoodness'))->get()->toArray();
         $chains  = Payment::select('donor')->distinct('donor')->whereIn('chain', Payment::select('chain')->where('chain', $chain_id)->whereNot('nonprofit', 'mygoodness'))->get()->toArray();
         $org = [];

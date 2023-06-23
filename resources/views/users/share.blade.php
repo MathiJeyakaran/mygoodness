@@ -205,9 +205,14 @@
             <div class="col-sm-8 formwhite">
                 <div class="">
                     <div class="col-sm-12 form-group">
-                        {{-- <input type="hidden" name="org" value="{{ $data->nonprofit }}"> --}}
-                        <input type="hidden" name="org" value="">
-                        <textarea id="txtarea" class="form-control paddingss" name="message" readonly>Hi, It’s {{ Auth::user()->name == 'User' ? 'I' : Auth::user()->name }}. I donated to something I care about today and think you should, too. Visit the link below to join my giving chain. {{ url('invites') }}?chain={{ $chain_id ?? '12345678' }}</textarea>
+                        <input type="hidden" name="org" value="{{ $data->nonprofit }}">
+                        <input type="hidden" name="chain" value="{{ $data->chain }}">
+                        <input type="hidden" name="invitee_1" value="2134747975">
+                        <input type="hidden" name="invitee_1" value="2134747976">
+                        <input type="hidden" name="invitee_1" value="2134747977">
+
+
+                        <textarea id="txtarea" class="form-control paddingss" name="message" readonly>Hi, It’s {{ Auth::user()->name == 'User' ? 'I' : Auth::user()->name }}. I donated to something I care about today and think you should, too. Visit the link below to join my giving chain. {{ url('invites') }}?chain={{ $data->chain }}</textarea>
                     </div>
 
                     <div class="bottomimagesshow">
@@ -224,7 +229,7 @@
                     </div>
                 </div>
                 <div class="col-sm-12 pt-2 pb-4 send">
-                    <button type="submit" class="startbtn">Share</button>
+                    <button type="submit" class="startbtn" style="z-index: 1111111;position: relative;">Share</button>
                 </div>
                 <div class="col-sm-12 pt-2 pb-4 aftersend">
                     <p>Fun Fact: Frie nds are more likely to donate if you ask them to.</p>

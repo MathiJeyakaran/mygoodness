@@ -133,8 +133,14 @@
     }
     .donate {
         font-size: 32px;
-        line-height: 32px;
-        text-align: left;
+        /* line-height: 32px; */
+        text-align: center;
+        width: 250px;
+        font-weight: 700;
+        /* font-family: Ronoto slab; */
+        line-height: 40px;
+        position: relative;
+        left: 40px;
     }
     .mobileview {
         display: block;
@@ -181,6 +187,10 @@
         width: 100%;
         margin: 0 0 30px;
         float: left;
+        border-bottom-left-radius: 450% 250%;
+        border-bottom-right-radius: 450% 230%;
+        background: #61e4c5;
+        text-align: center;
     }
     .grrencolorbox:before {
         background: #61E4C5;
@@ -199,7 +209,7 @@
     .grrencolorbox .showdesk {
         position: relative;
         right: 0;
-        bottom: -10px;
+        bottom: 0px;
     }
     .friendstext {
         font-size: 24px;
@@ -211,9 +221,10 @@
         line-height: 70px;
     }
     .donatetext {
-        font-weight: 400;
+        font-weight: 600;
         font-size: 24px;
         line-height: 32px;
+        margin-top: 40px;
     }
     button.black {
         padding: 7px 18px;

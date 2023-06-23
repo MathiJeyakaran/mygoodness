@@ -903,7 +903,7 @@ button.black {
     line-height: 24px;
     text-align: center;
     color: #18191f;
-    width: 100%;
+    width: 65%;
     float: left;
     margin: 10px 0;
     white-space: nowrap;
@@ -917,6 +917,7 @@ button.black {
 
 .starbox.green {
     background: #d6fcf7;
+    text-align: center;
 }
 
 .starbox.yellow {
