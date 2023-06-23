@@ -9,7 +9,6 @@ use App\Models\Transaction;
 use App\Models\User;
 use Session;
 use Illuminate\Support\Str;
-use Illuminate\Support\Str;
 class PaymentController extends Controller
 {
     public function pay(Request $request)
@@ -161,7 +160,7 @@ class PaymentController extends Controller
             $data->transaction_id = $resultPay->transaction->id;
             $data->transaction_amount = $request->totalAmount;
             $data->donation_amount = $request->donationAmount;
-            $data->chain = $request->chain;
+            $data->chain = Str::random(30);
             $data->charity_ein = $request->charityEin;
             $data->nonprofit = $request->charityName;
             $data->save();
