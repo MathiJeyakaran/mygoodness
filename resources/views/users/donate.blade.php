@@ -328,7 +328,7 @@
 
     <section>
         <form id="myForm" method="POST" action="{{ url('continue') }}" enctype="multipart/form-data">
-            @if ($chainData)
+            @if (empty($chainData))
                 <div class="p-text text-center p-2">Margaret gave a donation to <br> Nonprofit...give there too or <br>
                     choose your own adventure.
                 </div>
@@ -339,7 +339,7 @@
             @endif
 
             @csrf
-            @if ($chainData)
+            @if (empty($chainData))
                 <div class="fulwidth margiboxed" style="margin: 10px 0;position: relative;">
                     <div class="col-sm-12 likebox">
                         <br>
