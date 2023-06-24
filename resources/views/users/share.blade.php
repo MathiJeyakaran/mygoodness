@@ -212,7 +212,7 @@
                         <input type="hidden" name="invitee_1" value="2134747977">
 
 
-                        <textarea id="txtarea" class="form-control paddingss" name="message" readonly>Hi, It’s {{ Auth::user()->name == 'User' ? 'I' : Auth::user()->name }}. I donated to something I care about today and think you should, too. Visit the link below to join my giving chain. {{ url('invites') }}?chain={{ $data->chain }}</textarea>
+                        <textarea id="txtarea" class="form-control paddingss" name="message">Hi, It’s {{ Auth::user()->name == 'User' ? 'I' : Auth::user()->name }}. I donated to something I care about today and think you should, too. Visit the link below to join my giving chain. {{ url('invites') }}?chain={{ $data->chain }}</textarea>
                     </div>
 
                     <div class="bottomimagesshow">
@@ -316,7 +316,7 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><img src="images/close-btn.png" style="width: 100px;height: auto;"></button>
+                    <button type="button" class="close" data-dismiss="modal"><img src="images/close-btn.png" style="width: 30px;height: auto;position: relative;right: -150px;"></button>
                     <h4 class="modal-title">Donation Confirmed!</h4>
                     <div></div>
                     {{-- <p><i>Check your texts for a link to your receipt.</i></p> --}}

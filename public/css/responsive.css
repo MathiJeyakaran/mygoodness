@@ -78,7 +78,7 @@
         padding: 0;
     }
     .mobileviews .col-sm-8.textformat {
-        width: 70%;
+        width: 67%;
         float: right;
         padding: 0;
     }
@@ -133,11 +133,8 @@
     }
     .donate {
         font-size: 32px;
-        /* line-height: 32px; */
         text-align: center;
-        width: 250px;
         font-weight: 700;
-        /* font-family: Ronoto slab; */
         line-height: 40px;
         position: relative;
         left: 40px;

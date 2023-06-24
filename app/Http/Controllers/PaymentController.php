@@ -135,7 +135,6 @@ class PaymentController extends Controller
 
         if ($request->input('payment_method_nonce') != null) {
             $customer = Auth::user();
-            // dd($customer);
 
             $result = $gateway->customer()->create(
                 [
