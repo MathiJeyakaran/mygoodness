@@ -91,7 +91,7 @@
             </div>
                 <div class="col-sm-4 growimage">
                 <span class="images-left">
-                        <img src="{{ asset('images/vector_48.png') }}" class="img-fluid" />
+                        <img src="{{ asset('images/Vector_48.png') }}" class="img-fluid" />
 
                     </span>
                 <span class="images">
@@ -145,7 +145,7 @@
 
                 </div>
                 <span class="images-right">
-                        <img src="{{ asset('images/vector_46.png') }}" class="img-fluid" />
+                        <img src="{{ asset('images/Vector_46.png') }}" class="img-fluid" />
 
                     </span>
                 <div class="col-sm-12 grow">
