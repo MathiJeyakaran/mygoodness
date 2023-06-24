@@ -257,7 +257,7 @@
         margin-bottom: 0px;
     }
     .fulwidth.margiboxed {
-        /* margin: 30px 0; */
+        margin: 30px 0 !important;
     }
     .orgFix {
         margin-top: 10px !important;

@@ -247,7 +247,8 @@
         .selectize-control.single .selectize-input {
             padding-left: 30px;
         }
-        .selectize-dropdown.single{
+
+        .selectize-dropdown.single {
             padding-left: 10px;
         }
 
@@ -361,13 +362,13 @@
             @endif
 
             <div class="fulwidth margiboxed">
-                <div class="col-sm-12">
+                <div class="col-sm-12 mt-3">
                     <div class="form-group">
                         <label class="text-left search-drop" style="padding-left: 3px;">Or, search for a different
                             nonprofit
                             <span data-toggle="modal" data-target=".bs-example-modal-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
                                     <path
                                         d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
                                 </svg>
@@ -380,10 +381,14 @@
                             <span class="fa fa-search form-control-feedback"></span>
                             <select class="form-control ct" id="org" name="org" placeholder="" required>
                             </select>
-                            <button class="click-search btn">
+                            <button class="click-search btn" id="submitFormNext" type="button">
                                 <i class="fas fa-arrow-right" style="font-size: 20px;"></i>
                             </button>
-                        </div> <br>
+                            <label class="text-left search-drop"
+                                style="padding-left: 3px;position: relative;top: -40px;left: 10px;font-size: 16px !important;font-style: italic;">press
+                                enter to search</label>
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-sm-12 givebox" style="margin-top: 40px;margin-bottom: 29px;">
@@ -423,35 +428,37 @@
     </section>
     @include('footer')
     <style>
-    #info .modal-dialog {
-        position:fixed;
-        top:auto;
-        right:auto;
-        left:auto;
-        bottom:-20px;
-        border: 2px solid #18191F;
-        margin: 0px;
+        #info .modal-dialog {
+            position: fixed;
+            top: auto;
+            right: auto;
+            left: auto;
+            bottom: -20px;
+            border: 2px solid #18191F;
+            margin: 0px;
 
-    }
+        }
 
-    #info .modal-content {
-        border-radius: 16px 16px 0 0;
-        padding: 0px 0px 20px 0;
-    }
+        #info .modal-content {
+            border-radius: 16px 16px 0 0;
+            padding: 0px 0px 20px 0;
+        }
 
-    #info .modal-header {
-        border-bottom: 2px solid #18191F;
-        padding-left: 20px;
-        padding-right: 20px;
-        margin: 0px;
-    }
-    #info .modal-body {
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-    #info .modal-body p {
-        text-align: left;
-    }
+        #info .modal-header {
+            border-bottom: 2px solid #18191F;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: 0px;
+        }
+
+        #info .modal-body {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        #info .modal-body p {
+            text-align: left;
+        }
     </style>
 
     <div id="info" class="modal fade bs-example-modal-lg" role="dialog">
@@ -459,11 +466,14 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" style="font-size: 34px;" class="btn " data-dismiss="modal"><i class="fas fa-exclamation-circle"></i></button>
-                    <button type="button" style="font-size: 34px;" class="btn" data-dismiss="modal"><i class="fas fa-times"></i></button>
+                    <button type="button" style="font-size: 34px;" class="btn " data-dismiss="modal"><i
+                            class="fas fa-exclamation-circle"></i></button>
+                    <button type="button" style="font-size: 34px;" class="btn" data-dismiss="modal"><i
+                            class="fas fa-times"></i></button>
                 </div>
                 <div class="modal-body">
-                    <p>Results are generated based on public information available from every.org. mygoodness does not endorse or have any legal relationship with the nonprofits listed here.</p>
+                    <p>Results are generated based on public information available from every.org. mygoodness does not
+                        endorse or have any legal relationship with the nonprofits listed here.</p>
                 </div>
             </div>
         </div>
@@ -482,6 +492,7 @@
                     getsearch();
                 }
             })
+
             function getsearch() {
                 var org = $('#org-selectized').val();
                 console.log(org);
@@ -511,7 +522,7 @@
 
                             $('#org-selectized').click();
 
-                            $('.has-search .fa-search').attr('style','display:none')
+                            $('.has-search .fa-search').attr('style', 'display:none')
                         }
                     });
                 }
@@ -532,7 +543,21 @@
         }
 
         $('#submitForm').click(function() {
+            submitForm()
+        });
+
+        $('#submitFormNext').click(function() {
+            submitForm()
+        });
+
+        function submitForm() {
             var orgein = $('.option.selected.active').attr("data-value")
+            console.log(orgtext);
+            // return false
+            if (orgein == '' || orgein === undefined) {
+                alert('Please search organization')
+                return false;
+            }
             $.ajax({
                 type: "post",
                 url: "{{ url('/orgdata') }}",
@@ -543,6 +568,7 @@
                     org: orgtext
                 },
                 success: function(data) {
+                    console.log(data);
                     organizations = data.find(organizations => organizations.ein === orgein);
                     console.log(organizations);
                     $('#charity_name').val(organizations.name);
@@ -550,7 +576,8 @@
                     $('#myForm').submit();
                 }
             });
-        });
+        }
     </script>
 </body>
+
 </html>
