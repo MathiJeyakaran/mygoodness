@@ -124,8 +124,8 @@ color: #000;
 
                     </div>
                     <p class="donate flex">Now for the good stuff.</p>
-                    <img src="images/share-link-icon.png" alt="" style="position: relative;top: 172px;width: 76px;left: -10px;">
-                    <img src="images/four-star-icon.png" alt="" style="position: relative;top: 140px;width: 50px;right: 130px;">
+                    <img src="images/share-link-icon.png" alt="" style="position: relative;top: 100px;width: 76px;left: 130px;">
+                    <img src="images/four-star-icon.png" alt="" style="position: relative;top: 140px;width: 50px;right: 170px;">
                     <div class="showdesk">
                         <img src="images/growingmobile.png">
                     </div>
