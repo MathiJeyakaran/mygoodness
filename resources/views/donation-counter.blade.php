@@ -57,7 +57,7 @@
             </div>
             <div class="col-sm-12 grow">
                 <div class="col-sm-8 growtext">
-                    
+
                     @if ($chainData)
                         <p class="growhead" style="margin-bottom: 3rem;">Oh look, <br> another do-gooder.</p>
                         <span class="smallgrowtext">
@@ -74,14 +74,14 @@
                 </div>
 
             </div>
-            <div class="col-sm-12 grow">
+            <div class="col-sm-12 grow mt-3 mb-3">
                 <div class="col-sm-8 growtext">
                     <break>
                 <div class="circle-container">
                         <div class="circle">{{ $totalUsers }}</div>
 
                     </div>
-                    <p class="circle-text">
+                    <p class="circle-text mt-3">
                         @if ($chainData)
                             other friends already gave. It's about time they invited you.
                         @else
