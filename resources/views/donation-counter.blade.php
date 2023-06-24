@@ -57,6 +57,7 @@
             </div>
             <div class="col-sm-12 grow">
                 <div class="col-sm-8 growtext">
+                    
                     @if ($chainData)
                         <p class="growhead" style="margin-bottom: 3rem;">Oh look, <br> another do-gooder.</p>
                         <span class="smallgrowtext">

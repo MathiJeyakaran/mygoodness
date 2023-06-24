@@ -160,7 +160,7 @@ class PaymentController extends Controller
             $data->transaction_id = $resultPay->transaction->id;
             $data->transaction_amount = $request->totalAmount;
             $data->donation_amount = $request->donationAmount;
-            $data->chain = Str::random(30);;
+            $data->chain = Str::random(30);
             $data->charity_ein = $request->charityEin;
             $data->nonprofit = $request->charityName;
             $data->save();
