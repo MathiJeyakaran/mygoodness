@@ -169,7 +169,7 @@ class PaymentController extends Controller
 
             $message = "Faith in humanity restored! Thank you for giving with mygoodness.
 
-            Tap " . url('invites') . "?chain=". $data->chain . " to follow along as your investment inspires others to do good too.
+            Tap " . url('growing') . "?chain=". $data->chain . " to follow along as your investment inspires others to do good too.
 
             Visit the ". url('my_account') ." page to download a donation receipt.”
 
