@@ -32,14 +32,14 @@
         href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
 
     <style>
+        .white-bg {
+            background: #fff;
+            width: 100%;
+            float: left;
+            margin: auto;
+            /* padding: 20px 0; */
+        }
 
-    .white-bg {
-    background: #fff;
-    width: 100%;
-    float: left;
-    margin: auto;
-    /* padding: 20px 0; */
-    }
         .white-bg .logohead {
             padding: 0;
             clear: both;
@@ -55,7 +55,7 @@
             background: #61e4c5;
             border-bottom-left-radius: 450% 130%;
             border-bottom-right-radius: 450% 130%;
-            height: 600px;
+            height: 670px;
         }
 
         #textarea {
@@ -137,10 +137,10 @@
         }
 
         .bottomimagesshowmobile .images {
-        width: 60%;
-        float: right;
-        margin: auto;
-        position: relative;
+            width: 60%;
+            float: right;
+            margin: auto;
+            position: relative;
         }
     </style>
 </head>
@@ -179,9 +179,9 @@
                     <div class="col-sm-12">
                         <label class="text-left search-drop" style="padding-left: 3px;">Write a custom text below. Or,
                             go with what we've got here.
-                            <span data-toggle="modal" data-target=".bs-example-modal-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                            <span data-toggle="modal" data-target=".bs-example-modal-lg" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
                                     <path
                                         d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
                                 </svg>
@@ -211,8 +211,9 @@
                         <input type="hidden" name="invitee_1" value="2134747976">
                         <input type="hidden" name="invitee_1" value="2134747977">
 
-
-                        <textarea id="txtarea" class="form-control paddingss" name="message">Hi, It’s {{ Auth::user()->name == 'User' ? 'I' : Auth::user()->name }}. I donated to something I care about today and think you should, too. Visit the link below to join my giving chain. {{ url('invites') }}?chain={{ $data->chain }}</textarea>
+                        <textarea id="txtarea" class="form-control paddingss" name="message">Hi, It’s {{ Auth::user()->name == 'User' ? 'I' : Auth::user()->name }}. I donated to something I care about today and think you should, too. Visit the link below to join my giving chain. </textarea>
+                        <input type="hidden" name="chainLinkUrl"
+                            value="{{ url('invites') }}?chain={{ $data->chain }}">
                     </div>
 
                     <div class="bottomimagesshow">
@@ -229,14 +230,15 @@
                     </div>
                 </div>
                 <div class="col-sm-12 pt-2 pb-4 send">
-                    <button type="submit" class="startbtn" style="z-index: 1111111;position: relative;">Share</button>
+                    <button type="submit" class="startbtn"
+                        style="z-index: 1111111;position: relative;">Share</button>
                 </div>
                 <div class="col-sm-12 pt-2 pb-4 aftersend">
                     <p>Fun Fact: Frie nds are more likely to donate if you ask them to.</p>
                 </div>
                 <br><br>
                 <div class="col-sm-12 bottomimagesshowmobile">
-                    <span >
+                    <span>
                         {{-- <img src="images/friends.png" class="img-fluid"> --}}
                     </span>
                     <span class="images">
@@ -257,20 +259,22 @@
             z-index: 999999;
             opacity: 1 !important;
             right: -15px !important;
-            }
-            #myModal h4.modal-title{
-                padding-bottom: 0px;
-            }
+        }
 
-            #myModal .modal-body {
+        #myModal h4.modal-title {
+            padding-bottom: 0px;
+        }
+
+        #myModal .modal-body {
             padding-top: 0px;
-            }
+        }
+
         #info .modal-dialog {
-            position:fixed;
-            top:auto;
-            right:auto;
-            left:auto;
-            bottom:-20px;
+            position: fixed;
+            top: auto;
+            right: auto;
+            left: auto;
+            bottom: -20px;
             border: 2px solid #18191F;
             margin: 0px;
 
@@ -287,43 +291,50 @@
             padding-right: 20px;
             margin: 0px;
         }
+
         #info .modal-body {
             padding-left: 30px;
             padding-right: 30px;
         }
+
         #info .modal-body p {
             text-align: left;
         }
-        </style>
+    </style>
 
-<div id="info" class="modal fade bs-example-modal-lg" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" style="font-size: 34px;" class="btn " data-dismiss="modal"><i class="fas fa-exclamation-circle"></i></button>
-                <button type="button" style="font-size: 34px;" class="btn" data-dismiss="modal"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="modal-body">
-                <p>Sharing the link of your giving chain, you provide consent that you endorse the selected nonprofit and consent to have your name be visible by anyone with access to the link.</p>
+    <div id="info" class="modal fade bs-example-modal-lg" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" style="font-size: 34px;" class="btn " data-dismiss="modal"><i
+                            class="fas fa-exclamation-circle"></i></button>
+                    <button type="button" style="font-size: 34px;" class="btn" data-dismiss="modal"><i
+                            class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <p>Sharing the link of your giving chain, you provide consent that you endorse the selected
+                        nonprofit and consent to have your name be visible by anyone with access to the link.</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <div id="myModal" class="modal fade hide" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><img src="images/close-btn.png" style="width: 30px;height: auto;position: relative;right: -150px;"></button>
+                    <button type="button" class="close" data-dismiss="modal"><img src="images/close-btn.png"
+                            style="width: 30px;height: auto;position: relative;right: -150px;"></button>
                     <h4 class="modal-title">Donation Confirmed!</h4>
                     <div></div>
                     {{-- <p><i>Check your texts for a link to your receipt.</i></p> --}}
                 </div>
                 <div class="modal-body">
                     <p><i>Check your texts for a link to your receipt.</i></p>
-                    <img src="images/share-page-modal-image.png" style="width: 116%;height: auto;padding: 20px 0px;position: relative;left: -25px;">
+                    <img src="images/share-page-modal-image.png"
+                        style="width: 116%;height: auto;padding: 20px 0px;position: relative;left: -25px;">
 
                     <p>We don’t care what everyone says about you, you’re all right in our book. </p>
                     <p><i>Now keep the goodness going... </i></p>
@@ -333,6 +344,7 @@
     </div>
 
     <script>
+        'use strict';
         setTimeout(function() {
             $('#alert').hide();
 
@@ -355,6 +367,138 @@
         }
 
         expandTextarea('txtarea');
+
+        function sleep(delay) {
+            return new Promise(resolve => {
+                setTimeout(resolve, delay);
+            });
+        }
+
+        function logText(message, isError) {
+            if (isError)
+                console.error(message);
+            else
+                console.log(message);
+
+            const p = document.createElement('p');
+            if (isError)
+                p.setAttribute('class', 'error');
+            document.querySelector('#output').appendChild(p);
+            p.appendChild(document.createTextNode(message));
+        }
+
+        function logError(message) {
+            logText(message, true);
+        }
+
+        function setShareButtonsEnabled(enabled) {
+            document.querySelector('#share').disabled = !enabled;
+            document.querySelector('#share-no-gesture').disabled = !enabled;
+        }
+
+        function checkboxChanged(e) {
+            const checkbox = e.target;
+            const textfield = document.querySelector('#' + checkbox.id.split('_')[0]);
+
+            textfield.disabled = !checkbox.checked;
+            if (!checkbox.checked)
+                textfield.value = '';
+        }
+
+        function checkBasicFileShare() {
+            // XXX: There is no straightforward API to do this.
+            // For now, assume that text/plain is supported everywhere.
+            const txt = new Blob(['Hello, world!'], {
+                type: 'text/plain'
+            });
+            // XXX: Blob support? https://github.com/w3c/web-share/issues/181
+            const file = new File([txt], "test.txt");
+            return navigator.canShare({
+                files: [file]
+            });
+        }
+
+
+
+        async function testWebShare() {
+            const title_input = document.querySelector('#title');
+            const text_input = document.querySelector('#text');
+            const url_input = document.querySelector('#url');
+            /** @type {HTMLInputElement} */
+            const file_input = document.querySelector('#files');
+
+            const title = title_input.disabled ? undefined : title_input.value;
+            const text = text_input.disabled ? undefined : text_input.value;
+            const url = url_input.disabled ? undefined : url_input.value;
+            const files = file_input.disabled ? undefined : file_input.files;
+
+            if (files && files.length > 0) {
+                if (!navigator.canShare) {
+                    logError('Warning: canShare is not supported. File sharing may not be supported at all.');
+                } else if (!checkBasicFileShare()) {
+                    logError('Error: File sharing is not supported in this browser.');
+                    setShareButtonsEnabled(true);
+                    return;
+                } else if (!navigator.canShare({
+                        files
+                    })) {
+                    logError('Error: share() does not support the given files');
+                    for (const file of files) {
+                        logError(`File info: name - ${file.name}, size ${file.size}, type ${file.type}`);
+                    }
+                    setShareButtonsEnabled(true);
+                    return;
+                }
+            }
+
+
+            setShareButtonsEnabled(false);
+            try {
+                await navigator.share({
+                    files,
+                    title,
+                    text,
+                    url
+                });
+                logText('Successfully sent share');
+            } catch (error) {
+                logError('Error sharing: ' + error);
+            }
+            setShareButtonsEnabled(true);
+        }
+
+        async function testWebShareDelay() {
+            setShareButtonsEnabled(false);
+            await sleep(6000);
+            testWebShare();
+        }
+
+        function onLoad() {
+            // Checkboxes disable and delete textfields.
+            document.querySelector('#title_checkbox').addEventListener('click',
+                checkboxChanged);
+            document.querySelector('#text_checkbox').addEventListener('click',
+                checkboxChanged);
+            document.querySelector('#url_checkbox').addEventListener('click',
+                checkboxChanged);
+
+            document.querySelector('#share').addEventListener('click', testWebShare);
+            document.querySelector('#share-no-gesture').addEventListener('click',
+                testWebShareDelay);
+
+            if (navigator.share === undefined) {
+                setShareButtonsEnabled(false);
+                if (window.location.protocol === 'http:') {
+                    // navigator.share() is only available in secure contexts.
+                    window.location.replace(window.location.href.replace(/^http:/, 'https:'));
+                } else {
+                    logError('Error: You need to use a browser that supports this draft ' +
+                        'proposal.');
+                }
+            }
+        }
+
+        window.addEventListener('load', onLoad);
     </script>
 
 </body>
