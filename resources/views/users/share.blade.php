@@ -333,7 +333,7 @@
                 </div>
                 <div class="modal-body">
                     <p><i>Check your texts for a link to your receipt.</i></p>
-                    <img src="images/share-page-modal-image.png"
+                    <img src="images/share-page-popup2.png"
                         style="width: 116%;height: auto;padding: 20px 0px;position: relative;left: -25px;">
 
                     <p>We don’t care what everyone says about you, you’re all right in our book. </p>
@@ -346,15 +346,13 @@
     <script>
         'use strict';
         setTimeout(function() {
-            $('#alert').hide();
-
-        }, 3000);
+            $('#myModal').modal('hide');
+        }, 4000);
         $(document).ready(function() {
             if ('test' == "") {
                 alert('Please make a donation before sharing');
                 window.location.href = "/create";
             }
-
             $('#myModal').modal('show');
         });
 
