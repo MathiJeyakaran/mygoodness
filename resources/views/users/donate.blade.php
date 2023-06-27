@@ -364,8 +364,7 @@
             <div class="fulwidth margiboxed">
                 <div class="col-sm-12 mt-3">
                     <div class="form-group">
-                        <label class="text-left search-drop" style="padding-left: 3px;">Or, search for a different
-                            nonprofit
+                        <label class="text-left search-drop" style="padding-left: 3px;">Search for a nonprofit
                             <span data-toggle="modal" data-target=".bs-example-modal-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
@@ -472,7 +471,7 @@
                             class="fas fa-times"></i></button>
                 </div>
                 <div class="modal-body">
-                    <p>Results are generated based on public information available from every.org. mygoodness does not
+                    <p>Results are generated based on public information available from <a href="https://www.every.org/">every.org</a> . mygoodness does not
                         endorse or have any legal relationship with the nonprofits listed here.</p>
                 </div>
             </div>

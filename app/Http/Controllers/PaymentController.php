@@ -7,8 +7,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Payment;
 use App\Models\Transaction;
 use App\Models\User;
+use Twilio\Rest\Client;
 use Session;
+use Exception;
 use Illuminate\Support\Str;
+
 class PaymentController extends Controller
 {
     public function pay(Request $request)
@@ -118,7 +121,7 @@ class PaymentController extends Controller
             "charityEin" => $request->charityEin,
             "charityName" => $request->charityName,
             "clientToken" => $gateway->clientToken()->generate(),
-            "chain" => isset($request->chain) ? $request->chain : '' ,
+            "chain" => isset($request->chain) ? $request->chain : '',
         ];
 
         return view('braintree', compact('data'));
@@ -133,7 +136,7 @@ class PaymentController extends Controller
             'privateKey' => 'd01e7060f4b9f583e7ba6ebdb0ef76d4'
         ]);
 
-        if ($request->input('payment_method_nonce') != null) {
+        if ($request->input() != null) {
             $customer = Auth::user();
 
             $result = $gateway->customer()->create(
@@ -163,6 +166,31 @@ class PaymentController extends Controller
             $data->charity_ein = $request->charityEin;
             $data->nonprofit = $request->charityName;
             $data->save();
+
+            $message = "Faith in humanity restored! Thank you for giving with mygoodness.
+
+            Tap <here> to follow along as your investment inspires others to do good too.
+
+            Visit the <My Account> page to download a donation receipt.”
+
+            Text your email to receive your future receipts to your inbox";
+
+            try {
+
+                $token = config('services.twilio.twilio_token');
+                $twilio_sid = config('services.twilio.twilio_sid');
+                $twilio_verify_sid = config('services.twilio.twilio_verify');
+                $client = new Client($twilio_sid, $token);
+
+                $client->messages->create('+12524196165', [
+                    'from' => '+12134747974',
+                    'body' => $message
+                ]);
+            } catch (Exception $e) {
+                dd("Error: " . $e->getMessage());
+            }
+
+
 
             return view('users.share', compact('data'));
         } else {

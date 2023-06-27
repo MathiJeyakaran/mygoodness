@@ -45,8 +45,8 @@ html {
 }
 
 .circle-container {
-    width: 190px;
-    height: 190px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     border: 5px solid #000000;
     background-color: #61e4c5;
@@ -102,8 +102,12 @@ p {
     font-style: normal;
     font-weight: 700;
     font-size: 94px;
-    padding: 25px;
-    height: 190px;
+    /* padding: 25px; */
+    /* height: 200px; */
+    border-radius: 50%;
+    /* position: relative; */
+    /* margin: 20px; */
+    line-height: 190px;
 }
 
 .circle-list {

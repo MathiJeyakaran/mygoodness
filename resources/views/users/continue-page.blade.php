@@ -215,7 +215,7 @@
                                         <div
                                             style="width: 70%;float: left;padding: 10px;text-align: left;font-weight: 500;font-size: 20px;">
                                             <p class="nonprofit-name">{{ $data['charity_name'] }}</p>
-                                            <p class="nonprofit-name">{{ $data['ein'] }}</p>
+                                            <p class="nonprofit-name">EIN: {{ $data['ein'] }}</p>
                                         </div>
                                     </div>
 
@@ -224,7 +224,8 @@
                             <div class="col-sm-12 pb-2">
                                 <p class="card-text"
                                     style="font-style: italic;text-align: left;font-weight: 400;font-size: 16px;line-height: 26px;">
-                                    ...not the right place? <a href="/">go back</a> </p>
+                                    ...not the right place? <a href="/create" style="z-index: 111;position: relative;">go back</a> </p>
+
                             </div>
                         </div>
                     </div>

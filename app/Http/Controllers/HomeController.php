@@ -54,6 +54,11 @@ class HomeController extends Controller
     public function verification(Request $request)
     {
         // dd($request->all());
+
+        $user_count = DB::table('payments')
+            ->select('donor', DB::raw('count(*) as total'))
+            ->groupBy('donor')
+            ->get();
         $data = $request->validate([
           'phone' => ['required', 'string'],
         ]);
@@ -94,11 +99,13 @@ class HomeController extends Controller
         $checkUser = User::select('*')->where('phone', $mobile)->get(); // check if user/mobile number is already exist
         $count = count($checkUser);
         if($count){
-            $totalUsers = User::whereNotNull('phone')->distinct('phone')->count();
+            // $totalUsers = User::whereNotNull('phone')->distinct('phone')->count();
+
+
             // return view('donation-counter', compact('mobile', 'totalUsers'));
 
             return view('donation-counter', [
-                'totalUsers' => $totalUsers,
+                'totalUsers' => count($user_count),
                 'mobile' => $mobile,
                 'chainData' => '',
                 'userData' => '',
@@ -111,29 +118,32 @@ class HomeController extends Controller
             $user->phone = $mobile;
             $user->password = Hash::make('mygoodness@123');
             $user->save();
-            return view('users.donate');
+            // return view('users.donate');
+
+            return view('donation-counter', [
+                'totalUsers' => count($user_count),
+                'mobile' => $mobile,
+                'chainData' => '',
+                'userData' => '',
+            ]);
 
         }
     }
 
     public function verify(Request $request) // to verfy the entered OTP
     {
-        // dd($request->all());
         $data = $request->validate([
             'code' => ['required'],
             'phone' => ['required', 'string'],
         ]);
-        /* Get credentials from .env */
-        #$token ='bef6c27c52fbe24a44acdd0b249d0f45' ;
-        #$twilio_sid = 'AC4debe60b910a5341ec23190ea6cdcab2';
 
-        // $token = config('services.twilio.twilio_token');
-        // $twilio_sid = config('services.twilio.twilio_sid');
-        // $twilio_verify_sid = config('services.twilio.twilio_verify');
-        // $twilio = new Client($twilio_sid, $token);
-        // $verification = $twilio->verify->v2->services($twilio_verify_sid)
-        // ->verificationChecks
-        // ->create(['code' => $data['code'], 'to' => $data['phone']]);
+        $token = config('services.twilio.twilio_token');
+        $twilio_sid = config('services.twilio.twilio_sid');
+        $twilio_verify_sid = config('services.twilio.twilio_verify');
+        $twilio = new Client($twilio_sid, $token);
+        $verification = $twilio->verify->v2->services($twilio_verify_sid)
+        ->verificationChecks
+        ->create(['code' => $data['code'], 'to' => $data['phone']]);
         if (true) {
             $user = tap(User::where('phone', $data['phone']))->update(['isVerified' => true]);
             return $this->login($request);
