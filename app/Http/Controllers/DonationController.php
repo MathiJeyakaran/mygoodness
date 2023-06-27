@@ -26,12 +26,9 @@ class DonationController extends Controller
     }
     public function showDonationCounter()
     {
-        $user_count = DB::table('payments')
-            ->select('donor', DB::raw('count(*) as total'))
-            ->groupBy('donor')
-            ->get();
+        $payments = Payment::all();
         return view('donation-counter', [
-            'totalUsers' => count($user_count),
+            'totalUsers' => count($payments),
             'mobile' => '',
             'chainData' => $chainData ?? '',
             'userData' => $userData ?? '',

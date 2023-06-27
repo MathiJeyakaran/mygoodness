@@ -19,6 +19,7 @@ use URL;
 use Session;
 use Redirect;
 use Laravel\Fortify\Contracts\LoginResponse;
+use App\Models\Payment;
 
 class HomeController extends Controller
 {
@@ -53,12 +54,8 @@ class HomeController extends Controller
 
     public function verification(Request $request)
     {
-        // dd($request->all());
 
-        $user_count = DB::table('payments')
-            ->select('donor', DB::raw('count(*) as total'))
-            ->groupBy('donor')
-            ->get();
+        $payments = Payment::all();
         $data = $request->validate([
           'phone' => ['required', 'string'],
         ]);
@@ -105,7 +102,7 @@ class HomeController extends Controller
             // return view('donation-counter', compact('mobile', 'totalUsers'));
 
             return view('donation-counter', [
-                'totalUsers' => count($user_count),
+                'totalUsers' => count($payments),
                 'mobile' => $mobile,
                 'chainData' => '',
                 'userData' => '',
@@ -118,10 +115,9 @@ class HomeController extends Controller
             $user->phone = $mobile;
             $user->password = Hash::make('mygoodness@123');
             $user->save();
-            // return view('users.donate');
 
             return view('donation-counter', [
-                'totalUsers' => count($user_count),
+                'totalUsers' => count($payments),
                 'mobile' => $mobile,
                 'chainData' => '',
                 'userData' => '',
