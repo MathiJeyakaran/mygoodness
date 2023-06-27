@@ -123,7 +123,7 @@ color: #000;
                     <div class="row">
 
                     </div>
-                    <p class="donate flex">Now for the good stuff.</p>
+                    <p class="donate flex" style="text-align: center;">Now for the good stuff.</p>
                     <img src="images/share-link-icon.png" alt="" style="position: relative;top: 100px;width: 76px;left: 130px;">
                     <img src="images/four-star-icon.png" alt="" style="position: relative;top: 140px;width: 50px;right: 170px;">
                     <div class="showdesk">

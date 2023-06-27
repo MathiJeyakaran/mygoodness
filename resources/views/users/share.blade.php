@@ -234,7 +234,7 @@
                         style="z-index: 111;position: relative;">Share</button>
                 </div>
                 <div class="col-sm-12 pt-2 pb-4 aftersend">
-                    <p>Fun Fact: Frie nds are more likely to donate if you ask them to.</p>
+                    <p>Fun Fact: Friends are more likely to donate if you ask them to.</p>
                 </div>
                 <br><br>
                 <div class="col-sm-12 bottomimagesshowmobile">
