@@ -57,23 +57,6 @@ Route::get('/chain-link/{chain}', [DonationController::class, 'showChain'])->nam
 
 Route::get('/donation-start', [DonationController::class, 'start'])->name('donation.start');
 
-Route::get('/my_account',[AccountController::class, 'index'])->name('account');
-// Route::get('/create',[DonationController::class, 'index']);
-
-// Route::get('/invites', [DonationController::class, 'invited']);
-// Route::get('/invite',[FriendController::class, 'invite']);
-// Route::get('/growing',[FriendController::class, 'growing']);
-// Route::post('/continue', [DonationController::class, 'continue']);
-// Route::post('/getsearch ',[DonationController::class, 'getsearch']);
-// Route::post('/orgdata ',[DonationController::class, 'orgdata']);
-// Route::post('/payment-form', [PaymentController::class, 'checkout'])->name('payment-form');
-// Route::any('/paymentb', [PaymentController::class, 'token'])->name('token');
-
-// Route::get('/form',[HomeController::class, 'form']);
-// Route::post('pay', [PaymentController::class, 'pay'])->name('payment');
-// Route::get('/success', [PaymentController::class, 'success'])->name('success');
-// Route::get('/error', [PaymentController::class, 'error'])->name('error');
-
 Route::group(['middleware' => ['disable_back']], function () {
     Route::group(['middleware' => ['islogin']], function () {
         Route::group(['middleware' => ['users']], function () {

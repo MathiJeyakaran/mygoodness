@@ -74,13 +74,6 @@ class HomeController extends Controller
           return redirect()->back()->with('success', 'Kindly enter a valid phone number.');
         }
         $mobile = $phoneNumberUtil->format($phoneNumber, PhoneNumberFormat::E164);
-        // dd($mobile);
-
-       // $data = $request->validate([
-         //   'phone' => ['required', 'string', 'min:10', 'max:10'],
-        //]);
-        #$mobile = '+91'.$data['phone']; //for Indian Numbers
-        //$mobile = '+1'.$data['phone']; //for US numbers
 
         $token = config('services.twilio.twilio_token');
         $twilio_sid = config('services.twilio.twilio_sid');
@@ -96,10 +89,6 @@ class HomeController extends Controller
         $checkUser = User::select('*')->where('phone', $mobile)->get(); // check if user/mobile number is already exist
         $count = count($checkUser);
         if($count){
-            // $totalUsers = User::whereNotNull('phone')->distinct('phone')->count();
-
-
-            // return view('donation-counter', compact('mobile', 'totalUsers'));
 
             return view('donation-counter', [
                 'totalUsers' => count($payments),

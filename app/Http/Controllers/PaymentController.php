@@ -182,7 +182,7 @@ class PaymentController extends Controller
                 $twilio_verify_sid = config('services.twilio.twilio_verify');
                 $client = new Client($twilio_sid, $token);
 
-                $client->messages->create('+12524196165', [
+                $client->messages->create(Auth::user()->phone, [
                     'from' => '+12134747974',
                     'body' => $message
                 ]);
