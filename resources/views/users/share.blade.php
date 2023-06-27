@@ -172,7 +172,7 @@
                         </span>
                     </div>
                     <div class="col-sm-8 textformat">
-                        <p class="donate">Ask three friends to give too. </p>
+                        <p class="donate" style="text-align: left !important;">Ask three friends to give too. </p>
                         <span class="donatetext">We know, we know. You already gave! But this last step is where the
                             magic happens. Nudge your friends and watch your impact multiply.</span>
                     </div>
@@ -190,7 +190,7 @@
                     </div>
                 </div>
                 <div class="deskviews">
-                    <p class="donate">Ask three friends to give too.</p>
+                    <p class="donate" style="text-align: left !important;">Ask three friends to give too.</p>
                     <span class="donatetext">We know, we know. You already gave! But this last step is where the magic
                         happens. Nudge your friends and watch your impact multiply.</span>
                 </div>
