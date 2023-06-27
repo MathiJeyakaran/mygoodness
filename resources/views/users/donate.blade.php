@@ -209,7 +209,7 @@
             pointer-events: none;
             color: #aaa;
             top: 46px;
-            z-index: 1111111;
+            z-index: 111;
         }
 
         #org {
@@ -228,7 +228,7 @@
             padding-top: 8px;
             padding-bottom: 8px;
             border-radius: 50%;
-            z-index: 11111;
+            z-index: 111;
             position: relative;
             cursor: pointer;
             bottom: 38px;
