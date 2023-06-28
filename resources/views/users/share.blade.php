@@ -212,7 +212,7 @@
                         <input type="hidden" name="invitee_1" value="2134747977">
 
                         <textarea id="txtarea" class="form-control paddingss" name="message">Hi, It’s {{ Auth::user()->name == 'User' ? 'I' : Auth::user()->name }}. I donated to something I care about today and think you should, too. Visit the link below to join my giving chain. </textarea>
-                        <input type="hidden" name="chainLinkUrl"
+                        <input type="hidden" id="chainlink" name="chainLinkUrl"
                         value="{{ url('invites') }}?chain={{ $data->chain }}">
                     </div>
 
@@ -230,7 +230,7 @@
                     </div>
                 </div>
                 <div class="col-sm-12 pt-2 pb-4 send">
-                    <button type="submit" class="startbtn"
+                    <button type="button" class="startbtn" onclick="testWebShare()" id="share"
                         style="z-index: 111;position: relative;">Share</button>
                 </div>
                 <div class="col-sm-12 pt-2 pb-4 aftersend">
@@ -343,7 +343,7 @@
         </div>
     </div>
 
-    <script>
+    <script defer>
         'use strict';
         setTimeout(function() {
             $('#myModal').modal('hide');
@@ -366,137 +366,21 @@
 
         expandTextarea('txtarea');
 
-        function sleep(delay) {
-            return new Promise(resolve => {
-                setTimeout(resolve, delay);
-            });
-        }
-
-        function logText(message, isError) {
-            if (isError)
-                console.error(message);
-            else
-                console.log(message);
-
-            const p = document.createElement('p');
-            if (isError)
-                p.setAttribute('class', 'error');
-            document.querySelector('#output').appendChild(p);
-            p.appendChild(document.createTextNode(message));
-        }
-
-        function logError(message) {
-            logText(message, true);
-        }
-
-        function setShareButtonsEnabled(enabled) {
-            document.querySelector('#share').disabled = !enabled;
-            document.querySelector('#share-no-gesture').disabled = !enabled;
-        }
-
-        function checkboxChanged(e) {
-            const checkbox = e.target;
-            const textfield = document.querySelector('#' + checkbox.id.split('_')[0]);
-
-            textfield.disabled = !checkbox.checked;
-            if (!checkbox.checked)
-                textfield.value = '';
-        }
-
-        function checkBasicFileShare() {
-            // XXX: There is no straightforward API to do this.
-            // For now, assume that text/plain is supported everywhere.
-            const txt = new Blob(['Hello, world!'], {
-                type: 'text/plain'
-            });
-            // XXX: Blob support? https://github.com/w3c/web-share/issues/181
-            const file = new File([txt], "test.txt");
-            return navigator.canShare({
-                files: [file]
-            });
-        }
-
-
-
         async function testWebShare() {
-            const title_input = document.querySelector('#title');
-            const text_input = document.querySelector('#text');
-            const url_input = document.querySelector('#url');
-            /** @type {HTMLInputElement} */
-            const file_input = document.querySelector('#files');
-
-            const title = title_input.disabled ? undefined : title_input.value;
-            const text = text_input.disabled ? undefined : text_input.value;
-            const url = url_input.disabled ? undefined : url_input.value;
-            const files = file_input.disabled ? undefined : file_input.files;
-
-            if (files && files.length > 0) {
-                if (!navigator.canShare) {
-                    logError('Warning: canShare is not supported. File sharing may not be supported at all.');
-                } else if (!checkBasicFileShare()) {
-                    logError('Error: File sharing is not supported in this browser.');
-                    setShareButtonsEnabled(true);
-                    return;
-                } else if (!navigator.canShare({
-                        files
-                    })) {
-                    logError('Error: share() does not support the given files');
-                    for (const file of files) {
-                        logError(`File info: name - ${file.name}, size ${file.size}, type ${file.type}`);
-                    }
-                    setShareButtonsEnabled(true);
-                    return;
-                }
-            }
-
-
-            setShareButtonsEnabled(false);
+            const title = 'MyGoodness Dialog';
+            const text = $('#txtarea').val() + $('#chainlink').val();
+            const url = $('#chainlink').val();
             try {
                 await navigator.share({
-                    files,
                     title,
                     text,
                     url
                 });
-                logText('Successfully sent share');
+                console.log('Successfully sent share');
             } catch (error) {
-                logError('Error sharing: ' + error);
-            }
-            setShareButtonsEnabled(true);
-        }
-
-        async function testWebShareDelay() {
-            setShareButtonsEnabled(false);
-            await sleep(6000);
-            testWebShare();
-        }
-
-        function onLoad() {
-            // Checkboxes disable and delete textfields.
-            document.querySelector('#title_checkbox').addEventListener('click',
-                checkboxChanged);
-            document.querySelector('#text_checkbox').addEventListener('click',
-                checkboxChanged);
-            document.querySelector('#url_checkbox').addEventListener('click',
-                checkboxChanged);
-
-            document.querySelector('#share').addEventListener('click', testWebShare);
-            document.querySelector('#share-no-gesture').addEventListener('click',
-                testWebShareDelay);
-
-            if (navigator.share === undefined) {
-                setShareButtonsEnabled(false);
-                if (window.location.protocol === 'http:') {
-                    // navigator.share() is only available in secure contexts.
-                    window.location.replace(window.location.href.replace(/^http:/, 'https:'));
-                } else {
-                    logError('Error: You need to use a browser that supports this draft ' +
-                        'proposal.');
-                }
+                console.log('Error sharing: ' + error);
             }
         }
-
-        window.addEventListener('load', onLoad);
     </script>
 
 </body>
