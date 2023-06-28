@@ -213,7 +213,7 @@
 
                         <textarea id="txtarea" class="form-control paddingss" name="message">Hi, It’s {{ Auth::user()->name == 'User' ? 'I' : Auth::user()->name }}. I donated to something I care about today and think you should, too. Visit the link below to join my giving chain. </textarea>
                         <input type="hidden" id="chainlink" name="chainLinkUrl"
-                        value="{{ url('invites') }}?chain={{ $data->chain }}">
+                        value="{{ url('chain-link') }}/{{ $data->chain }}">
                     </div>
 
                     <div class="bottomimagesshow">
