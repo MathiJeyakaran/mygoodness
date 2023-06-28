@@ -184,10 +184,10 @@ color: #000;
                     @endforeach
                 </ul>
                 <div class="col-sm-12 buttoncenter" id="hidemobile">
-                    <a href="/share" class="startbtn">Invite more givers</a>
+                    <a href="/share" class="startbtn" >Invite more givers</a>
                 </div>
                 <div class="col-sm-12 buttoncenter" style="margin: 10px auto;">
-                    <a href="/share" class="startbtn" style="width: 90%;">Invite More Friends</a>
+                    <a href="javascript:void(0)" type="button" style="width: 90%;z-index: 111;position: relative;" class="startbtn" style="width: 90%;" onclick="testWebShare()" id="share">Invite More Friends</a>
                 </div>
                 <div class="col-sm-12">
                     <p style="padding: 10px 10px;text-align: justify;font-size: 18px;font-weight: 400;">Venmo says, “61% of donors are most likely to hear about causes through word of mouth from their friends and family”</p>
@@ -197,7 +197,8 @@ color: #000;
 
         @include('footer')
 
-        <script>
+        <script defer>
+            'use strict';
             $('#viewAll').on('click', function(){
                 window.location.reload();
             });
@@ -235,6 +236,20 @@ color: #000;
                         }
                 });
             });
+
+            async function testWebShare() {
+            const title = 'MyGoodness Dialog';
+            const text = "Hi, It’s {{ Auth::user()->name == 'User' ? 'I' : Auth::user()->name }}. I donated to something I care about today and think you should, too. Visit the link below to join my giving chain. " + "{{ url('chain-link') }}/{{ $chain_id }}";
+            try {
+                await navigator.share({
+                    title,
+                    text,
+                });
+                console.log('Successfully sent share');
+            } catch (error) {
+                console.log('Error sharing: ' + error);
+            }
+        }
         </script>
 
     </body>
