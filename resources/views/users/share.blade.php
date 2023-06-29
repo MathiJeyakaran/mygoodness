@@ -373,8 +373,7 @@
             try {
                 await navigator.share({
                     title,
-                    text,
-                    url
+                    text
                 });
                 console.log('Successfully sent share');
             } catch (error) {
