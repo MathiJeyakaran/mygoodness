@@ -515,11 +515,11 @@
                 }
             })
 
-            if ($('#customCheck1').prop('checked') === true) {
+            // if ($('#customCheck1').prop('checked') === true) {
                 
-            } else {
-                alert('not checked')
-            }
+            // } else {
+            //     alert('not checked')
+            // }
 
             function getsearch() {
                 var org = $('#org-selectized').val();
