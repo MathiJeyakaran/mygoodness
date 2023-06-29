@@ -152,7 +152,12 @@ class HomeController extends Controller
         if($user){
             Auth::login($user);
             User::where('phone','=',$mobile)->update(['isVerified' => false]);
-            return '/create?chain='.$request->chain;
+            if($request->chain) {
+                return '/create?chain='.$request->chain;
+            } else {
+                return '/create';
+            }
+            
         } else {
             return redirect('/')->with('success','Error');
         }
