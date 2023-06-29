@@ -62,8 +62,8 @@ Route::group(['middleware' => ['disable_back']], function () {
         Route::group(['middleware' => ['users']], function () {
             // Route::get('/redirect',[HomeController::class, 'redirect']);
 
-            Route::get('/create',[DonationController::class, 'index']);
-            Route::get('/invites', [DonationController::class, 'invited']);
+            Route::get('/create',[DonationController::class, 'index'])->name('create');
+            Route::get('/invites/{chain}', [DonationController::class, 'invited']);
             Route::post('/getsearch ',[DonationController::class, 'getsearch']);
             Route::post('/orgdata ',[DonationController::class, 'orgdata']);
             Route::post('/donate',[DonationController::class, 'donate']);

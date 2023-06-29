@@ -61,7 +61,7 @@
                     @if ($chainData)
                         <p class="growhead" style="margin-bottom: 3rem;">Oh look, <br> another do-gooder.</p>
                         <span class="smallgrowtext">
-                            {Friend name} (or) Your friend donated today. Will you?
+                            <b>{{ $userData[0]->name == 'User' ? '' : $userData[0]->name }}</b> Your friend donated today. Will you?
                         </span>
                     @else
                         <p class="growhead">Better, together.</p>
@@ -110,12 +110,8 @@
                         <div class="circle-list-container">
                             <ol class="circle-list">
                                 <li style="margin-bottom :10px;"><span class="circle-number">1</span><div class="teext1">
-                                    {{-- {{ $chainData = '1234' }} --}}
-                                    {{-- @if ($chainData)
-                                        <b>Donate</b> to [Friend's] cause or a nonprofit you care about more.</div>
-                                    @else --}}
+
                                         <b>Donate</b> to a cause you care about.</div>
-                                    {{-- @endif --}}
                                 </li>
 
                                 <li style="margin-bottom :10px;"><span class="circle-number">2</span><div class="teext1">
@@ -182,6 +178,7 @@
                         <p class="simply">You have a phone, we just know it. </p>
                         <span class="forminput">
                             <input style="color:black" type="tel" name="phone" id="phone" minlength="10" maxlength="15" class="form-control" placeholder="mobile number" required />
+                            <input type="hidden" id="chainbb" name="chain" value="{{ $chainData ? $chainData[0]->chain : '' }}">
                             <em class="ustext">US only</em>
                         </span>
                         <h6 class="error mt-2" style="color:red;">{{Session::get('success')}}</h6>
@@ -212,6 +209,7 @@
                         <center>
                             <div class="col-sm-6">
                                 <input type="hidden" id="login_phone" name="login_phone" value="{{$mobile}}" class="form-control" required />
+                                <input type="hidden" id="chain" name="chain" value="{{ $chainData ? $chainData[0]->chain : '' }}">
                                 <input style="color:black" type="text" id="code" minlength="6" maxlength="6" name="code" class="form-control text-center" required /></br>
                                 <h6 class="error" style="color:red; display:none">Please Enter Valid OTP</h6>
                                 <h6 class="blank" style="color:red; display:none">Please Enter OTP</h6>
@@ -262,10 +260,9 @@
 
 
             $('#login').on('click', function() {
-                    // var phone = '+17079687682';
-
                     var phone = $('#login_phone').val();
                     var code = $('#code').val();
+                    var chain = $('#chain').val();
                     if(code==""){
                         $('.blank').show();
                         $('.error').hide();
@@ -274,20 +271,16 @@
                     ({
                         type: "post",
                         url: "{{url('/verify')}}",
-                        // contentType: "application/json",
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        data: {phone:phone,code:code},
+                        data: {phone:phone,code:code,chain:chain},
                         success: function(data)
                             {
                                 if (data == 'error') {
                                     $('.error').show();
                                     $('.blank').hide();
                                 } else {
-                                    // $('#email').val(data);
-                                    // $('#password').val('mygoodness@123');
-                                    // $('form').submit();
                                     window.location.href = data;
                                 }
                             }

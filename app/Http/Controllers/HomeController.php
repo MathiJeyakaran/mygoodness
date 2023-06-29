@@ -54,7 +54,10 @@ class HomeController extends Controller
 
     public function verification(Request $request)
     {
-
+        if ($request->chain) {
+            $chainData = Payment::where('chain', $request->chain)->get();
+            $userData = User::where('id', $chainData[0]->donor)->get();
+        }
         $payments = Payment::all();
         $data = $request->validate([
           'phone' => ['required', 'string'],
@@ -93,8 +96,8 @@ class HomeController extends Controller
             return view('donation-counter', [
                 'totalUsers' => count($payments),
                 'mobile' => $mobile,
-                'chainData' => '',
-                'userData' => '',
+                'chainData' => $chainData ?? '',
+                'userData' => $userData ?? '',
             ]);
         }else{
             $user = new User;
@@ -108,8 +111,8 @@ class HomeController extends Controller
             return view('donation-counter', [
                 'totalUsers' => count($payments),
                 'mobile' => $mobile,
-                'chainData' => '',
-                'userData' => '',
+                'chainData' => $chainData ?? '',
+                'userData' => $userData ?? '',
             ]);
 
         }
@@ -129,7 +132,7 @@ class HomeController extends Controller
         $verification = $twilio->verify->v2->services($twilio_verify_sid)
         ->verificationChecks
         ->create(['code' => $data['code'], 'to' => $data['phone']]);
-        if (true) {
+        if ($verification->valid) {
             $user = tap(User::where('phone', $data['phone']))->update(['isVerified' => true]);
             return $this->login($request);
         }
@@ -140,14 +143,17 @@ class HomeController extends Controller
     {
         $mobile = $request->phone;
 
+        if ($request->chain) {
+            $chainData = Payment::where('chain', $request->chain)->get();
+            $userData = User::where('id', $chainData[0]->donor)->get();
+        }
+
         $user  = User::where([['phone','=',$mobile],['isVerified', true]])->first(); // authenticate user
         if($user){
             Auth::login($user);
             User::where('phone','=',$mobile)->update(['isVerified' => false]);
-            // return $user->email;
-            return '/redirect';
-        }
-        else{
+            return '/create?chain='.$request->chain;
+        } else {
             return redirect('/')->with('success','Error');
         }
     }

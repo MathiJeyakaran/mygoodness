@@ -330,7 +330,7 @@
     <section>
         <form id="myForm" method="POST" action="{{ url('continue') }}" enctype="multipart/form-data">
             @if (!empty($chainData))
-                <div class="p-text text-center p-2">Margaret gave a donation to <br> Nonprofit...give there too or <br>
+                <div class="p-text text-center p-2"><b>{{ $userData[0]->name == 'User' ? 'I' : $userData[0]->name }}</b> gave a donation to <br> <b>{{ $chainData[0]->nonprofit }}...</b>give there too or <br>
                     choose your own adventure.
                 </div>
             @else
@@ -346,7 +346,7 @@
                         <br>
                         <br>
                         <div class="form-check custom-check">
-                            <label class="containers giveto float-left">Give to [ORGANIZATION]
+                            <label class="containers giveto float-left">Give to <b>{{ $chainData[0]->nonprofit }}</b>
                             </label>
                             <div class="myTest custom-control custom-checkbox float-right">
                                 <input type="checkbox" class="custom-control-input" id="customCheck1" />

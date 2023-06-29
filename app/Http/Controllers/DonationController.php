@@ -14,15 +14,17 @@ use Illuminate\Support\Facades\DB;
 
 class DonationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->chain) {
+            $chainData = Payment::where('chain', $request->chain)->get();
+            $userData = User::where('id', $chainData[0]->donor)->get();
+        }
         $url = 'https://partners.every.org/v0.2/search/nonprofit?apiKey=ec7dc2865e3503f0b81a62a7a9642e75';
-        return view(
-            'users.donate',
-            [
-                'chainData' => '',
-            ]
-        );
+        return view('users.donate', [
+                'chainData' => $chainData ?? '',
+                'userData' => $userData ?? '',
+            ]);
     }
     public function showDonationCounter()
     {
@@ -37,17 +39,13 @@ class DonationController extends Controller
 
     public function showChain($chain = null)
     {
-        // dd($chain);
-        # code...
         if ($chain) {
             $chainData = Payment::where('chain', $chain)->get();
-            // dd($chainData->user()->id);
             $userData = User::where('id', $chainData[0]->donor)->get();
-            // dd($userData);
         }
-        $totalUsers = User::whereNotNull('phone')->distinct('phone')->count();
+        $payments = Payment::where('chain', $chain)->get();
         return view('donation-counter', [
-            'totalUsers' => $totalUsers,
+            'totalUsers' => count($payments),
             'mobile' => '',
             'chainData' => $chainData ?? '',
             'userData' => $userData ?? '',
