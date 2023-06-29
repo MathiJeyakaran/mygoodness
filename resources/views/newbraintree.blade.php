@@ -20,7 +20,11 @@
     <div class="py-12">
         <form id="payment-form" action="{{ route('paypay')}}" method="post">
             @csrf
-
+            <input type="hidden" name="totalAmount" value="{{ $data['total'] }}">
+            <input type="hidden" name="donationAmount" value="{{ $data['donationAmount'] }}">
+            <input type="hidden" name="charityEin" value="{{ $data['charityEin'] }}">
+            <input type="hidden" name="charityName" value="{{ $data['charityName'] }}">
+            <input type="hidden" name="chain" value="{{ $data['chain'] }}">
 
             <div id="dropin-container"></div>
             <script>

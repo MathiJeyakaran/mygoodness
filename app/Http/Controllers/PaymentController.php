@@ -127,8 +127,70 @@ class PaymentController extends Controller
 
         return view('newbraintree', compact('data', 'clientToken'));
     }
-    public function paypay(Request $request){
-        dd($request->all());
+    public function paypay(Request $request) {
+        $gateway = new \Braintree\Gateway([
+            'environment' => 'sandbox',
+            'merchantId' => '3jg8y93yryhx285y',
+            'publicKey' => 'jbnntk4tvgzqcyd2',
+            'privateKey' => 'd01e7060f4b9f583e7ba6ebdb0ef76d4'
+        ]);
+
+        if ($request->input() != null) {
+            $customer = Auth::user();
+
+            $result = $gateway->customer()->create(
+                [
+                    'firstName' => $customer['name'],
+                    'company' => $customer['company'] ?? "My Goodness",
+                    'email' => $customer['email'],
+                    'paymentMethodNonce' => $request->input('payment_method_nonce')
+                ]
+            );
+
+            $cusid = $result->customer->id;
+            $params = [
+                "amount" => $request->totalAmount,
+                "customerId" => $cusid,
+                "merchantAccountId" => "MyGoodness",
+                "options" => ["submitForSettlement" => true]
+            ];
+            $resultPay = $gateway->transaction()->sale($params);
+            dd($resultPay);
+
+            $data = new Payment;
+            $data->donor = Auth::user()->id;
+            $data->transaction_id = $resultPay->transaction->id;
+            $data->transaction_amount = $request->totalAmount;
+            $data->donation_amount = $request->donationAmount;
+            $data->chain = Str::random(30);
+            $data->charity_ein = $request->charityEin;
+            $data->nonprofit = $request->charityName;
+            $data->save();
+
+            $message = "Faith in humanity restored! Thank you for giving with mygoodness.
+
+            Tap " . url('growing') . "?chain=". $data->chain . " to follow along as your investment inspires others to do good too.
+
+            Visit the ". url('my_account') ." page to download a donation receipt.”
+
+            Text your email to receive your future receipts to your inbox";
+
+            try {
+
+                $token = config('services.twilio.twilio_token');
+                $twilio_sid = config('services.twilio.twilio_sid');
+                $twilio_verify_sid = config('services.twilio.twilio_verify');
+                $client = new Client($twilio_sid, $token);
+
+                $client->messages->create(Auth::user()->phone, [
+                    'from' => '+12134747974',
+                    'body' => $message
+                ]);
+            } catch (Exception $e) {
+                dd("Error: " . $e->getMessage());
+            }
+            return view('users.share', compact('data'));
+        }
     }
 
     public function checkout(Request $request)
@@ -174,12 +236,20 @@ class PaymentController extends Controller
             );
 
             $cusid = $result->customer->id;
+            $result = $gateway->creditCard()->create([
+                'customerId' => $cusid,
+                'number' => '4111111111111111',
+                'expirationDate' => '12/24',
+                'cvv' => '123'
+            ]);
+
             $params = [
                 "amount" => $request->totalAmount,
                 "customerId" => $cusid,
                 "merchantAccountId" => "MyGoodness",
                 "options" => ["submitForSettlement" => true]
             ];
+            
             $resultPay = $gateway->transaction()->sale($params);
 
             $data = new Payment;

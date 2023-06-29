@@ -7,16 +7,13 @@
     <link rel="icon" href="images/favicon.png" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta-data android:name="com.google.android.gms.wallet.api.enabled" android:value="true"/>
-    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&amp;display=swap"
-        rel="stylesheet" />
+    <meta-data android:name="com.google.android.gms.wallet.api.enabled" android:value="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
     <title>{{ config('app.name', 'mygoodness') }}</title>
     <!--fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Slab:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Slab:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="https://site-assets.fontawesome.com/releases/v5.15.4/css/all.css" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
@@ -171,6 +168,7 @@
             float: left;
             margin: 10px 0px;
         }
+
         .braintree-heading {
             display: none;
         }
@@ -179,8 +177,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow Condensed:wght@600&display=swap" />
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
 
 </head>
 
@@ -205,15 +202,8 @@
             <div class="centerboxesform">
 
                 <div class="col-sm-9" style="padding-bottom: 20px;">
-                    <div class="card mb-3"
-                        style="max-width: 540px;border: 3px solid;padding: 10px;box-shadow: 0px 6px 0px #18191F;border-radius: 16px;">
-                        {{-- //styleName: title-3xl;
-                        font-family: Barlow Condensed;
-                        font-size: 24px;
-                        font-weight: 600;
-                        line-height: 32px;
-                        letter-spacing: 0.01em;
-                        text-align: left; --}}
+                    <div class="card mb-3" style="max-width: 540px;border: 3px solid;padding: 10px;box-shadow: 0px 6px 0px #18191F;border-radius: 16px;">
+                        
                         <div class="your-donation text-center">Choose a payment method:</div>
                         <form id="payment-form" action="{{ route('token') }}" method="post">
                             @csrf
@@ -222,101 +212,84 @@
                             <input type="hidden" name="charityEin" value="{{ $data['charityEin'] }}">
                             <input type="hidden" name="charityName" value="{{ $data['charityName'] }}">
                             <input type="hidden" name="chain" value="{{ $data['chain'] }}">
-                            <script src="https://js.braintreegateway.com/web/dropin/1.38.0/js/dropin.min.js"
-                                data-braintree-dropin-authorization="{{ $data['clientToken'] }}"
-                                data-locale="en"
-                                data-payment-option-priority='["paypal","card", "paypalCredit"]'
-                                data-paypal.flow="checkout"
-                                data-paypal.amount="{{ $data['total'] }}"
-                                data-paypal.currency="USD"
-                                data-paypal-credit.flow="vault"></script>
+                            <div id="dropin-container"></div>
 
+                            <script>
+                                var button = document.querySelector('#submit-button');
 
-                                <input type="submit" id="complete-pay123"
-                        style="background-color:black;border : black;color:white;width:100%;padding : 12px 12px 12px 12px;border-radius:10px;font: 600 24px/32px
-                            Barlow Condensed;margin-top: 30px;letter-spacing: 0.01em;"
-                        value="Complete Payment"></input>
-
+                                braintree.dropin.create({
+                                    authorization: "{{ $data['clientToken'] }}",
+                                    container: '#dropin-container',
+                                    locale: 'en',
+                                    paypal: {
+                                        flow: 'vault'
+                                    },
+                                    googlePay: {
+                                        googlePayVersion: 2,
+                                        merchantId: 'merchant-id-from-google',
+                                        transactionInfo: {
+                                            totalPriceStatus: 'FINAL',
+                                            totalPrice: '123.45',
+                                            currencyCode: 'USD'
+                                        },
+                                        allowedPaymentMethods: [{
+                                            type: 'CARD',
+                                            parameters: {
+                                                // We recommend collecting and passing billing address information with all Google Pay transactions as a best practice.
+                                                billingAddressRequired: false,
+                                            }
+                                        }]
+                                    },
+                                    applePay: {
+                                        displayName: 'MyGoodness',
+                                        paymentRequest: {
+                                            total: {
+                                                label: 'MyGoodness',
+                                                amount: '19.99'
+                                            },
+                                            // We recommend collecting billing address information, at minimum
+                                            // billing postal code, and passing that billing postal code with all
+                                            // Apple Pay transactions as a best practice.
+                                            requiredBillingContactFields: ["postalAddress"]
+                                        }
+                                    },
+                                    paypalCredit: {
+                                        flow: 'checkout',
+                                        amount: '10.00',
+                                        currency: 'USD'
+                                    },
+                                    venmo: true
+                                }, function(createErr, instance) {
+                                    button.addEventListener('click', function() {
+                                        instance.requestPaymentMethod(function(requestPaymentMethodErr, payload) {
+                                            // Submit payload.nonce to your server
+                                        });
+                                    });
+                                });
+                            </script>
+                            <input type="submit" id="complete-pay123" style="background-color:black;border : black;color:white;width:100%;padding : 12px 12px 12px 12px;border-radius:10px;font: 600 24px/32px
+                            Barlow Condensed;margin-top: 30px;letter-spacing: 0.01em;" value="Complete Payment"></input>
                         </form>
                     </div>
-                    {{-- <div data-braintree-id="toggle" class="braintree-large-button braintree-toggle" tabindex="0" role="button">
-                        <span>Choose another way to pay</span>
-                      </div> --}}
-                    <br><br><br><br>
-                    {{-- <input type="submit" id="complete-pay"
-                        style="background-color:black;border : black;color:white;width:100%;padding : 12px 12px 12px 12px;border-radius:10px;font: 600 24px/32px
-                            Barlow Condensed;margin-top: 30px;letter-spacing: 0.01em;"
-                        value="Complete Payment"></input> --}}
                 </div>
             </div>
         </div>
     </section>
     <section>
-        {{-- <div id="dropin-container"></div>
-   <button id="submit-button">Purchase</button> --}}
     </section>
 </body>
 
 </html>
-{{-- <script src="https://js.braintreegateway.com/web/dropin/1.38.1/js/dropin.min.js"></script> --}}
 <script src="https://js.braintreegateway.com/web/3.94.0/js/client.min.js"></script>
 
 <script>
-//   var submitButton = document.querySelector('#submit-button');
-
-//   braintree.dropin.create({
-//     authorization: '{{ $data['clientToken'] }}',
-//     selector: '#dropin-container',
-//     applePay: {
-//     displayName: 'Merchant Name',
-//     paymentRequest: {
-//       total: {
-//         label: 'Localized Name',
-//         amount: '10.00'
-//       }
-//     }
-//   },
-//   paypal: {
-//     flow: 'checkout',
-//     amount: '10.00',
-//     currency: 'USD'
-//   },
-//  paypalCredit: {
-//    flow: 'checkout',
-//    amount: '10.00',
-//    currency: 'USD'
-//   },
-//   googlePay: {
-//    flow: 'checkout',
-//    amount: '10.00',
-//    currency: 'USD'
-//   },
-//   venmo: true,
-
-//   }, function (err, dropinInstance) {
-//     if (err) {
-//       // Handle any errors that might've occurred when creating Drop-in
-//       console.error(err);
-//       return;
-//     }
-//     submitButton.addEventListener('click', function () {
-//       dropinInstance.requestPaymentMethod(function (err, payload) {
-//         if (err) {
-//           // Handle errors in requesting payment method
-//         }
-
-//         // Send payload.nonce to your server
-//       });
-//     });
-//   });
+    
+    $(document).ready(function() {
+        $('#payment-form .braintree-heading').text('test123')
 
 
-$(document).ready(function () {
-    $('#payment-form .braintree-heading').text('test123')
-
-
-});
-$('#complete-pay').click(function () {
-    $('#payment-form').submit()
-})
+    });
+    $('#complete-pay').click(function() {
+        $('#payment-form').submit()
+    })
 </script>
