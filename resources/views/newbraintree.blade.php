@@ -62,6 +62,13 @@
                             requiredBillingContactFields: ["postalAddress"]
                         }
                     },
+                    paypalCredit: {
+                        flow: 'checkout',
+                        amount: '10.00',
+                        currency: 'USD'                                                                                                         
+                    },
+                    venmo: true
+
 
                 }, function(createErr, instance) {
                     button.addEventListener('click', function() {
