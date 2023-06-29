@@ -106,6 +106,27 @@ class PaymentController extends Controller
         $data->save();
     }
 
+    public function newbrain(Request $request)
+    {
+        $gateway = new \Braintree\Gateway([
+            'environment' => 'sandbox',
+            'merchantId' => '3jg8y93yryhx285y',
+            'publicKey' => 'jbnntk4tvgzqcyd2',
+            'privateKey' => 'd01e7060f4b9f583e7ba6ebdb0ef76d4'
+        ]);
+
+        $data = [
+            'total' => $request->total,
+            "donationAmount" => $request->donationAmount,
+            "charityEin" => $request->charityEin,
+            "charityName" => $request->charityName,
+            "clientToken" => $gateway->clientToken()->generate(),
+            "chain" => isset($request->chain) ? $request->chain : '',
+        ];
+
+        return view('braintree', compact('data'));
+    }
+
     public function checkout(Request $request)
     {
         $gateway = new \Braintree\Gateway([

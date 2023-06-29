@@ -43,6 +43,10 @@
         .img-fluid {
             height: 60px;
         }
+        .footer {
+            position: relative;
+            top: 65px;
+        }
 
         .my-account {
             text-align: right;
@@ -326,7 +330,6 @@
             </div>
         </div>
     </section>
-
     <section>
         <form id="myForm" method="POST" action="{{ url('continue') }}" enctype="multipart/form-data">
             @if (!empty($chainData))
@@ -341,15 +344,13 @@
 
             @csrf
             @if (!empty($chainData))
-                <div class="fulwidth margiboxed" style="margin: 10px 0;position: relative;">
+                <div class="fulwidth margiboxed" style="margin: 10px 0;position: relative;margin-bottom: 0px !important;/* top: -10px; */">
                     <div class="col-sm-12 likebox">
-                        <br>
-                        <br>
                         <div class="form-check custom-check">
-                            <label class="containers giveto float-left">Give to <b>{{ $chainData[0]->nonprofit }}</b>
+                            <label class="containers giveto float-left">Give to {{ $chainData[0]->nonprofit }}
                             </label>
                             <div class="myTest custom-control custom-checkbox float-right">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1" />
+                                <input type="checkbox" class="custom-control-input" id="customCheck1" checked />
                                 <label class="custom-control-label" for="customCheck1"></label>
                             </div>
                         </div>
@@ -358,13 +359,23 @@
             @else
                 {{-- <b>Donate</b> to a cause you care about.</div> --}}
                 <br>
-                <br>
             @endif
 
-            <div class="fulwidth margiboxed">
-                <div class="col-sm-12 mt-3">
+            <div class="fulwidth margiboxed" style="
+            margin: 0px !important;
+        ">
+                <div class="col-sm-12" style="
+                position: relative;
+                top: -15px;
+            ">
                     <div class="form-group">
-                        <label class="text-left search-drop" style="padding-left: 3px;">Search for a nonprofit
+                        <label class="text-left search-drop" style="padding-left: 3px;">
+                            @if (!empty($chainData))
+                                Or, search for a different nonprofit
+                            @else
+                                Search for a nonprofit
+                            @endif
+
                             <span data-toggle="modal" data-target=".bs-example-modal-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
@@ -375,6 +386,13 @@
                         </label>
                         <input type="hidden" id="charity_name" name="charity_name" value="">
                         <input type="hidden" id="charity_logo" name="charity_logo" value="">
+                        @if (!empty($chainData))
+
+                            <input type="hidden" id="charity_logo" name="org" value="{{ $chainData[0]->charity_ein }}">
+
+                        @endif
+
+
                         <!-- Actual search box -->
                         <div class="form-group has-search mb-2">
                             <span class="fa fa-search form-control-feedback"></span>
@@ -390,7 +408,7 @@
 
                     </div>
                 </div>
-                <div class="col-sm-12 givebox" style="margin-top: 40px;margin-bottom: 29px;">
+                <div class="col-sm-12 givebox" style="position: relative;top: -50px;">
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-secondary btn-margin active">
                             <input type="radio" name="amount" value="10" id="option1" autocomplete="off"
@@ -414,11 +432,16 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-12 pt-4">
-                    <button type="button" id="submitForm" class="startbtn" style="width: 100%;">Continue</button>
+                <div class="col-sm-12" style="
+                position: relative;
+                top: -24px;
+            ">
+
+                        <button type="button" id="submitForm" class="startbtn submitFrmBtn" style="width: 100%;">Continue</button>
+
                 </div>
                 <div class="col-sm-12 pt-2 text-justify"
-                    style="font-family: Barlow;font-style: italic;font-size: 16px;line-height: 22px;font-weight: 500;">
+                style="font-family: Barlow;font-style: italic;font-size: 16px;line-height: 22px;font-weight: 500;position: relative;top: -20px;">
                     <strong> mygoodness is a nonprofit too.</strong> A contribution is added to cover payment processing
                     fees and to support the development of donor tools like this.
                 </div>
@@ -492,6 +515,19 @@
                 }
             })
 
+            if ($('#customCheck1').prop('checked') === true) {
+                $('#charity_name').val('{{ $chainData[0]->nonprofit }}');
+                $('#org').val('{{ $chainData[0]->charity_ein }}');
+                $('#org-selectized').val('{{ $chainData[0]->nonprofit }}')
+                getsearch();
+
+                if ($('.option.selected').attr("data-value") === '{{ $chainData[0]->charity_ein }}') {
+                    $('.option.selected').attr("data-value", '{{ $chainData[0]->charity_ein }}').addClass("active")
+                }
+            } else {
+                alert('not checked')
+            }
+
             function getsearch() {
                 var org = $('#org-selectized').val();
                 console.log(org);
@@ -543,6 +579,10 @@
 
         $('#submitForm').click(function() {
             submitForm()
+        });
+
+        $('#submitFormCheck').click(function() {
+            $('#myForm').submit();
         });
 
         $('#submitFormNext').click(function() {

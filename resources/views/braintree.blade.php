@@ -7,6 +7,7 @@
     <link rel="icon" href="images/favicon.png" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta-data android:name="com.google.android.gms.wallet.api.enabled" android:value="true"/>
     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&amp;display=swap"
         rel="stylesheet" />
     <title>{{ config('app.name', 'mygoodness') }}</title>
