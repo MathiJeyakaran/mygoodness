@@ -516,14 +516,7 @@
             })
 
             if ($('#customCheck1').prop('checked') === true) {
-                // $('#charity_name').val('{{ $chainData[0]->nonprofit }}');
-                // $('#org').val('{{ $chainData[0]->charity_ein }}');
-                // $('#org-selectized').val('{{ $chainData[0]->nonprofit }}')
-                // getsearch();
-
-                // if ($('.option.selected').attr("data-value") === '{{ $chainData[0]->charity_ein }}') {
-                //     $('.option.selected').attr("data-value", '{{ $chainData[0]->charity_ein }}').addClass("active")
-                // }
+                
             } else {
                 alert('not checked')
             }
