@@ -366,7 +366,7 @@
         ">
                 <div class="col-sm-12" style="
                 position: relative;
-                top: -15px;
+                top: 10px;
             ">
                     <div class="form-group">
                         <label class="text-left search-drop" style="padding-left: 3px;">
@@ -408,7 +408,7 @@
 
                     </div>
                 </div>
-                <div class="col-sm-12 givebox" style="position: relative;top: -50px;">
+                <div class="col-sm-12 givebox" style="position: relative;top: -35px;">
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-secondary btn-margin active">
                             <input type="radio" name="amount" value="10" id="option1" autocomplete="off"
