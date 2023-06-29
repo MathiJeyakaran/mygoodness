@@ -57,6 +57,9 @@ Route::get('/chain-link/{chain}', [DonationController::class, 'showChain'])->nam
 
 Route::get('/donation-start', [DonationController::class, 'start'])->name('donation.start');
 
+Route::get('/newbrain', [PaymentController::class, 'newbrain'])->name('newbrain');
+Route::post('/paypay', [PaymentController::class, 'paypay'])->name('paypay');
+
 Route::group(['middleware' => ['disable_back']], function () {
     Route::group(['middleware' => ['islogin']], function () {
         Route::group(['middleware' => ['users']], function () {

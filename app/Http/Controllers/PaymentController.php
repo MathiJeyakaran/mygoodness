@@ -116,15 +116,19 @@ class PaymentController extends Controller
         ]);
 
         $data = [
-            'total' => $request->total,
-            "donationAmount" => $request->donationAmount,
-            "charityEin" => $request->charityEin,
-            "charityName" => $request->charityName,
-            "clientToken" => $gateway->clientToken()->generate(),
-            "chain" => isset($request->chain) ? $request->chain : '',
+            'total' => '123',
+            "donationAmount" => '123',
+            "charityEin" => '123',
+            "charityName" => '123',
+            "clientToken" => '123',
+            "chain" => '123',
         ];
+        $clientToken = $gateway->clientToken()->generate();
 
-        return view('braintree', compact('data'));
+        return view('newbraintree', compact('data', 'clientToken'));
+    }
+    public function paypay(Request $request){
+        dd($request->all());
     }
 
     public function checkout(Request $request)

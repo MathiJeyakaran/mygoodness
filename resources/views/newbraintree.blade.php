@@ -18,7 +18,7 @@
 
 <body>
     <div class="py-12">
-        <form id="payment-form" action="" method="post">
+        <form id="payment-form" action="{{ route('paypay')}}" method="post">
             @csrf
 
 
@@ -27,7 +27,7 @@
                 var button = document.querySelector('#submit-button');
 
                 braintree.dropin.create({
-                    authorization: '{{ $data['clientToken'] }}',
+                    authorization: '{{ $clientToken }}',
                     container: '#dropin-container',
                     locale: 'en',
                     paypal: {
@@ -45,10 +45,7 @@
                             type: 'CARD',
                             parameters: {
                                 // We recommend collecting and passing billing address information with all Google Pay transactions as a best practice.
-                                billingAddressRequired: true,
-                                billingAddressParameters: {
-                                    format: 'FULL'
-                                }
+                                billingAddressRequired: false,
                             }
                         }]
                     },
