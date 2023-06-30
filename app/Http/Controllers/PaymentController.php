@@ -284,9 +284,7 @@ class PaymentController extends Controller
                 foreach($resultTransaction->errors->deepAll() as $error) {
                     $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
                 }
-                dd($errorString);
-                $_SESSION["errors"] = $errorString;
-
+                Session::flash('errors', $errorString);
 
                 $data = [
                     'total' => $request->total,

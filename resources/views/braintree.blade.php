@@ -202,7 +202,15 @@
             <div class="pick-a">Complete Payment</div>
             <img class="payment-inner" alt="" src="images/group-1855.svg">
             <div class="centerboxesform">
-
+                <div id="alert" class="">
+                    @if (Session::has('errors'))
+                    <div class="prohead">
+                        <ul style="list-style: none;color:red;margin-left: 0px;padding-left: 0px;">
+                            <li>{{ Session::get('errors') }}</li>
+                        </ul>
+                    </div>
+                    @endif
+                </div>
                 <div class="col-sm-9" style="padding-bottom: 20px;">
                     <div class="card mb-3"
                         style="max-width: 540px;border: 3px solid;padding: 10px;box-shadow: 0px 6px 0px #18191F;border-radius: 16px;">
@@ -273,14 +281,14 @@
                                     venmo: true
                                 }, function(createErr, instance) {
                                     if (createErr) {
-                                        console.log('Create Error', createErr);
+                                        alert('Create Error', createErr);
                                         return;
                                     }
                                     form.addEventListener('submit', function (event) {
                                         event.preventDefault();
                                         instance.requestPaymentMethod(function (err, payload) {
                                             if (err) {
-                                                console.log('Request Payment Method Error', err);
+                                                alert('Request Payment Method Error', err);
                                                 return;
                                             }
 
