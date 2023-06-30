@@ -68,7 +68,7 @@ class PaymentController extends Controller
         if ($username == 'User') {
             User::where('id', '=', $id)->update(['name' => $name]);
         }
-        $data = new Payment;
+        $data = new Payment();
         $data->donor = Auth::user()->id;
         $data->transaction_id = $txn[1];
         $data->transaction_amount = $amount[1];
@@ -80,7 +80,7 @@ class PaymentController extends Controller
 
 
         if (Session::get('donation')) {
-            $data = new Payment;
+            $data = new Payment();
             $data->donor = Auth::user()->id;
             $data->transaction_id = $txn[1];
             $data->transaction_amount = $amount[1];
@@ -101,7 +101,7 @@ class PaymentController extends Controller
     public function notify(Request $request)
     {
         $transaction_id = $_POST;
-        $data = new Transaction;
+        $data = new Transaction();
         $data->transaction_id = $transaction_id;
         $data->save();
     }
@@ -127,7 +127,8 @@ class PaymentController extends Controller
 
         return view('newbraintree', compact('data', 'clientToken'));
     }
-    public function paypay(Request $request) {
+    public function paypay(Request $request)
+    {
         $gateway = new \Braintree\Gateway([
             'environment' => 'sandbox',
             'merchantId' => '3jg8y93yryhx285y',
@@ -157,7 +158,7 @@ class PaymentController extends Controller
             $resultPay = $gateway->transaction()->sale($params);
             dd($resultPay);
 
-            $data = new Payment;
+            $data = new Payment();
             $data->donor = Auth::user()->id;
             $data->transaction_id = $resultPay->transaction->id;
             $data->transaction_amount = $request->totalAmount;
@@ -214,83 +215,92 @@ class PaymentController extends Controller
         return view('braintree', compact('data'));
     }
 
-    public function token(Request $request)
-    {
-        $gateway = new \Braintree\Gateway([
-            'environment' => 'sandbox',
-            'merchantId' => '3jg8y93yryhx285y',
-            'publicKey' => 'jbnntk4tvgzqcyd2',
-            'privateKey' => 'd01e7060f4b9f583e7ba6ebdb0ef76d4'
-        ]);
-
-        if ($request->input() != null) {
-            $customer = Auth::user();
-
-            $result = $gateway->customer()->create(
-                [
-                    'firstName' => $customer['name'],
-                    'company' => $customer['company'] ?? "My Goodness",
-                    'email' => $customer['email'],
-                    'paymentMethodNonce' => $request->input('payment_method_nonce')
-                ]
-            );
-
-            $cusid = $result->customer->id;
-            $result = $gateway->creditCard()->create([
-                'customerId' => $cusid,
-                'number' => '4111111111111111',
-                'expirationDate' => '12/24',
-                'cvv' => '123'
+    public function token(Request $request) {
+        if ($request->input('payment_method_nonce') != null) {
+            $gateway = new \Braintree\Gateway([
+                'environment' => 'sandbox',
+                'merchantId' => '3jg8y93yryhx285y',
+                'publicKey' => 'jbnntk4tvgzqcyd2',
+                'privateKey' => 'd01e7060f4b9f583e7ba6ebdb0ef76d4'
             ]);
 
-            $params = [
-                "amount" => $request->totalAmount,
-                "customerId" => $cusid,
+            $customer = Auth::user();
+
+            // $result = $gateway->customer()->create(
+            //     [
+            //         'firstName' => $customer['name'],
+            //         'company' => $customer['company'] ?? "My Goodness",
+            //         'email' => $customer['email'],
+            //         'paymentMethodNonce' => $request->input('payment_method_nonce')
+            //     ]
+            // );
+            // $cusid = $result->customer->id;
+
+            $resultTransaction = $gateway->transaction()->sale([
+                'amount' => $request->totalAmount,
+                // "customerId" => $cusid,
                 "merchantAccountId" => "MyGoodness",
-                "options" => ["submitForSettlement" => true]
-            ];
-            
-            $resultPay = $gateway->transaction()->sale($params);
+                'paymentMethodNonce' => $request->input('payment_method_nonce'),
+                'options' => [
+                    'submitForSettlement' => true
+                ]
+            ]);
 
-            $data = new Payment;
-            $data->donor = Auth::user()->id;
-            $data->transaction_id = $resultPay->transaction->id;
-            $data->transaction_amount = $request->totalAmount;
-            $data->donation_amount = $request->donationAmount;
-            $data->chain = Str::random(30);
-            $data->charity_ein = $request->charityEin;
-            $data->nonprofit = $request->charityName;
-            $data->save();
+            if ($resultTransaction->success || !is_null($resultTransaction->transaction)) {
+                $transaction = $resultTransaction->transaction;
+                $data = new Payment();
+                $data->donor = Auth::user()->id;
+                $data->transaction_id = $resultTransaction->transaction->id;
+                $data->transaction_amount = $request->totalAmount;
+                $data->donation_amount = $request->donationAmount;
+                $data->chain = Str::random(30);
+                $data->charity_ein = $request->charityEin;
+                $data->nonprofit = $request->charityName;
+                $data->save();
 
-            $message = "Faith in humanity restored! Thank you for giving with mygoodness.
+                $message = "Faith in humanity restored! Thank you for giving with mygoodness.
+                    Tap " . url('growing') . "?chain=". $data->chain . " to follow along as your investment inspires others to do good too.
+                    Visit the ". url('my_account') ." page to download a donation receipt.”
+                    Text your email to receive your future receipts to your inbox";
 
-            Tap " . url('growing') . "?chain=". $data->chain . " to follow along as your investment inspires others to do good too.
+                try {
+                    $token = config('services.twilio.twilio_token');
+                    $twilio_sid = config('services.twilio.twilio_sid');
+                    $twilio_verify_sid = config('services.twilio.twilio_verify');
+                    $client = new Client($twilio_sid, $token);
 
-            Visit the ". url('my_account') ." page to download a donation receipt.”
+                    $client->messages->create(Auth::user()->phone, [
+                        'from' => '+12134747974',
+                        'body' => $message
+                    ]);
+                } catch (Exception $e) {
+                    dd("Error: " . $e->getMessage());
+                }
+                return view('users.share', compact('data'));
 
-            Text your email to receive your future receipts to your inbox";
+            } else {
+                $errorString = "";
 
-            try {
+                foreach($resultTransaction->errors->deepAll() as $error) {
+                    $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+                }
+                dd($errorString);
+                $_SESSION["errors"] = $errorString;
 
-                $token = config('services.twilio.twilio_token');
-                $twilio_sid = config('services.twilio.twilio_sid');
-                $twilio_verify_sid = config('services.twilio.twilio_verify');
-                $client = new Client($twilio_sid, $token);
 
-                $client->messages->create(Auth::user()->phone, [
-                    'from' => '+12134747974',
-                    'body' => $message
-                ]);
-            } catch (Exception $e) {
-                dd("Error: " . $e->getMessage());
+                $data = [
+                    'total' => $request->total,
+                    "donationAmount" => $request->donationAmount,
+                    "charityEin" => $request->charityEin,
+                    "charityName" => $request->charityName,
+                    "clientToken" => $gateway->clientToken()->generate(),
+                    "chain" => isset($request->chain) ? $request->chain : '',
+                ];
+                return view('braintree', compact('data'));
             }
 
-
-
-            return view('users.share', compact('data'));
         } else {
-            $clientToken = $gateway->clientToken()->generate();
-            return view('braintree', ['token' => $clientToken]);
+            return 'Something went wrong';
         }
     }
 }

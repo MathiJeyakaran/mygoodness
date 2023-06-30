@@ -8,13 +8,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta-data android:name="com.google.android.gms.wallet.api.enabled" android:value="true" />
-    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
     <title>{{ config('app.name', 'mygoodness') }}</title>
     <!--fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Slab:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Slab:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://site-assets.fontawesome.com/releases/v5.15.4/css/all.css" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
@@ -29,7 +31,9 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://js.braintreegateway.com/web/dropin/1.24.0/js/dropin.min.js"></script>
+    {{-- <script src="https://js.braintreegateway.com/web/dropin/1.24.0/js/dropin.min.js"></script>
+    <script src="https://js.braintreegateway.com/web/3.94.0/js/client.min.js"></script> --}}
+    {{-- <script src="https://js.braintreegateway.com/web/dropin/1.38.1/js/dropin.min.js"></script> --}}
     <style>
         .selectize-contro {
             border-radius: 36px !important;
@@ -173,12 +177,10 @@
             display: none;
         }
     </style>
-
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow Condensed:wght@600&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
-
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
 </head>
 
 <body class="body-bg">
@@ -202,8 +204,9 @@
             <div class="centerboxesform">
 
                 <div class="col-sm-9" style="padding-bottom: 20px;">
-                    <div class="card mb-3" style="max-width: 540px;border: 3px solid;padding: 10px;box-shadow: 0px 6px 0px #18191F;border-radius: 16px;">
-                        
+                    <div class="card mb-3"
+                        style="max-width: 540px;border: 3px solid;padding: 10px;box-shadow: 0px 6px 0px #18191F;border-radius: 16px;">
+
                         <div class="your-donation text-center">Choose a payment method:</div>
                         <form id="payment-form" action="{{ route('token') }}" method="post">
                             @csrf
@@ -212,24 +215,33 @@
                             <input type="hidden" name="charityEin" value="{{ $data['charityEin'] }}">
                             <input type="hidden" name="charityName" value="{{ $data['charityName'] }}">
                             <input type="hidden" name="chain" value="{{ $data['chain'] }}">
-                            <div id="dropin-container"></div>
 
+                            <div id="dropin-container"></div>
+                            <input type="hidden" name="payment_method_nonce" id="nonce123" value="">
+                            <button id="submit-button" type="submit"
+                                style="background-color:black;border : black;color:white;width:100%;padding : 12px 12px 12px 12px;border-radius:10px;font: 600 24px/32px
+                            Barlow Condensed;margin-top: 30px;letter-spacing: 0.01em;">Complete
+                                Payment</button>
+                                <script src="https://js.braintreegateway.com/web/dropin/1.38.1/js/dropin.min.js"></script>
                             <script>
                                 var button = document.querySelector('#submit-button');
+                                var form = document.querySelector('#payment-form');
 
                                 braintree.dropin.create({
                                     authorization: "{{ $data['clientToken'] }}",
                                     container: '#dropin-container',
                                     locale: 'en',
                                     paypal: {
-                                        flow: 'vault'
+                                        flow: 'checkout',
+                                        amount: "{{ $data['total'] }}",
+                                        currency: 'USD'
                                     },
                                     googlePay: {
                                         googlePayVersion: 2,
                                         merchantId: 'merchant-id-from-google',
                                         transactionInfo: {
                                             totalPriceStatus: 'FINAL',
-                                            totalPrice: '123.45',
+                                            totalPrice: "{{ $data['total'] }}",
                                             currencyCode: 'USD'
                                         },
                                         allowedPaymentMethods: [{
@@ -245,7 +257,7 @@
                                         paymentRequest: {
                                             total: {
                                                 label: 'MyGoodness',
-                                                amount: '19.99'
+                                                amount: "{{ $data['total'] }}"
                                             },
                                             // We recommend collecting billing address information, at minimum
                                             // billing postal code, and passing that billing postal code with all
@@ -255,20 +267,32 @@
                                     },
                                     paypalCredit: {
                                         flow: 'checkout',
-                                        amount: '10.00',
+                                        amount: "{{ $data['total'] }}",
                                         currency: 'USD'
                                     },
                                     venmo: true
                                 }, function(createErr, instance) {
-                                    button.addEventListener('click', function() {
-                                        instance.requestPaymentMethod(function(requestPaymentMethodErr, payload) {
-                                            // Submit payload.nonce to your server
+                                    if (createErr) {
+                                        console.log('Create Error', createErr);
+                                        return;
+                                    }
+                                    form.addEventListener('submit', function (event) {
+                                        event.preventDefault();
+                                        instance.requestPaymentMethod(function (err, payload) {
+                                            if (err) {
+                                                console.log('Request Payment Method Error', err);
+                                                return;
+                                            }
+
+                                            // Add the nonce to the form and submit
+                                            // document.querySelector('#nonce').value = payload.nonce;
+                                            $('#nonce123').val(payload.nonce)
+                                            form.submit();
+
                                         });
                                     });
                                 });
                             </script>
-                            <input type="submit" id="complete-pay123" style="background-color:black;border : black;color:white;width:100%;padding : 12px 12px 12px 12px;border-radius:10px;font: 600 24px/32px
-                            Barlow Condensed;margin-top: 30px;letter-spacing: 0.01em;" value="Complete Payment"></input>
                         </form>
                     </div>
                 </div>
@@ -280,16 +304,3 @@
 </body>
 
 </html>
-<script src="https://js.braintreegateway.com/web/3.94.0/js/client.min.js"></script>
-
-<script>
-    
-    $(document).ready(function() {
-        $('#payment-form .braintree-heading').text('test123')
-
-
-    });
-    $('#complete-pay').click(function() {
-        $('#payment-form').submit()
-    })
-</script>
